@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Railroad! Solitaire — Leslie Street Studio</title>
+  <meta name="description" content="Privacy policy for Railroad! Solitaire. No data collected, no tracking, no ads.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    .policy-body {
+      background-color: var(--parchment);
+    }
+
+    .policy-content {
+      max-width: 720px;
+    }
+
+    .policy-section {
+      margin-bottom: var(--space-lg);
+    }
+
+    .policy-section h2 {
+      font-size: var(--size-subhead);
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: var(--space-sm);
+      padding-bottom: var(--space-xs);
+      border-bottom: 1px solid rgba(27,67,50,0.12);
+    }
+
+    .policy-section p {
+      color: var(--charcoal);
+      line-height: 1.8;
+    }
+
+    .policy-meta {
+      font-size: var(--size-secondary);
+      color: var(--stone);
+      margin-bottom: var(--space-lg);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__wordmark">
+      <a href="../../index.html">
+        <img src="../../assets/images/svg/WordmarkStackedParchmentonForest.svg" alt="Leslie Street Studio">
+      </a>
+    </div>
+    <hr class="site-header__rule">
+    <div class="site-header__nav-row">
+      <nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
+        <a href="../../index.html" class="site-nav__link">Home</a>
+        <a href="../../apps.html" class="site-nav__link active">Apps</a>
+        <a href="../../about.html" class="site-nav__link">About</a>
+        <a href="../../contact.html" class="site-nav__link">Contact</a>
+      </nav>
+      <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="site-nav site-nav--mobile" aria-label="Mobile navigation">
+      <a href="../../index.html" class="site-nav__link">Home</a>
+      <a href="../../apps.html" class="site-nav__link active">Apps</a>
+      <a href="../../about.html" class="site-nav__link">About</a>
+      <a href="../../contact.html" class="site-nav__link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero on-dark">
+      <div class="container">
+        <span class="page-hero__eyebrow">Railroad! Solitaire</span>
+        <h1 class="page-hero__title">Privacy Policy</h1>
+      </div>
+    </section>
+
+    <section class="section policy-body">
+      <div class="container">
+        <div class="policy-content">
+
+          <p class="policy-meta">Last updated: January 30, 2026</p>
+
+          <div class="policy-section">
+            <h2>Data Collection</h2>
+            <p>Railroad! Solitaire does not collect, store, or transmit any personal data. All game statistics (games played, wins, scores) are stored locally on your device only and are never shared with the developer or any third parties.</p>
+          </div>
+
+          <hr class="gold-rule" style="margin-bottom: var(--space-lg); opacity: 0.3;">
+
+          <div class="policy-section">
+            <h2>Analytics</h2>
+            <p>This app does not use any analytics or tracking services.</p>
+          </div>
+
+          <hr class="gold-rule" style="margin-bottom: var(--space-lg); opacity: 0.3;">
+
+          <div class="policy-section">
+            <h2>Advertising</h2>
+            <p>The current version of this app does not display advertisements.</p>
+          </div>
+
+          <hr class="gold-rule" style="margin-bottom: var(--space-lg); opacity: 0.3;">
+
+          <div class="policy-section">
+            <h2>Contact</h2>
+            <p>If you have questions about this privacy policy, please contact: <a href="mailto:support@lesliestreetstudio.com">support@lesliestreetstudio.com</a></p>
+          </div>
+
+          <hr class="gold-rule" style="margin-bottom: var(--space-lg); opacity: 0.3;">
+
+          <div class="policy-section">
+            <h2>Changes</h2>
+            <p>Any updates to this privacy policy will be reflected on this page.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__wordmark">
+          <img src="../../assets/images/svg/WordmarkHorizontalParchmentonCharcoal.svg" alt="Leslie Street Studio">
+        </div>
+        <hr class="gold-rule" style="width: 40px; opacity: 0.4;">
+        <div class="site-footer__links">
+          <a href="../../index.html">Home</a>
+          <a href="../../apps.html">Apps</a>
+          <a href="../../about.html">About</a>
+          <a href="../../contact.html">Contact</a>
+          <a href="mailto:support@lesliestreetstudio.com">Support</a>
+        </div>
+        <p class="site-footer__copy">&copy; 2026 Leslie Street Studio LLC</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.nav-hamburger');
+    const mobileNav = document.querySelector('.site-nav--mobile');
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+    }
+  </script>
+
+</body>
+</html>

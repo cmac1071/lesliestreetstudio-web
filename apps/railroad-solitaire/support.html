@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Railroad! Solitaire — Leslie Street Studio</title>
+  <meta name="description" content="Support, FAQ, and how-to-play for Railroad! Solitaire.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    .support-body {
+      background-color: var(--parchment);
+    }
+
+    .support-content {
+      max-width: 720px;
+    }
+
+    .support-section {
+      margin-bottom: var(--space-lg);
+    }
+
+    .support-section h2 {
+      font-size: var(--size-subhead);
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: var(--space-sm);
+      padding-bottom: var(--space-xs);
+      border-bottom: 1px solid rgba(27,67,50,0.12);
+    }
+
+    .support-section p {
+      color: var(--charcoal);
+      line-height: 1.8;
+    }
+
+    .rules-block {
+      background-color: var(--forest);
+      border-radius: 8px;
+      padding: var(--space-md);
+      margin-top: var(--space-sm);
+    }
+
+    .rules-block p {
+      color: var(--parchment);
+      opacity: 0.9;
+      margin-bottom: var(--space-sm);
+    }
+
+    .rules-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .rules-block .rule-line {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: flex-start;
+      margin-bottom: var(--space-xs);
+    }
+
+    .rules-block .rule-label {
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage);
+      flex-shrink: 0;
+      min-width: 90px;
+      padding-top: 2px;
+    }
+
+    .rules-block .rule-text {
+      font-size: var(--size-body);
+      color: var(--parchment);
+      opacity: 0.9;
+      line-height: 1.65;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-top: var(--space-sm);
+    }
+
+    .faq-item {}
+
+    .faq-item__q {
+      font-family: var(--font-display);
+      font-size: var(--size-body);
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: var(--space-xs);
+    }
+
+    .faq-item__a {
+      color: var(--charcoal);
+      line-height: 1.8;
+    }
+
+    .contact-block {
+      background-color: var(--forest);
+      border-radius: 8px;
+      padding: var(--space-md);
+      margin-top: var(--space-sm);
+    }
+
+    .contact-block p {
+      color: var(--parchment);
+      opacity: 0.9;
+    }
+
+    .contact-block a {
+      color: var(--sage);
+    }
+
+    .contact-block a:hover {
+      color: var(--parchment);
+    }
+
+    .contact-block .contact-note {
+      margin-top: var(--space-sm);
+      font-size: var(--size-secondary);
+      color: var(--parchment);
+      opacity: 0.65;
+    }
+
+    .version-table {
+      margin-top: var(--space-sm);
+    }
+
+    .version-row {
+      display: flex;
+      gap: var(--space-md);
+      align-items: baseline;
+      padding: var(--space-xs) 0;
+      border-bottom: 1px solid rgba(27,67,50,0.08);
+    }
+
+    .version-row:last-child {
+      border-bottom: none;
+    }
+
+    .version-tag {
+      font-family: var(--font-display);
+      font-size: var(--size-secondary);
+      font-weight: 500;
+      color: var(--forest);
+      min-width: 60px;
+    }
+
+    .version-notes {
+      font-size: var(--size-secondary);
+      color: var(--stone);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__wordmark">
+      <a href="../../index.html">
+        <img src="../../assets/images/svg/WordmarkStackedParchmentonForest.svg" alt="Leslie Street Studio">
+      </a>
+    </div>
+    <hr class="site-header__rule">
+    <div class="site-header__nav-row">
+      <nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
+        <a href="../../index.html" class="site-nav__link">Home</a>
+        <a href="../../apps.html" class="site-nav__link active">Apps</a>
+        <a href="../../about.html" class="site-nav__link">About</a>
+        <a href="../../contact.html" class="site-nav__link">Contact</a>
+      </nav>
+      <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="site-nav site-nav--mobile" aria-label="Mobile navigation">
+      <a href="../../index.html" class="site-nav__link">Home</a>
+      <a href="../../apps.html" class="site-nav__link active">Apps</a>
+      <a href="../../about.html" class="site-nav__link">About</a>
+      <a href="../../contact.html" class="site-nav__link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero on-dark">
+      <div class="container">
+        <span class="page-hero__eyebrow">Railroad! Solitaire</span>
+        <h1 class="page-hero__title">Support</h1>
+      </div>
+    </section>
+
+    <section class="section support-body">
+      <div class="container">
+        <div class="support-content">
+
+          <!-- How to Play -->
+          <div class="support-section">
+            <h2>How to Play</h2>
+            <p>Deal cards one at a time by tapping the deck. When the newest card matches the card three positions back:</p>
+            <div class="rules-block">
+              <div class="rule-line">
+                <span class="rule-label">Suit match</span>
+                <span class="rule-text">The two middle cards are discarded.</span>
+              </div>
+              <div class="rule-line">
+                <span class="rule-label">Rank match</span>
+                <span class="rule-text">All four cards are discarded.</span>
+              </div>
+              <p style="margin-top: var(--space-sm);">Clear all 52 cards to win. The odds are approximately 1 in 142.</p>
+            </div>
+          </div>
+
+          <hr class="gold-rule" style="margin-bottom: var(--space-lg); opacity: 0.3;">
+
+          <!-- FAQ -->
+          <div class="support-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+
+              <div class="faq-item">
+                <p class="faq-item__q">How do I start a new game?</p>
+                <p class="faq-item__a">Tap the "New" button at the bottom of the screen.</p>
+              </div>
+
+              <div class="faq-item">
+                <p class="faq-item__q">Where are my statistics stored?</p>
+                <p class="faq-item__a">All statistics are stored locally on your device. They are not synced to the cloud or shared with anyone.</p>
+              </div>
+
+              <div class="faq-item">
+                <p class="faq-item__q">Can I reset my statistics?</p>
+                <p class="faq-item__a">Currently, statistics cannot be reset. This feature may be added in a future update.</p>
+              </div>
+
+              <div class="faq-item">
+                <p class="faq-item__q">Why do my statistics show games I didn't finish?</p>
+                <p class="faq-item__a">A game is counted when you start it. If you tap "New" before finishing, the incomplete game is recorded with your score at that point.</p>
+              </div>
+
+              <div class="faq-item">
+                <p class="faq-item__q">Is there sound?</p>
+                <p class="faq-item__a">Yes. Make sure your device is not in silent mode. You can adjust sound volume or disable sounds in the Menu.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <hr class="gold-rule" style="margin-bottom: var(--space-lg); opacity: 0.3;">
+
+          <!-- Contact -->
+          <div class="support-section">
+            <h2>Contact</h2>
+            <div class="contact-block">
+              <p>For bug reports, feature requests, or questions: <a href="mailto:support@lesliestreetstudio.com">support@lesliestreetstudio.com</a></p>
+              <p class="contact-note">Please include your device model, iOS version, and a description of the issue.</p>
+            </div>
+          </div>
+
+          <hr class="gold-rule" style="margin-bottom: var(--space-lg); opacity: 0.3;">
+
+          <!-- Version History -->
+          <div class="support-section">
+            <h2>Version History</h2>
+            <div class="version-table">
+              <div class="version-row">
+                <span class="version-tag">v1.0</span>
+                <span class="version-notes">Initial release</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__wordmark">
+          <img src="../../assets/images/svg/WordmarkHorizontalParchmentonCharcoal.svg" alt="Leslie Street Studio">
+        </div>
+        <hr class="gold-rule" style="width: 40px; opacity: 0.4;">
+        <div class="site-footer__links">
+          <a href="../../index.html">Home</a>
+          <a href="../../apps.html">Apps</a>
+          <a href="../../about.html">About</a>
+          <a href="../../contact.html">Contact</a>
+          <a href="mailto:support@lesliestreetstudio.com">Support</a>
+        </div>
+        <p class="site-footer__copy">&copy; 2026 Leslie Street Studio LLC</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.nav-hamburger');
+    const mobileNav = document.querySelector('.site-nav--mobile');
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+    }
+  </script>
+
+</body>
+</html>
