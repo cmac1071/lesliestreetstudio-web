@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Leslie Street Studio</title>
+  <meta name="description" content="About Leslie Street Studio — an independent software studio based in Upton, Massachusetts.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .about-section {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .about-section p + p {
+      margin-top: var(--space-sm);
+    }
+
+    .origin-callout {
+      border-left: 2px solid var(--gold);
+      padding-left: var(--space-md);
+      margin: var(--space-lg) 0;
+    }
+
+    .origin-callout p {
+      font-family: var(--font-display);
+      font-size: var(--size-pullquote);
+      font-style: italic;
+      color: var(--forest);
+      line-height: 1.65;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+
+    .value-item {
+      padding-top: var(--space-sm);
+      border-top: 1px solid rgba(27,67,50,0.15);
+    }
+
+    .value-item__title {
+      font-family: var(--font-display);
+      font-size: var(--size-body);
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: var(--space-xs);
+    }
+
+    .value-item__desc {
+      font-size: var(--size-secondary);
+      color: var(--stone);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 768px) {
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__wordmark">
+      <a href="index.html">
+        <img src="assets/images/svg/WordmarkStackedParchmentonForest.svg" alt="Leslie Street Studio">
+      </a>
+    </div>
+    <hr class="site-header__rule">
+    <div class="site-header__nav-row">
+      <nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
+        <a href="index.html" class="site-nav__link">Home</a>
+        <a href="apps.html" class="site-nav__link">Apps</a>
+        <a href="about.html" class="site-nav__link active">About</a>
+        <a href="contact.html" class="site-nav__link">Contact</a>
+      </nav>
+      <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="site-nav site-nav--mobile" aria-label="Mobile navigation">
+      <a href="index.html" class="site-nav__link">Home</a>
+      <a href="apps.html" class="site-nav__link">Apps</a>
+      <a href="about.html" class="site-nav__link active">About</a>
+      <a href="contact.html" class="site-nav__link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <span class="page-hero__eyebrow fade-up fade-up--delay-1">Leslie Street Studio</span>
+        <h1 class="page-hero__title fade-up fade-up--delay-2">About</h1>
+        <p class="page-hero__subtitle fade-up fade-up--delay-3">A one-person software studio, unhurried and fond of home.</p>
+      </div>
+    </section>
+
+    <!-- Origin -->
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <div class="about-section fade-up fade-up--delay-1">
+          <span class="label" style="display:block; margin-bottom: var(--space-sm);">Origin</span>
+          <h2>Named after a place that mattered</h2>
+
+          <div class="origin-callout">
+            <p>Leslie Street is a street in Dorchester, Massachusetts. It is not a metaphor. It is a place — and places carry memory in a way that invented names do not.</p>
+          </div>
+
+          <p>Leslie Street Studio is named after a neighborhood that had identity. That specificity is deliberate. The studio is not a brand exercise or a vehicle for a portfolio. It is a name attached to real memory — which is the only kind of name worth having.</p>
+
+          <p>The studio is based in Upton, Massachusetts, and operates as a single-person LLC. There are no investors, no growth targets, and no roadmap driven by anything other than what seems worth building.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Colors / Don Bosco -->
+    <section class="section" style="background-color: var(--forest);">
+      <div class="container on-dark">
+        <div class="about-section fade-up fade-up--delay-1">
+          <span class="label" style="display:block; margin-bottom: var(--space-sm); color: var(--sage);">The palette</span>
+          <h2 style="color: var(--parchment);">Forest green and warm gold</h2>
+          <p>The primary colors of Leslie Street Studio — forest green and warm gold — come from the founder's Boston high school, a place that shaped the formative years. The palette has been modernized and refined, but the origin is deliberate.</p>
+          <p>It is the same reason the studio has a name tied to a real place: the things that last are the things that mean something. Generic has no memory.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Craft -->
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <div class="about-section fade-up fade-up--delay-1">
+          <span class="label" style="display:block; margin-bottom: var(--space-sm);">Philosophy</span>
+          <h2>Craft over speed</h2>
+          <p>Every app published under the Leslie Street Studio name is built with care. That means apps are released when they are ready — not on a schedule, not under pressure to ship, and not before the details are right.</p>
+          <p>The goal is to build things that are genuinely useful and genuinely well made, and to put them in the world. What that looks like commercially may vary. The standard of work does not.</p>
+          <p>That is the whole of it.</p>
+        </div>
+
+        <div class="section-divider">
+          <div class="section-divider__line"></div>
+          <div class="section-divider__mark"></div>
+          <div class="section-divider__line"></div>
+        </div>
+
+        <div class="values-grid">
+          <div class="value-item">
+            <p class="value-item__title">Intentional</p>
+            <p class="value-item__desc">Every decision — from feature scope to type weight — is made on purpose. Nothing is there by accident.</p>
+          </div>
+          <div class="value-item">
+            <p class="value-item__title">Independent</p>
+            <p class="value-item__desc">No outside investment. No partners. No pressure to build anything other than what deserves to be built.</p>
+          </div>
+          <div class="value-item">
+            <p class="value-item__title">Honest</p>
+            <p class="value-item__desc">Pricing is chosen, not defaulted into. Business models are deliberate. No dark patterns, no manufactured urgency, no tricks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__wordmark">
+          <img src="assets/images/svg/WordmarkHorizontalParchmentonCharcoal.svg" alt="Leslie Street Studio">
+        </div>
+        <hr class="gold-rule" style="width: 40px; opacity: 0.4;">
+        <div class="site-footer__links">
+          <a href="index.html">Home</a>
+          <a href="apps.html">Apps</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="mailto:support@lesliestreetstudio.com">Support</a>
+        </div>
+        <p class="site-footer__copy">&copy; 2026 Leslie Street Studio LLC</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.nav-hamburger');
+    const mobileNav = document.querySelector('.site-nav--mobile');
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+    }
+  </script>
+
+</body>
+</html>

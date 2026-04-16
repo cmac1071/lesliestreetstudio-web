@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Leslie Street Studio</title>
+  <meta name="description" content="Get in touch with Leslie Street Studio.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-item a {
+      text-decoration: none;
+    }
+
+    .contact-item a:hover .contact-item__value {
+      color: var(--mid-green);
+    }
+
+    @media (max-width: 600px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__wordmark">
+      <a href="index.html">
+        <img src="assets/images/svg/WordmarkStackedParchmentonForest.svg" alt="Leslie Street Studio">
+      </a>
+    </div>
+    <hr class="site-header__rule">
+    <div class="site-header__nav-row">
+      <nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
+        <a href="index.html" class="site-nav__link">Home</a>
+        <a href="apps.html" class="site-nav__link">Apps</a>
+        <a href="about.html" class="site-nav__link">About</a>
+        <a href="contact.html" class="site-nav__link active">Contact</a>
+      </nav>
+      <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="site-nav site-nav--mobile" aria-label="Mobile navigation">
+      <a href="index.html" class="site-nav__link">Home</a>
+      <a href="apps.html" class="site-nav__link">Apps</a>
+      <a href="about.html" class="site-nav__link">About</a>
+      <a href="contact.html" class="site-nav__link active">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <span class="page-hero__eyebrow fade-up fade-up--delay-1">Leslie Street Studio</span>
+        <h1 class="page-hero__title fade-up fade-up--delay-2">Contact</h1>
+        <p class="page-hero__subtitle fade-up fade-up--delay-3">Two addresses. Both are read.</p>
+      </div>
+    </section>
+
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <div class="contact-grid fade-up fade-up--delay-1">
+
+          <div class="contact-item">
+            <a href="mailto:support@lesliestreetstudio.com">
+              <p class="contact-item__label">App Support</p>
+              <p class="contact-item__value">support@lesliestreetstudio.com</p>
+              <p class="contact-item__note">Bug reports, questions about Railroad! Solitaire or CribVision, anything related to the apps.</p>
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <a href="mailto:chris@lesliestreetstudio.com">
+              <p class="contact-item__label">General</p>
+              <p class="contact-item__value">chris@lesliestreetstudio.com</p>
+              <p class="contact-item__note">Everything else — press, licensing, or just getting in touch.</p>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="section-divider" style="max-width: 720px; margin: var(--space-lg) auto;">
+          <div class="section-divider__line"></div>
+          <div class="section-divider__mark"></div>
+          <div class="section-divider__line"></div>
+        </div>
+
+        <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+          <p class="text-secondary">Leslie Street Studio LLC</p>
+          <p class="text-secondary" style="margin-top: 4px;">lesliestreetstudio.com</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__wordmark">
+          <img src="assets/images/svg/WordmarkHorizontalParchmentonCharcoal.svg" alt="Leslie Street Studio">
+        </div>
+        <hr class="gold-rule" style="width: 40px; opacity: 0.4;">
+        <div class="site-footer__links">
+          <a href="index.html">Home</a>
+          <a href="apps.html">Apps</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="mailto:support@lesliestreetstudio.com">Support</a>
+        </div>
+        <p class="site-footer__copy">&copy; 2026 Leslie Street Studio LLC</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.nav-hamburger');
+    const mobileNav = document.querySelector('.site-nav--mobile');
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+    }
+  </script>
+
+</body>
+</html>

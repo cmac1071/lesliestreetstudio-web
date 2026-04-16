@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Railroad! Solitaire — Leslie Street Studio</title>
+  <meta name="description" content="Railroad! Solitaire — the world's most mathematically rigorous solitaire. A 0.706% win rate, verified across 350 billion simulations. Free on the App Store.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .rr-hero {
+      background-color: var(--charcoal);
+      padding: var(--space-xl) 0;
+    }
+
+    .rr-hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .rr-hero__icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      overflow: hidden;
+      margin-bottom: var(--space-md);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+
+    .rr-hero__title {
+      font-family: var(--font-display);
+      font-size: var(--size-display);
+      font-weight: 700;
+      color: var(--parchment);
+      margin-bottom: var(--space-xs);
+      line-height: 1.1;
+    }
+
+    .rr-hero__subtitle {
+      font-family: var(--font-display);
+      font-size: var(--size-subhead);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--parchment);
+      opacity: 0.65;
+      margin-bottom: var(--space-md);
+    }
+
+    .stat-row {
+      display: flex;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stat__value {
+      font-family: var(--font-display);
+      font-size: var(--size-headline);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat__label {
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      opacity: 0.5;
+    }
+
+    .rr-hero__screenshot {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.4);
+    }
+
+    .how-it-works {
+      background-color: var(--parchment);
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+
+    .rule-card {
+      background-color: var(--forest);
+      border-radius: 8px;
+      padding: var(--space-md);
+      color: var(--parchment);
+    }
+
+    .rule-card__type {
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: var(--space-xs);
+    }
+
+    .rule-card__title {
+      font-family: var(--font-display);
+      font-size: var(--size-subhead);
+      font-weight: 400;
+      color: var(--parchment);
+      margin-bottom: var(--space-xs);
+    }
+
+    .rule-card__desc {
+      font-size: var(--size-secondary);
+      color: var(--parchment);
+      opacity: 0.8;
+      line-height: 1.65;
+    }
+
+    .screenshots-section {
+      background-color: var(--charcoal);
+    }
+
+    @media (max-width: 768px) {
+      .rr-hero__inner {
+        grid-template-columns: 1fr;
+      }
+      .rules-grid {
+        grid-template-columns: 1fr;
+      }
+      .stat-row {
+        gap: var(--space-sm);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__wordmark">
+      <a href="../index.html">
+        <img src="../assets/images/svg/WordmarkStackedParchmentonForest.svg" alt="Leslie Street Studio">
+      </a>
+    </div>
+    <hr class="site-header__rule">
+    <div class="site-header__nav-row">
+      <nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
+        <a href="../index.html" class="site-nav__link">Home</a>
+        <a href="../apps.html" class="site-nav__link active">Apps</a>
+        <a href="../about.html" class="site-nav__link">About</a>
+        <a href="../contact.html" class="site-nav__link">Contact</a>
+      </nav>
+      <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="site-nav site-nav--mobile" aria-label="Mobile navigation">
+      <a href="../index.html" class="site-nav__link">Home</a>
+      <a href="../apps.html" class="site-nav__link active">Apps</a>
+      <a href="../about.html" class="site-nav__link">About</a>
+      <a href="../contact.html" class="site-nav__link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="rr-hero on-dark">
+      <div class="container">
+        <div class="rr-hero__inner">
+          <div class="fade-up fade-up--delay-1">
+            <div class="rr-hero__icon">
+              <img src="../assets/images/Railroad_icon.png" alt="Railroad! Solitaire">
+            </div>
+            <p class="rr-hero__subtitle">The 0.706% Challenge</p>
+            <h1 class="rr-hero__title">Railroad! Solitaire</h1>
+            <div class="stat-row">
+              <div class="stat">
+                <span class="stat__value">0.706%</span>
+                <span class="stat__label">Win rate</span>
+              </div>
+              <div class="stat">
+                <span class="stat__value">350B+</span>
+                <span class="stat__label">Simulations</span>
+              </div>
+              <div class="stat">
+                <span class="stat__value">Free</span>
+                <span class="stat__label">App Store</span>
+              </div>
+            </div>
+            <a href="https://apps.apple.com/app/id6758528011" target="_blank" rel="noopener">
+              <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" class="appstore-badge">
+            </a>
+          </div>
+          <div class="rr-hero__screenshot fade-up fade-up--delay-2">
+            <img src="../assets/images/Railroadscreenshot.png" alt="Railroad! Solitaire gameplay">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section how-it-works">
+      <div class="container">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm);">How it works</span>
+        <h2>A game of alignment and chain reactions</h2>
+        <p style="margin-top: var(--space-sm); max-width: 620px;">52 cards are dealt one by one into a single row. Your success depends entirely on the relationship between the 1st and 4th cards from the right end of the row.</p>
+
+        <div class="rules-grid">
+          <div class="rule-card">
+            <p class="rule-card__type">Rank match</p>
+            <h3 class="rule-card__title">Same rank — clear four</h3>
+            <p class="rule-card__desc">When the 1st and 4th cards from the right share the same rank — two Kings, two Fives — all four cards in that group are removed from the row.</p>
+          </div>
+          <div class="rule-card">
+            <p class="rule-card__type">Suit match</p>
+            <h3 class="rule-card__title">Same suit — clear two</h3>
+            <p class="rule-card__desc">When the 1st and 4th cards share the same suit — both Hearts, both Clubs — the two middle cards are removed. The outer cards remain.</p>
+          </div>
+        </div>
+
+        <p style="margin-top: var(--space-md); max-width: 620px;"><strong style="color: var(--forest);">The cascade.</strong> Every time cards are removed, the row collapses and new matches can form — triggering chain reactions that clear large sections at once. Win by clearing all 52 cards.</p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" style="background-color: var(--mint);">
+      <div class="container">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm);">Features</span>
+        <h2>What's in the app</h2>
+        <ul class="feature-list" style="margin-top: var(--space-md); max-width: 580px;">
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text"><strong>Simulation-verified win rate</strong> — 350+ billion games confirm the 0.706% expected win rate. Every game is numbered and tracked.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text"><strong>Live probability stats</strong> — A real-time histogram shows your score distribution across every game you've played, compared to the expected curve.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text"><strong>Desktop versions</strong> — macOS and Windows builds available for players who prefer a larger screen. <a href="https://github.com/cmac1071/RailroadSolitaire/releases/download/v3.1.1/Railroad_v3_1_1_macOS.zip" style="color: var(--forest); text-decoration: underline;">Download for macOS</a> or <a href="https://github.com/cmac1071/RailroadSolitaire/releases/download/v3.1.1/Railroad_v3_1_1_Windows.zip" style="color: var(--forest); text-decoration: underline;">Windows</a>.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text"><strong>v2.0 in development</strong> — Bonus games, achievements, and expanded player choice. Coming soon.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="section screenshots-section on-dark">
+      <div class="container">
+        <span class="label" style="display:block; margin-bottom: var(--space-md); color: var(--sage);">Screenshots</span>
+        <div class="screenshot-gallery screenshot-gallery--landscape-2">
+          <img src="../assets/images/Railroadscreenshotwin.png" alt="Railroad! Solitaire — win screen">
+          <img src="../assets/images/Railroadscreenshotstats.png" alt="Railroad! Solitaire — statistics">
+        </div>
+      </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section class="section" style="background-color: var(--forest); text-align: center;">
+      <div class="container on-dark">
+        <h2 style="color: var(--parchment); margin-bottom: var(--space-sm);">Ready to take on 0.706%?</h2>
+        <p style="color: var(--parchment); opacity: 0.75; max-width: 480px; margin: 0 auto var(--space-md);">Free on the App Store. Just the challenge.</p>
+        <a href="https://apps.apple.com/app/id6758528011" target="_blank" rel="noopener">
+          <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" class="appstore-badge" style="margin: 0 auto;">
+        </a>
+        <p style="margin-top: var(--space-md);">
+          <a href="mailto:support@lesliestreetstudio.com" style="color: var(--parchment); opacity: 0.5; font-size: var(--size-secondary);">support@lesliestreetstudio.com</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__wordmark">
+          <img src="../assets/images/svg/WordmarkHorizontalParchmentonCharcoal.svg" alt="Leslie Street Studio">
+        </div>
+        <hr class="gold-rule" style="width: 40px; opacity: 0.4;">
+        <div class="site-footer__links">
+          <a href="../index.html">Home</a>
+          <a href="../apps.html">Apps</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+          <a href="mailto:support@lesliestreetstudio.com">Support</a>
+        </div>
+        <p class="site-footer__copy">&copy; 2026 Leslie Street Studio LLC</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.nav-hamburger');
+    const mobileNav = document.querySelector('.site-nav--mobile');
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+    }
+  </script>
+
+</body>
+</html>

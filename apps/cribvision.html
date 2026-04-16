@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CribVision — Leslie Street Studio</title>
+  <meta name="description" content="CribVision — AI-powered cribbage hand scoring. Point your camera, get the count. Free on the App Store.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .cv-hero {
+      background-color: var(--forest);
+      padding: var(--space-xl) 0;
+    }
+
+    .cv-hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .cv-hero__icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      overflow: hidden;
+      margin-bottom: var(--space-md);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+
+    .cv-hero__title {
+      font-family: var(--font-display);
+      font-size: var(--size-display);
+      font-weight: 700;
+      color: var(--parchment);
+      margin-bottom: var(--space-xs);
+      line-height: 1.1;
+    }
+
+    .cv-hero__tagline {
+      font-family: var(--font-display);
+      font-size: var(--size-subhead);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--parchment);
+      opacity: 0.65;
+      margin-bottom: var(--space-md);
+    }
+
+    .cv-hero__screenshots {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+    }
+
+    .cv-hero__screenshots img {
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      width: 100%;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+
+    .step-card {
+      text-align: center;
+      padding: var(--space-md);
+      border-top: 2px solid var(--gold);
+    }
+
+    .step-card__number {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--forest);
+      opacity: 0.15;
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .step-card__title {
+      font-family: var(--font-display);
+      font-size: var(--size-subhead);
+      font-weight: 400;
+      color: var(--forest);
+      margin-bottom: var(--space-xs);
+    }
+
+    .step-card__desc {
+      font-size: var(--size-secondary);
+      color: var(--stone);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 768px) {
+      .cv-hero__inner {
+        grid-template-columns: 1fr;
+      }
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .cv-hero__screenshots {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__wordmark">
+      <a href="../index.html">
+        <img src="../assets/images/svg/WordmarkStackedParchmentonForest.svg" alt="Leslie Street Studio">
+      </a>
+    </div>
+    <hr class="site-header__rule">
+    <div class="site-header__nav-row">
+      <nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
+        <a href="../index.html" class="site-nav__link">Home</a>
+        <a href="../apps.html" class="site-nav__link active">Apps</a>
+        <a href="../about.html" class="site-nav__link">About</a>
+        <a href="../contact.html" class="site-nav__link">Contact</a>
+      </nav>
+      <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="site-nav site-nav--mobile" aria-label="Mobile navigation">
+      <a href="../index.html" class="site-nav__link">Home</a>
+      <a href="../apps.html" class="site-nav__link active">Apps</a>
+      <a href="../about.html" class="site-nav__link">About</a>
+      <a href="../contact.html" class="site-nav__link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="cv-hero on-dark">
+      <div class="container">
+        <div class="cv-hero__inner">
+          <div class="fade-up fade-up--delay-1">
+            <div class="cv-hero__icon">
+              <img src="../assets/images/CribVision_Icon5.png" alt="CribVision">
+            </div>
+            <p class="cv-hero__tagline">Point. Scan. Score.</p>
+            <h1 class="cv-hero__title">CribVision</h1>
+            <p style="color: var(--parchment); opacity: 0.8; margin-bottom: var(--space-md); max-width: 420px; font-size: var(--size-body);">On-device AI that sees your cribbage hand and counts every point. No math. No miscounts. No arguments.</p>
+            <a href="https://apps.apple.com/us/app/cribvision/id6759795942" target="_blank" rel="noopener">
+              <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" class="appstore-badge">
+            </a>
+          </div>
+          <div class="cv-hero__screenshots fade-up fade-up--delay-2">
+            <img src="../assets/images/CribVisionscreenshotscan.png" alt="CribVision — scan result">
+            <img src="../assets/images/CribVisionscreenshotscoring.png" alt="CribVision — score breakdown">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm);">How it works</span>
+        <h2>Three seconds to a perfect count</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <p class="step-card__number">1</p>
+            <h3 class="step-card__title">Point your camera</h3>
+            <p class="step-card__desc">Lay your four hand cards and the cut card on any surface. CribVision's AI starts detecting immediately — no setup, no scanning gesture needed.</p>
+          </div>
+          <div class="step-card">
+            <p class="step-card__number">2</p>
+            <h3 class="step-card__title">Cards lock in</h3>
+            <p class="step-card__desc">Each card is identified using on-device machine learning. Cards lock in only after consistent detection across multiple frames — filtering out glare, blur, and misreads.</p>
+          </div>
+          <div class="step-card">
+            <p class="step-card__number">3</p>
+            <h3 class="step-card__title">See every point</h3>
+            <p class="step-card__desc">Get a complete breakdown instantly — every fifteen, pair, run, flush, and nob. Tap the score to see exactly which cards contribute to each category.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" style="background-color: var(--forest);">
+      <div class="container on-dark">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm); color: var(--sage);">Features</span>
+        <h2 style="color: var(--parchment); margin-bottom: var(--space-md);">Built for real cribbage</h2>
+        <ul class="feature-list" style="max-width: 580px;">
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text" style="color: var(--parchment); opacity: 0.85;"><strong style="color: var(--parchment);">On-device AI</strong> — Core ML object detection runs entirely on your iPhone. No cloud, no latency, no internet required. Your cards never leave your device.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text" style="color: var(--parchment); opacity: 0.85;"><strong style="color: var(--parchment);">Hand and Crib modes</strong> — Toggle between hand and crib scoring. Flush rules automatically adjust — 4-card flush counts in hand, only 5-card flush counts in crib.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text" style="color: var(--parchment); opacity: 0.85;"><strong style="color: var(--parchment);">Hand history</strong> — Track every hand you score. See your average, best, worst, and how many zero-point hands you've been dealt. All stored locally.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text" style="color: var(--parchment); opacity: 0.85;"><strong style="color: var(--parchment);">Cribbage scoring guide</strong> — Built-in reference explains every scoring category with examples. Useful for beginners and as a quick-check for experienced players.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text" style="color: var(--parchment); opacity: 0.85;"><strong style="color: var(--parchment);">Cut card override</strong> — Spatial analysis identifies the cut card automatically. Tap to override if needed — one gesture.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <span class="label" style="display:block; margin-bottom: var(--space-md);">Screenshots</span>
+        <div class="screenshot-gallery screenshot-gallery--portrait" style="max-width: 640px; margin: 0 auto;">
+          <img src="../assets/images/CribVisionscreenshotmain.png" alt="CribVision — main screen">
+          <img src="../assets/images/CribVisionscreenshotscan.png" alt="CribVision — scan result">
+          <img src="../assets/images/CribVisionscreenshotscoring.png" alt="CribVision — score breakdown">
+          <img src="../assets/images/CribVisionscreenshotteaching.png" alt="CribVision — cribbage scoring guide">
+        </div>
+      </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section class="section" style="background-color: var(--charcoal); text-align: center;">
+      <div class="container on-dark">
+        <h2 style="color: var(--parchment); margin-bottom: var(--space-sm);">Stop counting. Start playing.</h2>
+        <p style="color: var(--parchment); opacity: 0.75; max-width: 480px; margin: 0 auto var(--space-md);">Free on the App Store. Just the count.</p>
+        <a href="https://apps.apple.com/us/app/cribvision/id6759795942" target="_blank" rel="noopener">
+          <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" class="appstore-badge" style="margin: 0 auto;">
+        </a>
+        <p style="margin-top: var(--space-md);">
+          <a href="mailto:support@lesliestreetstudio.com" style="color: var(--parchment); opacity: 0.5; font-size: var(--size-secondary);">support@lesliestreetstudio.com</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__wordmark">
+          <img src="../assets/images/svg/WordmarkHorizontalParchmentonCharcoal.svg" alt="Leslie Street Studio">
+        </div>
+        <hr class="gold-rule" style="width: 40px; opacity: 0.4;">
+        <div class="site-footer__links">
+          <a href="../index.html">Home</a>
+          <a href="../apps.html">Apps</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+          <a href="mailto:support@lesliestreetstudio.com">Support</a>
+        </div>
+        <p class="site-footer__copy">&copy; 2026 Leslie Street Studio LLC</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.nav-hamburger');
+    const mobileNav = document.querySelector('.site-nav--mobile');
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+    }
+  </script>
+
+</body>
+</html>
