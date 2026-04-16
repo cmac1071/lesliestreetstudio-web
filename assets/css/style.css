@@ -305,14 +305,16 @@ p {
   align-items: center;
   gap: 0;
   background-color: var(--forest);
-  border-top: 1px solid rgba(221,213,196,0.15);
   overflow: hidden;
   max-height: 0;
+  pointer-events: none;
   transition: max-height 0.35s ease;
 }
 
 .site-nav--mobile.open {
   max-height: 300px;
+  border-top: 1px solid rgba(221,213,196,0.15);
+  pointer-events: auto;
 }
 
 .site-nav--mobile .site-nav__link {
