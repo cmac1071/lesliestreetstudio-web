@@ -324,6 +324,10 @@ p {
   border-bottom: 1px solid rgba(221,213,196,0.08);
 }
 
+.site-nav--mobile .site-nav__link:last-child {
+  border-bottom: none;
+}
+
 .site-nav--mobile .site-nav__link::after {
   display: none;
 }
