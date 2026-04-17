@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CardVision — Leslie Street Studio</title>
+  <meta name="description" content="CardVision — capture and annotate playing card images to build Core ML training datasets. Coming soon for iPhone.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .cv-hero {
+      background-color: var(--forest);
+      padding: var(--space-xl) 0;
+    }
+
+    .cv-hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .cv-hero__icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      overflow: hidden;
+      margin-bottom: var(--space-md);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+
+    .cv-hero__title {
+      font-family: var(--font-display);
+      font-size: var(--size-display);
+      font-weight: 700;
+      color: var(--parchment);
+      margin-bottom: var(--space-xs);
+      line-height: 1.1;
+    }
+
+    .cv-hero__tagline {
+      font-family: var(--font-display);
+      font-size: var(--size-subhead);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--parchment);
+      opacity: 0.65;
+      margin-bottom: var(--space-md);
+    }
+
+    .coming-soon-badge {
+      display: inline-block;
+      border: 1.5px solid rgba(221, 213, 196, 0.35);
+      border-radius: 10px;
+      padding: 10px 22px;
+      color: var(--parchment);
+      opacity: 0.55;
+      font-family: var(--font-body);
+      font-size: var(--size-secondary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cv-hero__visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cv-hero__card-motif {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+      opacity: 0.18;
+    }
+
+    .card-motif__suit {
+      font-size: 64px;
+      text-align: center;
+      line-height: 1;
+      color: var(--parchment);
+    }
+
+    .card-motif__suit--red {
+      color: #e57373;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+
+    .step-card {
+      text-align: center;
+      padding: var(--space-md);
+      border-top: 2px solid var(--gold);
+    }
+
+    .step-card__number {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--forest);
+      opacity: 0.15;
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .step-card__title {
+      font-family: var(--font-display);
+      font-size: var(--size-subhead);
+      font-weight: 400;
+      color: var(--forest);
+      margin-bottom: var(--space-xs);
+    }
+
+    .step-card__desc {
+      font-size: var(--size-secondary);
+      color: var(--stone);
+      line-height: 1.65;
+    }
+
+    .export-block {
+      background-color: var(--charcoal);
+      border-radius: 8px;
+      padding: var(--space-md) var(--space-lg);
+      margin-top: var(--space-md);
+      font-family: monospace;
+      font-size: 13px;
+      color: var(--sage);
+      line-height: 1.7;
+      overflow-x: auto;
+    }
+
+    .export-block__comment {
+      color: var(--stone);
+    }
+
+    @media (max-width: 768px) {
+      .cv-hero__inner {
+        grid-template-columns: 1fr;
+      }
+      .cv-hero__visual {
+        display: none;
+      }
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__wordmark">
+      <a href="../index.html">
+        <img src="../assets/images/svg/WordmarkStackedParchmentonForest.svg" alt="Leslie Street Studio">
+      </a>
+    </div>
+    <hr class="site-header__rule">
+    <div class="site-header__nav-row">
+      <nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
+        <a href="../index.html" class="site-nav__link">Home</a>
+        <a href="../apps.html" class="site-nav__link active">Apps</a>
+        <a href="../about.html" class="site-nav__link">About</a>
+        <a href="../contact.html" class="site-nav__link">Contact</a>
+      </nav>
+      <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="site-nav site-nav--mobile" aria-label="Mobile navigation">
+      <a href="../index.html" class="site-nav__link">Home</a>
+      <a href="../apps.html" class="site-nav__link active">Apps</a>
+      <a href="../about.html" class="site-nav__link">About</a>
+      <a href="../contact.html" class="site-nav__link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="cv-hero on-dark">
+      <div class="container">
+        <div class="cv-hero__inner">
+          <div class="fade-up fade-up--delay-1">
+            <div class="cv-hero__icon">
+              <img src="../assets/images/CardVision_Icon.png" alt="CardVision">
+            </div>
+            <p class="cv-hero__tagline">Capture. Annotate. Export.</p>
+            <h1 class="cv-hero__title">CardVision</h1>
+            <p style="color: var(--parchment); opacity: 0.8; margin-bottom: var(--space-md); max-width: 420px; font-size: var(--size-body);">Point your camera at playing cards. Review and correct bounding boxes on-device. Export a Create ML&#8209;ready dataset in one tap.</p>
+            <span class="coming-soon-badge">Coming Soon</span>
+          </div>
+          <div class="cv-hero__visual fade-up fade-up--delay-2">
+            <div class="cv-hero__card-motif">
+              <div class="card-motif__suit">♠</div>
+              <div class="card-motif__suit card-motif__suit--red">♥</div>
+              <div class="card-motif__suit card-motif__suit--red">♦</div>
+              <div class="card-motif__suit">♣</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm);">How it works</span>
+        <h2>From camera to training data</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <p class="step-card__number">1</p>
+            <h3 class="step-card__title">Scan</h3>
+            <p class="step-card__desc">Point your iPhone camera at playing cards. CardVision detects each card in real time using an on-device Core ML model and captures automatically when the scene is stable.</p>
+          </div>
+          <div class="step-card">
+            <p class="step-card__number">2</p>
+            <h3 class="step-card__title">Annotate</h3>
+            <p class="step-card__desc">Review the captured image with bounding box overlays. Drag to reposition, pinch handles to resize, and correct any mislabelled cards using the label picker. Add boxes the model missed.</p>
+          </div>
+          <div class="step-card">
+            <p class="step-card__number">3</p>
+            <h3 class="step-card__title">Export</h3>
+            <p class="step-card__desc">Export your dataset as a zip archive containing annotated images and a Create ML&#8209;compatible <code>annotations.json</code>. Drop it straight into a Create ML object detection project.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" style="background-color: var(--forest);">
+      <div class="container on-dark">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm); color: var(--sage);">Features</span>
+        <h2 style="color: var(--parchment); margin-bottom: var(--space-md);">Built for the annotation loop</h2>
+        <ul class="feature-list" style="max-width: 580px;">
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text" style="color: var(--parchment); opacity: 0.85;"><strong style="color: var(--parchment);">On-device detection</strong> — Core ML and Vision run entirely on your iPhone. No server round-trips, no latency, no camera data leaving your device.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text" style="color: var(--parchment); opacity: 0.85;"><strong style="color: var(--parchment);">Gesture-based annotation editing</strong> — Tap to select, drag to move, drag corners to resize. Pinch to zoom in for precision work on small or overlapping cards.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text" style="color: var(--parchment); opacity: 0.85;"><strong style="color: var(--parchment);">Label correction sheet</strong> — Pick rank and suit from a grid with a cropped card preview alongside. Corrections are tracked separately from model predictions.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text" style="color: var(--parchment); opacity: 0.85;"><strong style="color: var(--parchment);">Create ML export format</strong> — Exports <code style="color: var(--sage);">annotations.json</code> with center-based pixel coordinates compatible with Create ML object detection tasks, plus a <code style="color: var(--sage);">metadata.json</code> tracking correction provenance.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__bullet"></span>
+            <span class="feature-list__text" style="color: var(--parchment); opacity: 0.85;"><strong style="color: var(--parchment);">Companion Python tools</strong> — <code style="color: var(--sage);">merge_exports.py</code> merges new exports into an existing training set with sequential renaming. <code style="color: var(--sage);">verify_annotations.py</code> draws bounding boxes on exported images for visual QA.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Export format -->
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm);">Export format</span>
+        <h2>Drops straight into Create ML</h2>
+        <p style="color: var(--stone); max-width: 560px; margin-bottom: 0;">The exported archive contains your images and an <code>annotations.json</code> in Create ML object detection format — ready to drag into a new training source without any conversion.</p>
+        <div class="export-block">
+<span class="export-block__comment">// annotations.json — Create ML object detection format</span>
+[
+  {
+    "imagefilename": "images/&lt;uuid&gt;.jpg",
+    "annotation": [
+      {
+        "label": "AS",
+        <span class="export-block__comment">// Ace of Spades</span>
+        "coordinates": { "x": 245.6, "y": 594.7, "width": 67.4, "height": 146.3 }
+      },
+      {
+        "label": "TH",
+        <span class="export-block__comment">// 10 of Hearts</span>
+        "coordinates": { "x": 388.1, "y": 601.2, "width": 68.0, "height": 148.5 }
+      }
+    ]
+  }
+]
+        </div>
+      </div>
+    </section>
+
+    <!-- Coming Soon CTA -->
+    <section class="section" style="background-color: var(--charcoal); text-align: center;">
+      <div class="container on-dark">
+        <h2 style="color: var(--parchment); margin-bottom: var(--space-sm);">Coming soon to iPhone.</h2>
+        <p style="color: var(--parchment); opacity: 0.75; max-width: 480px; margin: 0 auto var(--space-md);">CardVision is in development. Check back soon, or send a note if you want to be notified when it launches.</p>
+        <p>
+          <a href="mailto:support@lesliestreetstudio.com" style="color: var(--sage); font-size: var(--size-body);">support@lesliestreetstudio.com</a>
+        </p>
+        <p style="margin-top: var(--space-md); font-size: var(--size-secondary);">
+          <a href="cardvision/support.html" style="color: var(--parchment); opacity: 0.4;">Support</a>
+          <span style="color: var(--parchment); opacity: 0.2; margin: 0 var(--space-sm);">·</span>
+          <a href="cardvision/privacy-policy.html" style="color: var(--parchment); opacity: 0.4;">Privacy Policy</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__wordmark">
+          <img src="../assets/images/svg/WordmarkHorizontalParchmentonCharcoal.svg" alt="Leslie Street Studio">
+        </div>
+        <hr class="gold-rule" style="width: 40px; opacity: 0.4;">
+        <div class="site-footer__links">
+          <a href="../index.html">Home</a>
+          <a href="../apps.html">Apps</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+          <a href="mailto:support@lesliestreetstudio.com">Support</a>
+        </div>
+        <p class="site-footer__copy">&copy; 2026 Leslie Street Studio LLC</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.nav-hamburger');
+    const mobileNav = document.querySelector('.site-nav--mobile');
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+    }
+  </script>
+
+</body>
+</html>

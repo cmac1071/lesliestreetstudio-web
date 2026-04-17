@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — CardVision — Leslie Street Studio</title>
+  <meta name="description" content="Support, getting started guide, FAQ, and troubleshooting for CardVision.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    .support-body {
+      background-color: var(--parchment);
+    }
+
+    .support-content {
+      max-width: 720px;
+    }
+
+    .support-section {
+      margin-bottom: var(--space-lg);
+    }
+
+    .support-section h2 {
+      font-size: var(--size-subhead);
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: var(--space-sm);
+      padding-bottom: var(--space-xs);
+      border-bottom: 1px solid rgba(27,67,50,0.12);
+    }
+
+    .support-section p {
+      color: var(--charcoal);
+      line-height: 1.8;
+    }
+
+    /* Numbered steps */
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      margin-top: var(--space-sm);
+      counter-reset: step-counter;
+    }
+
+    .step-item {
+      display: flex;
+      gap: var(--space-md);
+      align-items: flex-start;
+      counter-increment: step-counter;
+    }
+
+    .step-item__num {
+      font-family: var(--font-display);
+      font-size: var(--size-subhead);
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+      min-width: 32px;
+      line-height: 1.2;
+    }
+
+    .step-item__text {
+      color: var(--charcoal);
+      line-height: 1.75;
+      padding-top: 2px;
+    }
+
+    /* Tips list */
+    .tips-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      margin-top: var(--space-sm);
+    }
+
+    .tips-list__item {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: flex-start;
+    }
+
+    .tips-list__bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 9px;
+    }
+
+    .tips-list__text {
+      color: var(--charcoal);
+      line-height: 1.75;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-top: var(--space-sm);
+    }
+
+    .faq-item__q {
+      font-family: var(--font-display);
+      font-size: var(--size-body);
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: var(--space-xs);
+    }
+
+    .faq-item__a {
+      color: var(--charcoal);
+      line-height: 1.8;
+    }
+
+    /* Troubleshooting */
+    .trouble-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-top: var(--space-sm);
+    }
+
+    .trouble-item {
+      border-left: 2px solid var(--gold);
+      padding-left: var(--space-sm);
+    }
+
+    .trouble-item__problem {
+      font-family: var(--font-body);
+      font-size: var(--size-body);
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: var(--space-xs);
+    }
+
+    .trouble-item__solution {
+      color: var(--charcoal);
+      line-height: 1.8;
+    }
+
+    /* Contact */
+    .contact-block {
+      background-color: var(--forest);
+      border-radius: 8px;
+      padding: var(--space-md);
+      margin-top: var(--space-sm);
+    }
+
+    .contact-block p {
+      color: var(--parchment);
+      opacity: 0.9;
+    }
+
+    .contact-block a {
+      color: var(--sage);
+    }
+
+    .contact-block a:hover {
+      color: var(--parchment);
+    }
+
+    .contact-block .contact-note {
+      margin-top: var(--space-sm);
+      font-size: var(--size-secondary);
+      color: var(--parchment);
+      opacity: 0.65;
+    }
+
+    /* Version history */
+    .version-table {
+      margin-top: var(--space-sm);
+    }
+
+    .version-row {
+      display: flex;
+      gap: var(--space-md);
+      align-items: baseline;
+      padding: var(--space-xs) 0;
+      border-bottom: 1px solid rgba(27,67,50,0.08);
+    }
+
+    .version-row:last-child {
+      border-bottom: none;
+    }
+
+    .version-tag {
+      font-family: var(--font-display);
+      font-size: var(--size-secondary);
+      font-weight: 500;
+      color: var(--forest);
+      min-width: 60px;
+    }
+
+    .version-notes {
+      font-size: var(--size-secondary);
+      color: var(--stone);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__wordmark">
+      <a href="../../index.html">
+        <img src="../../assets/images/svg/WordmarkStackedParchmentonForest.svg" alt="Leslie Street Studio">
+      </a>
+    </div>
+    <hr class="site-header__rule">
+    <div class="site-header__nav-row">
+      <nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
+        <a href="../../index.html" class="site-nav__link">Home</a>
+        <a href="../../apps.html" class="site-nav__link active">Apps</a>
+        <a href="../../about.html" class="site-nav__link">About</a>
+        <a href="../../contact.html" class="site-nav__link">Contact</a>
+      </nav>
+      <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="site-nav site-nav--mobile" aria-label="Mobile navigation">
+      <a href="../../index.html" class="site-nav__link">Home</a>
+      <a href="../../apps.html" class="site-nav__link active">Apps</a>
+      <a href="../../about.html" class="site-nav__link">About</a>
+      <a href="../../contact.html" class="site-nav__link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero on-dark">
+      <div class="container">
+        <span class="page-hero__eyebrow">CardVision</span>
+        <h1 class="page-hero__title">Support</h1>
+        <p class="page-hero__subtitle">A data collection tool for building playing card detection datasets. Capture images with your iPhone camera, annotate bounding boxes on-device, and export in Create ML format.</p>
+      </div>
+    </section>
+
+    <section class="section support-body">
+      <div class="container">
+        <div class="support-content">
+
+          <!-- Getting Started -->
+          <div class="support-section">
+            <h2>Getting Started</h2>
+            <div class="steps-list">
+
+              <div class="step-item">
+                <span class="step-item__num">1</span>
+                <p class="step-item__text"><strong>Tap "Scan Cards" from the main menu.</strong> This opens the camera view. The app begins detecting playing cards in real time as soon as the camera is active.</p>
+              </div>
+
+              <div class="step-item">
+                <span class="step-item__num">2</span>
+                <p class="step-item__text"><strong>Arrange your cards and point the camera.</strong> Lay cards on a flat, contrasting surface. Position your iPhone so the cards fill the frame. The detection count appears in the top-right corner of the camera view.</p>
+              </div>
+
+              <div class="step-item">
+                <span class="step-item__num">3</span>
+                <p class="step-item__text"><strong>Let the app stabilize, or capture manually.</strong> A "Stable" indicator appears when consistent detections have been confirmed across several frames. The app captures automatically at that point. Tap the Capture button to capture manually at any time.</p>
+              </div>
+
+              <div class="step-item">
+                <span class="step-item__num">4</span>
+                <p class="step-item__text"><strong>Review the captured image.</strong> The image is displayed with bounding box overlays. Green boxes are model predictions; orange boxes are ones you have corrected. Tap a box to select it.</p>
+              </div>
+
+              <div class="step-item">
+                <span class="step-item__num">5</span>
+                <p class="step-item__text"><strong>Correct any errors.</strong> With a box selected, tap "Edit: [label]" to open the label picker and choose the correct rank and suit. Drag the box body to reposition it. Drag a corner handle to resize. Tap "Delete" to remove a false detection. Tap "Add Missing Card" to add a box the model missed.</p>
+              </div>
+
+              <div class="step-item">
+                <span class="step-item__num">6</span>
+                <p class="step-item__text"><strong>Save or rescan.</strong> Tap Save to store the image and annotations. Tap Rescan to discard the current capture and return to the camera without saving.</p>
+              </div>
+
+              <div class="step-item">
+                <span class="step-item__num">7</span>
+                <p class="step-item__text"><strong>Build your dataset.</strong> Repeat the scan-and-save cycle. Tap "Review Data" from the main menu at any time to browse saved images, edit annotations, or delete scans.</p>
+              </div>
+
+              <div class="step-item">
+                <span class="step-item__num">8</span>
+                <p class="step-item__text"><strong>Export when ready.</strong> Tap "Export Data" from the main menu. CardVision generates a zip archive and presents the iOS share sheet. Send it via AirDrop, save to Files, or email it — then load it into your Create ML project.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <hr class="gold-rule" style="margin-bottom: var(--space-lg); opacity: 0.3;">
+
+          <!-- Tips for Best Results -->
+          <div class="support-section">
+            <h2>Tips for Best Results</h2>
+            <div class="tips-list">
+
+              <div class="tips-list__item">
+                <span class="tips-list__bullet"></span>
+                <p class="tips-list__text">Use even, diffuse lighting. Glare on card faces is the most common cause of detection failures. Indoor lighting works well; direct sunlight causes reflections that the model struggles with.</p>
+              </div>
+
+              <div class="tips-list__item">
+                <span class="tips-list__bullet"></span>
+                <p class="tips-list__text">Use varied, busy backgrounds intentionally. Textured surfaces — stone, wood grain, fabric, carpet — train the model to ignore background noise, which makes it more robust in real-world conditions. A plain clean surface produces a brittle model that fails the moment anything cluttered is in frame.</p>
+              </div>
+
+              <div class="tips-list__item">
+                <span class="tips-list__bullet"></span>
+                <p class="tips-list__text">Normal hand movement is fine. The app scans each frame continuously but calibrates bounding box coordinates against the last captured frame, so ordinary hand jitter won't corrupt your annotations. You don't need to hold unnaturally still.</p>
+              </div>
+
+              <div class="tips-list__item">
+                <span class="tips-list__bullet"></span>
+                <p class="tips-list__text">Vary your layouts intentionally. For a useful training set, capture cards at different angles, spacings, lighting conditions, and partial overlaps. Variety improves model generalization.</p>
+              </div>
+
+              <div class="tips-list__item">
+                <span class="tips-list__bullet"></span>
+                <p class="tips-list__text">Use the zoom gesture during review to check tight bounding boxes. Pinch to zoom in, then drag corner handles at high zoom for precise edge alignment on small or overlapping cards.</p>
+              </div>
+
+              <div class="tips-list__item">
+                <span class="tips-list__bullet"></span>
+                <p class="tips-list__text">Vary your card arrangements as well as your backgrounds — spread, overlapping, diagonal, tight. A dataset captured entirely in one layout will overfit to that layout.</p>
+              </div>
+
+              <div class="tips-list__item">
+                <span class="tips-list__bullet"></span>
+                <p class="tips-list__text">Example of a good training background — this is the kind of surface that helps, not hurts:</p>
+              </div>
+
+            </div>
+            <div style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+              <img src="../../assets/images/cardvision-bg-example.jpg" alt="Example: playing cards on a carbon fiber weave background" style="width: 100%; max-width: 480px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.12);">
+              <p style="font-size: var(--size-secondary); color: var(--stone); margin-top: var(--space-xs);">Carbon fiber weave — a high-contrast, highly repetitive pattern that would trip up a model trained only on clean surfaces.</p>
+            </div>
+            <div class="tips-list">
+
+              <div class="tips-list__item">
+                <span class="tips-list__bullet"></span>
+                <p class="tips-list__text">After exporting, run <code>verify_annotations.py</code> on the export folder before merging. It renders each annotation as an overlay on the source image, making it easy to spot badly-placed boxes before they enter your training set.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <hr class="gold-rule" style="margin-bottom: var(--space-lg); opacity: 0.3;">
+
+          <!-- FAQ -->
+          <div class="support-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+
+              <div class="faq-item">
+                <p class="faq-item__q">What format does the export use?</p>
+                <p class="faq-item__a">The zip archive contains an <code>images/</code> folder with JPEG files and an <code>annotations.json</code> in Create ML object detection format. Coordinates are center-based pixel values (x, y, width, height) compatible with Create ML's annotation schema. A <code>metadata.json</code> is also included with confidence scores, original model predictions, and correction flags for each annotation.</p>
+              </div>
+
+              <div class="faq-item">
+                <p class="faq-item__q">How do I merge multiple exports into one training set?</p>
+                <p class="faq-item__a">Download <a href="../../assets/downloads/cardvision/merge_exports.py" download>merge_exports.py</a> and run <code>python3 merge_exports.py</code> from the directory containing your exports. The script prompts for source and target paths, handles sequential renaming of image files, backs up the existing <code>annotations.json</code> before modifying it, and prints a label distribution summary when done. Requires Python 3 — no additional packages needed.</p>
+              </div>
+
+              <div class="faq-item">
+                <p class="faq-item__q">How do I visually verify my export before using it?</p>
+                <p class="faq-item__a">Download <a href="../../assets/downloads/cardvision/verify_annotations.py" download>verify_annotations.py</a> and run <code>python3 verify_annotations.py &lt;export_folder&gt;</code>. The script draws each bounding box with its label on the source image and writes the results to a <code>verify_output/</code> folder. Useful for catching badly-placed boxes before they get into your training set.</p>
+              </div>
+
+              <div class="faq-item">
+                <p class="faq-item__q">Can I go back and edit a scan I already saved?</p>
+                <p class="faq-item__a">Yes. Tap "Review Data" from the main menu, tap any thumbnail to open the detail view, then tap "Edit Annotations" to enter edit mode. All the same gesture controls apply — move, resize, add, delete, and correct labels. Tap Save to persist your changes.</p>
+              </div>
+
+              <div class="faq-item">
+                <p class="faq-item__q">What iOS version is required?</p>
+                <p class="faq-item__a">CardVision requires iOS 17.0 or later on iPhone. It is not available on iPad.</p>
+              </div>
+
+              <div class="faq-item">
+                <p class="faq-item__q">Is any data transmitted off my device?</p>
+                <p class="faq-item__a">No. All camera processing, detection, image storage, and annotation happens entirely on your device. No images or annotation data are ever sent to any server. Exporting produces a local file that you share manually through the iOS share sheet.</p>
+              </div>
+
+              <div class="faq-item">
+                <p class="faq-item__q">How do I delete all stored data?</p>
+                <p class="faq-item__a">Open About from the main menu, tap Privacy Settings, then tap "Delete All Stored Data." This removes all saved images and annotation records from the app's local storage.</p>
+              </div>
+
+              <div class="faq-item">
+                <p class="faq-item__q">What label codes does the app use?</p>
+                <p class="faq-item__a">Each card is a two-character code: rank + suit. Ranks are A, 2–9, T (10), J, Q, K. Suits are S (Spades), H (Hearts), D (Diamonds), C (Clubs). Examples: AS = Ace of Spades, TH = 10 of Hearts, KD = King of Diamonds.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <hr class="gold-rule" style="margin-bottom: var(--space-lg); opacity: 0.3;">
+
+          <!-- Troubleshooting -->
+          <div class="support-section">
+            <h2>Troubleshooting</h2>
+            <div class="trouble-list">
+
+              <div class="trouble-item">
+                <p class="trouble-item__problem">Detection count stays at zero</p>
+                <p class="trouble-item__solution">Check that the camera has a clear view of the card faces and that lighting is adequate. Make sure the lens is clean. Try moving closer or adjusting the angle to reduce glare.</p>
+              </div>
+
+              <div class="trouble-item">
+                <p class="trouble-item__problem">Stable indicator never appears</p>
+                <p class="trouble-item__solution">Hold the phone still and give the aggregator time to confirm consistent detections — typically 1–2 seconds of stable framing. If the indicator still doesn't appear, tap Capture manually to proceed.</p>
+              </div>
+
+              <div class="trouble-item">
+                <p class="trouble-item__problem">Card labelled incorrectly</p>
+                <p class="trouble-item__solution">Tap the bounding box to select it, then tap "Edit: [label]" to open the label picker. Select the correct rank and suit and tap Confirm. Corrected labels are stored separately from the original model prediction.</p>
+              </div>
+
+              <div class="trouble-item">
+                <p class="trouble-item__problem">A card was missed by the model</p>
+                <p class="trouble-item__solution">Tap "Add Missing Card." A new bounding box is placed at the center of the image at the average annotation size. Drag it over the missed card, resize as needed, then assign the correct label.</p>
+              </div>
+
+              <div class="trouble-item">
+                <p class="trouble-item__problem">Export produces an empty archive</p>
+                <p class="trouble-item__solution">Make sure you have at least one saved scan. The export count on the Export screen shows how many records and annotations will be included. If the count is zero, return to the scan flow and save some images first.</p>
+              </div>
+
+              <div class="trouble-item">
+                <p class="trouble-item__problem">App crashes or freezes</p>
+                <p class="trouble-item__solution">Force-close the app and reopen it. Saved data is stored in SwiftData and persists across restarts. If the issue recurs, please contact support with your device model and iOS version.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <hr class="gold-rule" style="margin-bottom: var(--space-lg); opacity: 0.3;">
+
+          <!-- Contact -->
+          <div class="support-section">
+            <h2>Contact</h2>
+            <div class="contact-block">
+              <p><a href="mailto:support@lesliestreetstudio.com">support@lesliestreetstudio.com</a></p>
+              <p class="contact-note">Please include your device model, iOS version, and a description of the issue.</p>
+            </div>
+          </div>
+
+          <hr class="gold-rule" style="margin-bottom: var(--space-lg); opacity: 0.3;">
+
+          <!-- Version History -->
+          <div class="support-section">
+            <h2>Version History</h2>
+            <div class="version-table">
+              <div class="version-row">
+                <span class="version-tag">v1.0</span>
+                <span class="version-notes">Initial release</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__wordmark">
+          <img src="../../assets/images/svg/WordmarkHorizontalParchmentonCharcoal.svg" alt="Leslie Street Studio">
+        </div>
+        <hr class="gold-rule" style="width: 40px; opacity: 0.4;">
+        <div class="site-footer__links">
+          <a href="../../index.html">Home</a>
+          <a href="../../apps.html">Apps</a>
+          <a href="../../about.html">About</a>
+          <a href="../../contact.html">Contact</a>
+          <a href="mailto:support@lesliestreetstudio.com">Support</a>
+        </div>
+        <p class="site-footer__copy">&copy; 2026 Leslie Street Studio LLC</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.nav-hamburger');
+    const mobileNav = document.querySelector('.site-nav--mobile');
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+    }
+  </script>
+
+</body>
+</html>
