@@ -472,6 +472,7 @@ p {
   border-radius: 18px;
   overflow: hidden;
   flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.28);
 }
 
 .app-card__icon img {

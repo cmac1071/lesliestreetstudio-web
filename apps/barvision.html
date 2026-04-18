@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BarVision — Coming Soon — Leslie Street Studio</title>
+  <meta name="description" content="BarVision — Scan your shelf. Know your bar. AI bottle recognition and cocktail matching, coming soon to iOS from Leslie Street Studio.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+
+    /* ─── HERO ─── */
+    .bv-hero {
+      background-color: var(--forest);
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* Bottle silhouettes — decorative background texture */
+    .bv-bottles {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      opacity: 0.055;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .bv-bottle {
+      background-color: var(--parchment);
+      border-radius: 3px 3px 0 0;
+      flex-shrink: 0;
+    }
+
+    /* Scan frame — the one gold moment in the hero */
+    .bv-scan-frame {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(440px, 78vw);
+      height: min(440px, 78vw);
+      pointer-events: none;
+    }
+    .bv-scan-corner {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-color: var(--gold);
+      border-style: solid;
+      animation: bv-corner-pulse 3.2s ease-in-out infinite;
+    }
+    .bv-scan-corner--tl { top: 0; left: 0; border-width: 1.5px 0 0 1.5px; animation-delay: 0s; }
+    .bv-scan-corner--tr { top: 0; right: 0; border-width: 1.5px 1.5px 0 0; animation-delay: 0.8s; }
+    .bv-scan-corner--bl { bottom: 0; left: 0; border-width: 0 0 1.5px 1.5px; animation-delay: 1.6s; }
+    .bv-scan-corner--br { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; animation-delay: 2.4s; }
+
+    @keyframes bv-corner-pulse {
+      0%, 100% { opacity: 0.2; }
+      50%       { opacity: 0.65; }
+    }
+
+    .bv-scan-line {
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      box-shadow: 0 0 8px 1px rgba(201, 168, 76, 0.3);
+      animation: bv-scan 4s ease-in-out infinite;
+      top: 8%;
+    }
+    @keyframes bv-scan {
+      0%   { top: 8%; opacity: 0; }
+      10%  { opacity: 0.7; }
+      90%  { opacity: 0.7; }
+      100% { top: 92%; opacity: 0; }
+    }
+
+    /* Hero content */
+    .bv-hero__inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: var(--space-xl) 0;
+    }
+    .bv-hero__eyebrow {
+      font-family: var(--font-body);
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: var(--space-md);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.3s;
+    }
+    .bv-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 13vw, 9.5rem);
+      font-weight: 700;
+      color: var(--parchment);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      margin-bottom: var(--space-sm);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.5s;
+    }
+    .bv-hero__sub {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2.5vw, var(--size-subhead));
+      font-weight: 400;
+      font-style: italic;
+      color: var(--parchment);
+      opacity: 0;
+      line-height: 1.5;
+      max-width: 500px;
+      margin: 0 auto var(--space-md);
+      animation: fadeUp 0.8s ease forwards 0.7s;
+    }
+    .bv-hero__badge {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      border: 1px solid rgba(221, 213, 196, 0.28);
+      padding: 10px 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1s;
+    }
+
+    /* ─── TICKER ─── */
+    .bv-ticker-wrap {
+      overflow: hidden;
+      background-color: var(--charcoal);
+      border-top: 1px solid rgba(201, 168, 76, 0.18);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+      padding: 11px 0;
+    }
+    .bv-ticker {
+      display: flex;
+      width: max-content;
+      animation: bv-ticker 32s linear infinite;
+    }
+    .bv-ticker--reverse {
+      animation-direction: reverse;
+    }
+    .bv-ticker-item {
+      font-family: var(--font-body);
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      opacity: 0.5;
+      padding: 0 32px;
+      white-space: nowrap;
+    }
+    .bv-ticker-item::before {
+      content: '◆';
+      color: var(--gold);
+      opacity: 1;
+      margin-right: 12px;
+      font-size: 8px;
+      vertical-align: middle;
+    }
+    @keyframes bv-ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── FEATURES ─── */
+    .bv-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+    .bv-feature-card {
+      padding: var(--space-md);
+      border-top: 2px solid rgba(27, 67, 50, 0.1);
+      transition: border-top-color var(--transition);
+    }
+    .bv-feature-card:hover {
+      border-top-color: var(--gold);
+    }
+    .bv-feature-num {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--forest);
+      opacity: 0.1;
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+      transition: opacity var(--transition);
+    }
+    .bv-feature-card:hover .bv-feature-num {
+      opacity: 0.22;
+    }
+    .bv-feature-title {
+      font-family: var(--font-display);
+      font-size: var(--size-subhead);
+      font-weight: 400;
+      color: var(--forest);
+      margin-bottom: var(--space-xs);
+    }
+    .bv-feature-desc {
+      font-size: var(--size-secondary);
+      color: var(--stone);
+      line-height: 1.65;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .bv-steps {
+      margin-top: var(--space-md);
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .bv-step {
+      display: grid;
+      grid-template-columns: 68px 1fr;
+      gap: var(--space-md);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid rgba(221, 213, 196, 0.12);
+      opacity: 0;
+      transform: translateX(-14px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .bv-step:last-child {
+      border-bottom: none;
+    }
+    .bv-step.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .bv-step-num {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      padding-top: 2px;
+    }
+    .bv-step-title {
+      font-family: var(--font-display);
+      font-size: var(--size-subhead);
+      font-weight: 400;
+      color: var(--parchment);
+      margin-bottom: var(--space-xs);
+    }
+    .bv-step-desc {
+      font-size: var(--size-secondary);
+      color: var(--parchment);
+      opacity: 0.7;
+      line-height: 1.65;
+    }
+    .bv-step-tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      border: 1px solid rgba(149, 213, 178, 0.22);
+      padding: 4px 10px;
+    }
+
+    /* ─── PHILOSOPHY ─── */
+    .bv-quote {
+      max-width: 660px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .bv-quote blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.5vw, var(--size-pullquote));
+      font-style: italic;
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.65;
+    }
+    .bv-quote cite {
+      display: block;
+      margin-top: var(--space-sm);
+      font-family: var(--font-body);
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--stone);
+      font-style: normal;
+    }
+
+    /* ─── COMING SOON CTA ─── */
+    .bv-platform-tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+    .bv-platform-tag {
+      font-family: var(--font-body);
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      opacity: 0.55;
+      border: 1px solid rgba(221, 213, 196, 0.18);
+      padding: 8px 18px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .bv-features-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 480px) {
+      .bv-features-grid {
+        grid-template-columns: 1fr;
+      }
+      .bv-step {
+        grid-template-columns: 48px 1fr;
+        gap: var(--space-sm);
+      }
+      .bv-step-num {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__wordmark">
+      <a href="../index.html">
+        <img src="../assets/images/svg/WordmarkStackedParchmentonForest.svg" alt="Leslie Street Studio">
+      </a>
+    </div>
+    <hr class="site-header__rule">
+    <div class="site-header__nav-row">
+      <nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
+        <a href="../index.html" class="site-nav__link">Home</a>
+        <a href="../apps.html" class="site-nav__link active">Apps</a>
+        <a href="../about.html" class="site-nav__link">About</a>
+        <a href="../contact.html" class="site-nav__link">Contact</a>
+      </nav>
+      <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="site-nav site-nav--mobile" aria-label="Mobile navigation">
+      <a href="../index.html" class="site-nav__link">Home</a>
+      <a href="../apps.html" class="site-nav__link active">Apps</a>
+      <a href="../about.html" class="site-nav__link">About</a>
+      <a href="../contact.html" class="site-nav__link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="bv-hero on-dark">
+
+      <!-- Decorative bottle silhouettes -->
+      <div class="bv-bottles" aria-hidden="true">
+        <div class="bv-bottle" style="width:22px; height:148px;"></div>
+        <div class="bv-bottle" style="width:16px; height:182px;"></div>
+        <div class="bv-bottle" style="width:28px; height:158px;"></div>
+        <div class="bv-bottle" style="width:20px; height:200px;"></div>
+        <div class="bv-bottle" style="width:24px; height:142px;"></div>
+        <div class="bv-bottle" style="width:14px; height:172px;"></div>
+        <div class="bv-bottle" style="width:26px; height:136px;"></div>
+        <div class="bv-bottle" style="width:20px; height:190px;"></div>
+        <div class="bv-bottle" style="width:18px; height:155px;"></div>
+        <div class="bv-bottle" style="width:30px; height:168px;"></div>
+        <div class="bv-bottle" style="width:22px; height:144px;"></div>
+        <div class="bv-bottle" style="width:16px; height:178px;"></div>
+        <div class="bv-bottle" style="width:28px; height:162px;"></div>
+        <div class="bv-bottle" style="width:20px; height:195px;"></div>
+        <div class="bv-bottle" style="width:24px; height:150px;"></div>
+      </div>
+
+      <!-- Scan frame animation -->
+      <div class="bv-scan-frame" aria-hidden="true">
+        <div class="bv-scan-corner bv-scan-corner--tl"></div>
+        <div class="bv-scan-corner bv-scan-corner--tr"></div>
+        <div class="bv-scan-corner bv-scan-corner--bl"></div>
+        <div class="bv-scan-corner bv-scan-corner--br"></div>
+        <div class="bv-scan-line"></div>
+      </div>
+
+      <div class="container bv-hero__inner">
+        <div style="display: flex; justify-content: center; margin-bottom: var(--space-md); opacity: 0; animation: fadeUp 0.8s ease forwards 0.1s;">
+          <div style="width: 100px; height: 100px; border-radius: 22px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.35);">
+            <img src="../assets/images/BarVision_Icon.png" alt="BarVision">
+          </div>
+        </div>
+        <p class="bv-hero__eyebrow">Point &nbsp;·&nbsp; Scan &nbsp;·&nbsp; Pour</p>
+        <h1 class="bv-hero__title">BarVision</h1>
+        <p class="bv-hero__sub">Scan your shelf. Know your bar.<br>Every bottle recognized. Every cocktail unlocked.</p>
+        <span class="bv-hero__badge">Coming Soon to iOS</span>
+      </div>
+    </section>
+
+    <!-- TICKER 1: Features -->
+    <div class="bv-ticker-wrap" aria-hidden="true">
+      <div class="bv-ticker">
+        <span class="bv-ticker-item">AI Bottle Recognition</span>
+        <span class="bv-ticker-item">Real-Time Inventory</span>
+        <span class="bv-ticker-item">600+ Cocktail Recipes</span>
+        <span class="bv-ticker-item">One Bottle Away</span>
+        <span class="bv-ticker-item">Guided Make Mode</span>
+        <span class="bv-ticker-item">Gap Analysis</span>
+        <span class="bv-ticker-item">Substitution Engine</span>
+        <span class="bv-ticker-item">Video Pan Scanning</span>
+        <span class="bv-ticker-item">AI Bottle Recognition</span>
+        <span class="bv-ticker-item">Real-Time Inventory</span>
+        <span class="bv-ticker-item">600+ Cocktail Recipes</span>
+        <span class="bv-ticker-item">One Bottle Away</span>
+        <span class="bv-ticker-item">Guided Make Mode</span>
+        <span class="bv-ticker-item">Gap Analysis</span>
+        <span class="bv-ticker-item">Substitution Engine</span>
+        <span class="bv-ticker-item">Video Pan Scanning</span>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm);">What BarVision Does</span>
+        <h2>Your bar, finally organized.</h2>
+        <div class="bv-features-grid">
+
+          <div class="bv-feature-card">
+            <p class="bv-feature-num">01</p>
+            <h3 class="bv-feature-title">Shelf Scan</h3>
+            <p class="bv-feature-desc">Point your camera at your bar. BarVision identifies every bottle — brand, spirit category, fill level — in seconds. No typing. No searching.</p>
+          </div>
+
+          <div class="bv-feature-card">
+            <p class="bv-feature-num">02</p>
+            <h3 class="bv-feature-title">Make Now</h3>
+            <p class="bv-feature-desc">Instantly see every cocktail you can make with exactly what you have. Filtered, ranked, and ready to pour.</p>
+          </div>
+
+          <div class="bv-feature-card">
+            <p class="bv-feature-num">03</p>
+            <h3 class="bv-feature-title">One Bottle Away</h3>
+            <p class="bv-feature-desc">See which recipes you're missing just one ingredient for. Know exactly what to buy to unlock the most new drinks.</p>
+          </div>
+
+          <div class="bv-feature-card">
+            <p class="bv-feature-num">04</p>
+            <h3 class="bv-feature-title">Guided Make Mode</h3>
+            <p class="bv-feature-desc">Step-by-step instructions with technique cues, timers, and scaled measurements. From novice to confident home bartender.</p>
+          </div>
+
+          <div class="bv-feature-card">
+            <p class="bv-feature-num">05</p>
+            <h3 class="bv-feature-title">Smart Substitutions</h3>
+            <p class="bv-feature-desc">Missing an ingredient? BarVision reasons about your shelf and suggests the best substitute — so nothing stops the pour.</p>
+          </div>
+
+          <div class="bv-feature-card">
+            <p class="bv-feature-num">06</p>
+            <h3 class="bv-feature-title">Gap Analysis</h3>
+            <p class="bv-feature-desc">A ranked list of bottles that would unlock the most new recipes. The smartest shopping list your bar has ever had.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" style="background-color: var(--forest);">
+      <div class="container on-dark">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm); color: var(--sage);">How It Works</span>
+        <h2 style="color: var(--parchment); margin-bottom: 0;">Four steps. One perfect pour.</h2>
+        <div class="bv-steps">
+
+          <div class="bv-step">
+            <div class="bv-step-num">1</div>
+            <div>
+              <h3 class="bv-step-title">Scan Your Shelf</h3>
+              <p class="bv-step-desc">Open BarVision and point your iPhone at your spirits collection. Tap once to capture, or use pan mode to slowly sweep across a wide shelf. The AI reads every label.</p>
+              <span class="bv-step-tag">Computer Vision · On-Device AI</span>
+            </div>
+          </div>
+
+          <div class="bv-step">
+            <div class="bv-step-num">2</div>
+            <div>
+              <h3 class="bv-step-title">Confirm Your Inventory</h3>
+              <p class="bv-step-desc">Review detected bottles, correct anything the camera missed, and mark fill levels. Your inventory lives privately on your device — no cloud, no account required.</p>
+              <span class="bv-step-tag">On-Device Storage · Private by Design</span>
+            </div>
+          </div>
+
+          <div class="bv-step">
+            <div class="bv-step-num">3</div>
+            <div>
+              <h3 class="bv-step-title">See What You Can Make</h3>
+              <p class="bv-step-desc">Browse every cocktail you can make right now, what you're one bottle away from, and smart suggestions for what to buy next.</p>
+              <span class="bv-step-tag">600+ Recipes · Offline Matching</span>
+            </div>
+          </div>
+
+          <div class="bv-step">
+            <div class="bv-step-num">4</div>
+            <div>
+              <h3 class="bv-step-title">Pour With Confidence</h3>
+              <p class="bv-step-desc">Tap any recipe for guided make mode. Follow each step with technique cues, built-in timers, and measurements that scale to your serving size.</p>
+              <span class="bv-step-tag">Step-by-Step · Batch Scaling</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY QUOTE -->
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <div class="section-divider">
+          <div class="section-divider__line"></div>
+          <div class="section-divider__mark"></div>
+          <div class="section-divider__line"></div>
+        </div>
+        <div class="bv-quote">
+          <blockquote>
+            "Every great home bar starts with knowing what you have.<br>
+            Most apps make you type it in. We just let you look."
+          </blockquote>
+          <cite>— The BarVision Idea</cite>
+        </div>
+        <div class="section-divider">
+          <div class="section-divider__line"></div>
+          <div class="section-divider__mark"></div>
+          <div class="section-divider__line"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMING SOON CTA -->
+    <section class="section" style="background-color: var(--charcoal); text-align: center;">
+      <div class="container on-dark">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm); color: var(--sage);">In Development</span>
+        <h2 style="color: var(--parchment); margin-bottom: var(--space-sm);">Coming to iOS.</h2>
+        <p style="color: var(--parchment); opacity: 0.7; max-width: 460px; margin: 0 auto;">Built for the home bartender who takes it seriously.</p>
+        <hr class="gold-rule gold-rule--narrow" style="margin: var(--space-md) auto;">
+        <div class="bv-platform-tags">
+          <span class="bv-platform-tag">iPhone</span>
+          <span class="bv-platform-tag">iOS 17+</span>
+          <span class="bv-platform-tag">On-Device Privacy</span>
+          <span class="bv-platform-tag">No Subscription to Start</span>
+        </div>
+        <p style="margin-top: var(--space-md);">
+          <a href="mailto:support@lesliestreetstudio.com" style="color: var(--parchment); opacity: 0.38; font-size: var(--size-secondary);">support@lesliestreetstudio.com</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- TICKER 2: Cocktail names -->
+    <div class="bv-ticker-wrap" aria-hidden="true">
+      <div class="bv-ticker bv-ticker--reverse">
+        <span class="bv-ticker-item">Negroni</span>
+        <span class="bv-ticker-item">Old Fashioned</span>
+        <span class="bv-ticker-item">Penicillin</span>
+        <span class="bv-ticker-item">Daiquiri</span>
+        <span class="bv-ticker-item">Manhattan</span>
+        <span class="bv-ticker-item">Espresso Martini</span>
+        <span class="bv-ticker-item">Last Word</span>
+        <span class="bv-ticker-item">Paper Plane</span>
+        <span class="bv-ticker-item">Paloma</span>
+        <span class="bv-ticker-item">Vieux Carré</span>
+        <span class="bv-ticker-item">Negroni</span>
+        <span class="bv-ticker-item">Old Fashioned</span>
+        <span class="bv-ticker-item">Penicillin</span>
+        <span class="bv-ticker-item">Daiquiri</span>
+        <span class="bv-ticker-item">Manhattan</span>
+        <span class="bv-ticker-item">Espresso Martini</span>
+        <span class="bv-ticker-item">Last Word</span>
+        <span class="bv-ticker-item">Paper Plane</span>
+        <span class="bv-ticker-item">Paloma</span>
+        <span class="bv-ticker-item">Vieux Carré</span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__wordmark">
+          <img src="../assets/images/svg/WordmarkHorizontalParchmentonCharcoal.svg" alt="Leslie Street Studio">
+        </div>
+        <hr class="gold-rule" style="width: 40px; opacity: 0.4;">
+        <div class="site-footer__links">
+          <a href="../index.html">Home</a>
+          <a href="../apps.html">Apps</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+          <a href="mailto:support@lesliestreetstudio.com">Support</a>
+        </div>
+        <p class="site-footer__copy">&copy; 2026 Leslie Street Studio LLC</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.nav-hamburger');
+    const mobileNav = document.querySelector('.site-nav--mobile');
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    // Scroll-triggered step animations
+    const steps = document.querySelectorAll('.bv-step');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        }
+      });
+    }, { threshold: 0.15 });
+    steps.forEach(s => obs.observe(s));
+  </script>
+
+</body>
+</html>
