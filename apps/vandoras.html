@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vandoras — Coming Soon — Leslie Street Studio</title>
+  <meta name="description" content="Vandoras — An interactive graphic novel with puzzle-gated story progression. Three factions. Three endings. One tinkerer who just opened the wrong box. Coming soon to iOS from Leslie Street Studio.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+
+    /* ─── HERO ─── */
+    .vn-hero {
+      background-color: var(--forest);
+      min-height: 86vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* Gear shapes — decorative background texture */
+    .vn-gears {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .vn-gear {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--parchment);
+      opacity: 0.035;
+    }
+    .vn-gear::before,
+    .vn-gear::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 10px;
+      background: inherit;
+    }
+    .vn-gear::before { transform: rotate(30deg); }
+    .vn-gear::after  { transform: rotate(60deg); }
+
+    /* Hub ring */
+    .vn-gear__hub {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 28%;
+      height: 28%;
+      border-radius: 50%;
+      border: 3px solid var(--forest);
+    }
+
+    .vn-gear--a {
+      width: 340px; height: 340px;
+      top: -80px; left: -90px;
+      animation: vn-spin 42s linear infinite;
+    }
+    .vn-gear--b {
+      width: 200px; height: 200px;
+      top: 60px; left: 190px;
+      animation: vn-spin 28s linear infinite reverse;
+    }
+    .vn-gear--c {
+      width: 480px; height: 480px;
+      bottom: -140px; right: -100px;
+      animation: vn-spin 68s linear infinite;
+    }
+    .vn-gear--d {
+      width: 140px; height: 140px;
+      bottom: 60px; right: 300px;
+      animation: vn-spin 20s linear infinite reverse;
+    }
+    .vn-gear--e {
+      width: 260px; height: 260px;
+      top: 50%; right: -50px;
+      transform: translateY(-50%);
+      animation: vn-spin 50s linear infinite;
+    }
+
+    @keyframes vn-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .vn-gear--e { animation: vn-spin-e 50s linear infinite; }
+    @keyframes vn-spin-e {
+      from { transform: translateY(-50%) rotate(0deg); }
+      to   { transform: translateY(-50%) rotate(360deg); }
+    }
+
+    /* Glyph frame — overlaid on gears */
+    .vn-glyph-frame {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(460px, 80vw);
+      height: min(460px, 80vw);
+      pointer-events: none;
+    }
+    .vn-glyph-corner {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      border-color: var(--gold);
+      border-style: solid;
+      animation: vn-glyph-pulse 4s ease-in-out infinite;
+    }
+    .vn-glyph-corner--tl { top: 0; left: 0; border-width: 1.5px 0 0 1.5px; animation-delay: 0s; }
+    .vn-glyph-corner--tr { top: 0; right: 0; border-width: 1.5px 1.5px 0 0; animation-delay: 1s; }
+    .vn-glyph-corner--bl { bottom: 0; left: 0; border-width: 0 0 1.5px 1.5px; animation-delay: 2s; }
+    .vn-glyph-corner--br { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; animation-delay: 3s; }
+
+    /* Diamond ornament at corner tips */
+    .vn-glyph-corner::before {
+      content: '';
+      position: absolute;
+      width: 5px; height: 5px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      opacity: 0;
+      animation: vn-glyph-pulse 4s ease-in-out infinite;
+    }
+    .vn-glyph-corner--tl::before { top: -2px; left: -2px; animation-delay: 0s; }
+    .vn-glyph-corner--tr::before { top: -2px; right: -2px; animation-delay: 1s; }
+    .vn-glyph-corner--bl::before { bottom: -2px; left: -2px; animation-delay: 2s; }
+    .vn-glyph-corner--br::before { bottom: -2px; right: -2px; animation-delay: 3s; }
+
+    /* Center mark — subtle crosshair */
+    .vn-glyph-center {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 18px; height: 18px;
+      opacity: 0;
+      animation: vn-center-pulse 6s ease-in-out infinite 1.5s;
+    }
+    .vn-glyph-center::before,
+    .vn-glyph-center::after {
+      content: '';
+      position: absolute;
+      background: var(--gold);
+    }
+    .vn-glyph-center::before {
+      top: 50%; left: 0; right: 0; height: 1px;
+      transform: translateY(-50%);
+    }
+    .vn-glyph-center::after {
+      left: 50%; top: 0; bottom: 0; width: 1px;
+      transform: translateX(-50%);
+    }
+
+    @keyframes vn-glyph-pulse {
+      0%, 100% { opacity: 0.15; }
+      50%       { opacity: 0.65; }
+    }
+    @keyframes vn-center-pulse {
+      0%, 100% { opacity: 0; }
+      50%       { opacity: 0.5; }
+    }
+
+    /* Hero content */
+    .vn-hero__inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: var(--space-xl) 0;
+    }
+    .vn-hero__icon {
+      width: 104px;
+      height: 104px;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.45);
+      margin: 0 auto var(--space-md);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.1s;
+      background-color: var(--charcoal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vn-hero__icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* CSS lockbox shown if icon not yet available */
+    .vn-hero__icon-placeholder {
+      width: 52px;
+      height: 52px;
+      border: 2px solid rgba(221, 213, 196, 0.3);
+      border-radius: 4px;
+      position: relative;
+    }
+    .vn-hero__icon-placeholder::before {
+      content: '';
+      position: absolute;
+      top: -10px; left: 50%;
+      transform: translateX(-50%);
+      width: 20px; height: 12px;
+      border: 2px solid rgba(221, 213, 196, 0.3);
+      border-bottom: none;
+      border-radius: 10px 10px 0 0;
+    }
+    .vn-hero__icon-placeholder::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(201, 168, 76, 0.5);
+    }
+
+    .vn-hero__eyebrow {
+      font-family: var(--font-body);
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: var(--space-md);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.3s;
+    }
+    .vn-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(4.5rem, 14vw, 10.5rem);
+      font-weight: 700;
+      color: var(--parchment);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      margin-bottom: var(--space-sm);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.5s;
+    }
+    .vn-hero__sub {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2.5vw, var(--size-subhead));
+      font-weight: 400;
+      font-style: italic;
+      color: var(--parchment);
+      opacity: 0;
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto var(--space-md);
+      animation: fadeUp 0.8s ease forwards 0.7s;
+    }
+    .vn-hero__badge {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      border: 1px solid rgba(221, 213, 196, 0.28);
+      padding: 10px 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1s;
+    }
+
+    /* ─── TICKER ─── */
+    .vn-ticker-wrap {
+      overflow: hidden;
+      background-color: var(--charcoal);
+      border-top: 1px solid rgba(201, 168, 76, 0.18);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+      padding: 11px 0;
+    }
+    .vn-ticker {
+      display: flex;
+      width: max-content;
+      animation: vn-ticker-scroll 36s linear infinite;
+    }
+    .vn-ticker--reverse {
+      animation-direction: reverse;
+    }
+    .vn-ticker-item {
+      font-family: var(--font-body);
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      opacity: 0.5;
+      padding: 0 32px;
+      white-space: nowrap;
+    }
+    .vn-ticker-item::before {
+      content: '◆';
+      color: var(--gold);
+      opacity: 1;
+      margin-right: 12px;
+      font-size: 8px;
+      vertical-align: middle;
+    }
+    @keyframes vn-ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── THE STORY ─── */
+    .vn-story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+      margin-top: var(--space-md);
+    }
+    .vn-story-text p {
+      font-size: var(--size-secondary);
+      color: var(--charcoal);
+      line-height: 1.75;
+      margin-bottom: var(--space-sm);
+    }
+    .vn-story-text p:last-child { margin-bottom: 0; }
+    .vn-gears-illustration {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-md);
+    }
+    .vn-gears-illustration svg {
+      width: 100%;
+      max-width: 260px;
+      opacity: 0.55;
+    }
+
+    /* ─── PUZZLE TYPES ─── */
+    .vn-puzzle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+    .vn-puzzle-card {
+      padding: var(--space-md);
+      border-top: 2px solid rgba(221, 213, 196, 0.12);
+      transition: border-top-color var(--transition);
+    }
+    .vn-puzzle-card:hover {
+      border-top-color: var(--gold);
+    }
+    .vn-puzzle-glyph {
+      width: 48px;
+      height: 48px;
+      margin-bottom: var(--space-sm);
+      opacity: 0.6;
+    }
+    .vn-puzzle-num {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--parchment);
+      opacity: 0.08;
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+      transition: opacity var(--transition);
+    }
+    .vn-puzzle-card:hover .vn-puzzle-num { opacity: 0.18; }
+    .vn-puzzle-title {
+      font-family: var(--font-display);
+      font-size: var(--size-subhead);
+      font-weight: 400;
+      color: var(--parchment);
+      margin-bottom: var(--space-xs);
+    }
+    .vn-puzzle-desc {
+      font-size: var(--size-secondary);
+      color: var(--parchment);
+      opacity: 0.62;
+      line-height: 1.65;
+    }
+    .vn-puzzle-tag {
+      display: inline-block;
+      margin-top: var(--space-sm);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      border: 1px solid rgba(149, 213, 178, 0.22);
+      padding: 4px 10px;
+    }
+
+    /* ─── THREE TRACKS ─── */
+    .vn-tracks-intro {
+      max-width: 580px;
+      margin-bottom: var(--space-md);
+    }
+    .vn-tracks-intro p {
+      font-size: var(--size-secondary);
+      color: var(--stone);
+      line-height: 1.7;
+    }
+    .vn-tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+    .vn-track-card {
+      padding: var(--space-md);
+      border: 1px solid rgba(27, 67, 50, 0.12);
+      border-top: 3px solid transparent;
+      transition: border-top-color var(--transition), box-shadow var(--transition);
+      position: relative;
+    }
+    .vn-track-card--keeper  { border-top-color: var(--forest); }
+    .vn-track-card--artisan { border-top-color: var(--mid-green); }
+    .vn-track-card--unwinder { border-top-color: var(--gold); }
+    .vn-track-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+
+    .vn-track-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-xs);
+    }
+    .vn-track-card--keeper  .vn-track-label { color: var(--forest); }
+    .vn-track-card--artisan .vn-track-label { color: var(--mid-green); }
+    .vn-track-card--unwinder .vn-track-label { color: var(--charcoal); opacity: 0.5; }
+
+    .vn-track-name {
+      font-family: var(--font-display);
+      font-size: var(--size-subhead);
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: var(--space-xs);
+    }
+    .vn-track-desc {
+      font-size: var(--size-secondary);
+      color: var(--stone);
+      line-height: 1.65;
+    }
+    .vn-track-keyword {
+      display: inline-block;
+      margin-top: var(--space-sm);
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-style: italic;
+      color: var(--stone);
+      opacity: 0.7;
+    }
+
+    /* ─── CHAPTER WALK / HOW IT WORKS ─── */
+    .vn-chapters {
+      margin-top: var(--space-md);
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .vn-chapter {
+      display: grid;
+      grid-template-columns: 68px 1fr;
+      gap: var(--space-md);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid rgba(221, 213, 196, 0.1);
+      opacity: 0;
+      transform: translateX(-14px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .vn-chapter:last-child { border-bottom: none; }
+    .vn-chapter.visible { opacity: 1; transform: translateX(0); }
+    .vn-chapter-act {
+      font-family: var(--font-display);
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      padding-top: 2px;
+    }
+    .vn-chapter-title {
+      font-family: var(--font-display);
+      font-size: var(--size-subhead);
+      font-weight: 400;
+      color: var(--parchment);
+      margin-bottom: var(--space-xs);
+    }
+    .vn-chapter-desc {
+      font-size: var(--size-secondary);
+      color: var(--parchment);
+      opacity: 0.65;
+      line-height: 1.65;
+    }
+    .vn-chapter-tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      border: 1px solid rgba(149, 213, 178, 0.22);
+      padding: 4px 10px;
+    }
+
+    /* ─── QUOTE ─── */
+    .vn-quote {
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .vn-quote blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.5vw, var(--size-pullquote));
+      font-style: italic;
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.65;
+    }
+    .vn-quote cite {
+      display: block;
+      margin-top: var(--space-sm);
+      font-family: var(--font-body);
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--stone);
+      font-style: normal;
+    }
+
+    /* ─── PLATFORM TAGS (CTA) ─── */
+    .vn-platform-tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+    .vn-platform-tag {
+      font-family: var(--font-body);
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      opacity: 0.55;
+      border: 1px solid rgba(221, 213, 196, 0.18);
+      padding: 8px 18px;
+    }
+
+    /* ─── LOCKBOX ILLUSTRATION ANIMATIONS ─── */
+    @keyframes vn-lid-strain {
+      0%,  100% { transform: translateY(0); }
+      10%        { transform: translateY(-5px); }
+      18%        { transform: translateY(-10px); }
+      26%        { transform: translateY(-4px); }
+      34%        { transform: translateY(-9px); }
+      42%        { transform: translateY(0); }
+      65%        { transform: translateY(0); }
+      74%        { transform: translateY(-7px); }
+      82%        { transform: translateY(-3px); }
+      90%        { transform: translateY(0); }
+    }
+    @keyframes vn-ring-strain {
+      0%,  100% { transform: rotate(0deg); }
+      10%        { transform: rotate(18deg); }
+      20%        { transform: rotate(6deg); }
+      30%        { transform: rotate(22deg); }
+      42%        { transform: rotate(0deg); }
+      65%        { transform: rotate(0deg); }
+      75%        { transform: rotate(-14deg); }
+      84%        { transform: rotate(4deg); }
+      90%        { transform: rotate(0deg); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .vn-story-grid {
+        grid-template-columns: 1fr;
+      }
+      .vn-gears-illustration { display: none; }
+      .vn-puzzle-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .vn-tracks-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 480px) {
+      .vn-puzzle-grid {
+        grid-template-columns: 1fr;
+      }
+      .vn-chapter {
+        grid-template-columns: 48px 1fr;
+        gap: var(--space-sm);
+      }
+      .vn-chapter-act { font-size: 34px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__wordmark">
+      <a href="../index.html">
+        <img src="../assets/images/svg/WordmarkStackedParchmentonForest.svg" alt="Leslie Street Studio">
+      </a>
+    </div>
+    <hr class="site-header__rule">
+    <div class="site-header__nav-row">
+      <nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
+        <a href="../index.html" class="site-nav__link">Home</a>
+        <a href="../apps.html" class="site-nav__link active">Apps</a>
+        <a href="../about.html" class="site-nav__link">About</a>
+        <a href="../contact.html" class="site-nav__link">Contact</a>
+      </nav>
+      <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="site-nav site-nav--mobile" aria-label="Mobile navigation">
+      <a href="../index.html" class="site-nav__link">Home</a>
+      <a href="../apps.html" class="site-nav__link active">Apps</a>
+      <a href="../about.html" class="site-nav__link">About</a>
+      <a href="../contact.html" class="site-nav__link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="vn-hero on-dark">
+
+      <!-- Layer 1: Rotating gears -->
+      <div class="vn-gears" aria-hidden="true">
+        <div class="vn-gear vn-gear--a"><div class="vn-gear__hub"></div></div>
+        <div class="vn-gear vn-gear--b"><div class="vn-gear__hub"></div></div>
+        <div class="vn-gear vn-gear--c"><div class="vn-gear__hub"></div></div>
+        <div class="vn-gear vn-gear--d"><div class="vn-gear__hub"></div></div>
+        <div class="vn-gear vn-gear--e"><div class="vn-gear__hub"></div></div>
+      </div>
+
+      <!-- Layer 2: Glyph frame -->
+      <div class="vn-glyph-frame" aria-hidden="true">
+        <div class="vn-glyph-corner vn-glyph-corner--tl"></div>
+        <div class="vn-glyph-corner vn-glyph-corner--tr"></div>
+        <div class="vn-glyph-corner vn-glyph-corner--bl"></div>
+        <div class="vn-glyph-corner vn-glyph-corner--br"></div>
+        <div class="vn-glyph-center"></div>
+      </div>
+
+      <!-- Hero content -->
+      <div class="container vn-hero__inner">
+        <!-- Icon: replace Vandoras_icon.png once available -->
+        <div class="vn-hero__icon">
+          <img src="../assets/images/Vandoras_icon.png"
+               alt="Vandoras"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.vn-hero__icon-placeholder').style.display='block'">
+          <div class="vn-hero__icon-placeholder" style="display:none;"></div>
+        </div>
+
+        <p class="vn-hero__eyebrow">An Interactive Graphic Novel</p>
+        <h1 class="vn-hero__title">Vandoras</h1>
+        <p class="vn-hero__sub">For twenty years, Van made things work.<br>Then a family lockbox recognized him.<br>Now everything else wants to.</p>
+        <span class="vn-hero__badge">Coming Soon to iOS</span>
+      </div>
+    </section>
+
+    <!-- TICKER 1: Feature keywords -->
+    <div class="vn-ticker-wrap" aria-hidden="true">
+      <div class="vn-ticker">
+        <span class="vn-ticker-item">Interactive Graphic Novel</span>
+        <span class="vn-ticker-item">Puzzle-Gated Story</span>
+        <span class="vn-ticker-item">Three Endings</span>
+        <span class="vn-ticker-item">Lock Tumblers</span>
+        <span class="vn-ticker-item">Gear Trains</span>
+        <span class="vn-ticker-item">Symbol Alignment</span>
+        <span class="vn-ticker-item">12 Chapters</span>
+        <span class="vn-ticker-item">11+ Hours of Story</span>
+        <span class="vn-ticker-item">Your Choices Define Van</span>
+        <span class="vn-ticker-item">Native iOS</span>
+        <span class="vn-ticker-item">Interactive Graphic Novel</span>
+        <span class="vn-ticker-item">Puzzle-Gated Story</span>
+        <span class="vn-ticker-item">Three Endings</span>
+        <span class="vn-ticker-item">Lock Tumblers</span>
+        <span class="vn-ticker-item">Gear Trains</span>
+        <span class="vn-ticker-item">Symbol Alignment</span>
+        <span class="vn-ticker-item">12 Chapters</span>
+        <span class="vn-ticker-item">11+ Hours of Story</span>
+        <span class="vn-ticker-item">Your Choices Define Van</span>
+        <span class="vn-ticker-item">Native iOS</span>
+      </div>
+    </div>
+
+    <!-- THE STORY -->
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm);">The Story</span>
+        <div class="vn-story-grid">
+          <div class="vn-story-text">
+            <p>Van has made his living as a freelance tinkerer for twenty years. He's the person people call when a mechanism shouldn't work and needs to anyway. His reputation: unnaturally reliable. He always attributed it to skill.</p>
+            <p>When his father passed him an old family heirloom — a tarnished metal cube covered in geometric patterns — it sat on a shelf for years. Then one evening, the lockbox's tumblers responded differently under Van's hands. Springs compressed in ways that violated their apparent tension. The mechanism didn't surrender. It <em>recognized</em> him.</p>
+            <p>The box was empty. Because Van was the contents. Seven generations of latent power, compressed into a single instantaneous knowing — and now three factions who have been watching the Vandoras bloodline for exactly this event have come calling.</p>
+            <p>Van needs answers. The watchers want him classified. His power grows by engaging with the world's disorder. And standing still means letting unknown powers define his fate.</p>
+          </div>
+
+          <!-- Lockbox illustration -->
+          <div class="vn-gears-illustration" aria-hidden="true">
+            <svg viewBox="0 0 200 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+              <!-- Box body (static) -->
+              <rect x="15" y="76" width="170" height="132" rx="3" stroke="#C9A84C" stroke-width="2.5"/>
+              <!-- Body inner bevel -->
+              <rect x="24" y="85" width="152" height="114" rx="2" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+
+              <!-- Hinge plates (static, straddling lid/body join) -->
+              <rect x="48" y="68" width="18" height="10" rx="1.5" stroke="#C9A84C" stroke-width="1.5"/>
+              <rect x="134" y="68" width="18" height="10" rx="1.5" stroke="#C9A84C" stroke-width="1.5"/>
+
+              <!-- Lid group — strains upward, cannot open -->
+              <g style="animation: vn-lid-strain 7s ease-in-out infinite; transform-origin: 100px 54px;">
+                <rect x="15" y="38" width="170" height="32" rx="3" stroke="#C9A84C" stroke-width="2.5"/>
+                <!-- Lid inner bevel -->
+                <rect x="24" y="45" width="152" height="18" rx="2" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
+                <!-- Lid engraving lines -->
+                <line x1="38" y1="50" x2="162" y2="50" stroke="#C9A84C" stroke-width="1" opacity="0.2"/>
+                <line x1="38" y1="57" x2="162" y2="57" stroke="#C9A84C" stroke-width="1" opacity="0.2"/>
+                <!-- Latch bar (gold) — moves with lid -->
+                <rect x="76" y="63" width="48" height="9" rx="2" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
+                <line x1="100" y1="63" x2="100" y2="72" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+              </g>
+
+              <!-- Corner bolts -->
+              <circle cx="33"  cy="91"  r="6" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
+              <circle cx="33"  cy="91"  r="2.5" fill="#C9A84C" opacity="0.55"/>
+              <circle cx="167" cy="91"  r="6" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
+              <circle cx="167" cy="91"  r="2.5" fill="#C9A84C" opacity="0.55"/>
+              <circle cx="33"  cy="197" r="6" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
+              <circle cx="33"  cy="197" r="2.5" fill="#C9A84C" opacity="0.55"/>
+              <circle cx="167" cy="197" r="6" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
+              <circle cx="167" cy="197" r="2.5" fill="#C9A84C" opacity="0.55"/>
+
+              <!-- Central lock — outer static ring -->
+              <circle cx="100" cy="150" r="38" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
+              <!-- 12 tick marks on outer ring (line from r=39 to r=34, rotated) -->
+              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(0,100,150)"/>
+              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(30,100,150)"/>
+              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(60,100,150)"/>
+              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(90,100,150)"/>
+              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(120,100,150)"/>
+              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(150,100,150)"/>
+              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(180,100,150)"/>
+              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(210,100,150)"/>
+              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(240,100,150)"/>
+              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(270,100,150)"/>
+              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(300,100,150)"/>
+              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(330,100,150)"/>
+
+              <!-- Rotating middle ring — strains/twitches, cannot turn -->
+              <g style="animation: vn-ring-strain 5.5s ease-in-out infinite 0.4s; transform-origin: 100px 150px;">
+                <circle cx="100" cy="150" r="27" stroke="#C9A84C" stroke-width="2"/>
+                <!-- 6 notch markers at ring edge -->
+                <rect x="97.5" y="122" width="5" height="5" rx="0.5" fill="#C9A84C" transform="rotate(0,100,150)"/>
+                <rect x="97.5" y="122" width="5" height="5" rx="0.5" fill="#C9A84C" transform="rotate(60,100,150)"/>
+                <rect x="97.5" y="122" width="5" height="5" rx="0.5" fill="#C9A84C" transform="rotate(120,100,150)"/>
+                <rect x="97.5" y="122" width="5" height="5" rx="0.5" fill="#C9A84C" transform="rotate(180,100,150)"/>
+                <rect x="97.5" y="122" width="5" height="5" rx="0.5" fill="#C9A84C" transform="rotate(240,100,150)"/>
+                <rect x="97.5" y="122" width="5" height="5" rx="0.5" fill="#C9A84C" transform="rotate(300,100,150)"/>
+              </g>
+
+              <!-- Inner fixed ring -->
+              <circle cx="100" cy="150" r="16" stroke="#C9A84C" stroke-width="1.5"/>
+
+              <!-- Keyhole -->
+              <circle cx="100" cy="146" r="5" stroke="#C9A84C" stroke-width="1.5" opacity="0.85"/>
+              <path d="M97 150 L97 158 Q97 161 100 161 Q103 161 103 158 L103 150 Z"
+                    stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round" fill="none" opacity="0.85"/>
+
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUZZLE TYPES -->
+    <section class="section" style="background-color: var(--forest);">
+      <div class="container on-dark">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm); color: var(--sage);">The Puzzles</span>
+        <h2 style="color: var(--parchment); margin-bottom: 0;">Three languages. One vocabulary.</h2>
+        <div class="vn-puzzle-grid">
+
+          <div class="vn-puzzle-card">
+            <p class="vn-puzzle-num">01</p>
+            <h3 class="vn-puzzle-title">Lock Tumbler</h3>
+            <p class="vn-puzzle-desc">Van's oldest vocabulary. Tap, drag, set. But these pins have learned to resist — and the mechanism he's working knows who's asking.</p>
+            <span class="vn-puzzle-tag">Tap · Drag · Tension</span>
+          </div>
+
+          <div class="vn-puzzle-card">
+            <p class="vn-puzzle-num">02</p>
+            <h3 class="vn-puzzle-title">Gear Train</h3>
+            <p class="vn-puzzle-desc">Ratios, flows, configurations. Not every gear belongs in every arrangement. Find the routing that holds — and understand what it means when one doesn't.</p>
+            <span class="vn-puzzle-tag">Rotate · Connect · Configure</span>
+          </div>
+
+          <div class="vn-puzzle-card">
+            <p class="vn-puzzle-num">03</p>
+            <h3 class="vn-puzzle-title">Symbol Alignment</h3>
+            <p class="vn-puzzle-desc">The heaviest language. Sixteen glyphs, relational constraints, one valid configuration. You don't always know which answer you're giving until the frame closes.</p>
+            <span class="vn-puzzle-tag">Glyphs · Constraints · Order</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW THE STORY WORKS -->
+    <section class="section" style="background-color: var(--charcoal);">
+      <div class="container on-dark">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm); color: var(--sage);">Three Acts</span>
+        <h2 style="color: var(--parchment); margin-bottom: 0;">The story you play.</h2>
+        <div class="vn-chapters">
+
+          <div class="vn-chapter">
+            <div class="vn-chapter-act">I</div>
+            <div>
+              <h3 class="vn-chapter-title">The Awakening</h3>
+              <p class="vn-chapter-desc">A routine commission. A lockbox that responds differently than it should. Van opens something he can't close. Three factions arrive — each with a different story about what he is and what he owes them.</p>
+              <span class="vn-chapter-tag">Ch 1–3 · Harrowmere · Tutorial Puzzles</span>
+            </div>
+          </div>
+
+          <div class="vn-chapter">
+            <div class="vn-chapter-act">II</div>
+            <div>
+              <h3 class="vn-chapter-title">The Reckoning</h3>
+              <p class="vn-chapter-desc">Six chapters across failing mines, besieged keeps, and Concordance archives. Van helps people whose problems resist conventional solutions — and learns that his gift has been tracked for seven generations. At the end, he chooses.</p>
+              <span class="vn-chapter-tag">Ch 4–9 · Six Locations · Faction Choices</span>
+            </div>
+          </div>
+
+          <div class="vn-chapter">
+            <div class="vn-chapter-act">III</div>
+            <div>
+              <h3 class="vn-chapter-title">The Consequence</h3>
+              <p class="vn-chapter-desc">Three separate stories. Three distinct endings. One shared crisis at Vael Moren — an ancient stability node failing on its own schedule — before the tracks diverge into conclusions that don't resemble each other.</p>
+              <span class="vn-chapter-tag">Ch 10–12 · Three Tracks · Three Endings</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- THREE TRACKS -->
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm);">Three Endings</span>
+        <h2>Your choices are Van's choices.</h2>
+        <div class="vn-tracks-intro">
+          <p>Vandoras has no single ending. The factions you favor, the answers you give, and the configuration you choose at Chapter 9's workbench commit you to one of three distinct conclusions — each with its own playtime, its own final puzzles, and its own reckoning.</p>
+        </div>
+        <div class="vn-tracks-grid">
+
+          <div class="vn-track-card vn-track-card--keeper">
+            <p class="vn-track-label">The Keeper</p>
+            <h3 class="vn-track-name">Accept the seat.</h3>
+            <p class="vn-track-desc">Cosmic order has a vacancy. The Vandoras bloodline has always been the caretaker. Van is the first viable candidate in seven generations. Accept what the mechanism requires — and become the regulator it's been waiting for.</p>
+            <span class="vn-track-keyword">Duty · Precision · The Long Work</span>
+          </div>
+
+          <div class="vn-track-card vn-track-card--artisan">
+            <p class="vn-track-label">The Artisan</p>
+            <h3 class="vn-track-name">Decline. Mean it.</h3>
+            <p class="vn-track-desc">Walk back into the smaller life. Reopen the workshop. Take the commission for the cart latch. Van's gift remains — he simply chooses not to exercise it at scale. The world's machinery will turn without him. That has to be enough.</p>
+            <span class="vn-track-keyword">Choice · Humility · The Years</span>
+          </div>
+
+          <div class="vn-track-card vn-track-card--unwinder">
+            <p class="vn-track-label">The Unwinder</p>
+            <h3 class="vn-track-name">Break the mechanism.</h3>
+            <p class="vn-track-desc">The mechanism should not exist. Neither should the vacancy. Concordance rations order, Ledger monetizes it — both assume it's a good worth rationing. Earn the mastery required to dismantle what can't be broken quietly. Understand the cost.</p>
+            <span class="vn-track-keyword">Defiance · Mastery · The Cascade</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY QUOTE -->
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <div class="section-divider">
+          <div class="section-divider__line"></div>
+          <div class="section-divider__mark"></div>
+          <div class="section-divider__line"></div>
+        </div>
+        <div class="vn-quote">
+          <blockquote>
+            "You don't build machines that work.<br>
+            You impose order on chaos.<br>
+            You are the gear that turns the cosmic clockwork."
+          </blockquote>
+          <cite>— The Lockbox, Chapter 1</cite>
+        </div>
+        <div class="section-divider">
+          <div class="section-divider__line"></div>
+          <div class="section-divider__mark"></div>
+          <div class="section-divider__line"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMING SOON CTA -->
+    <section class="section" style="background-color: var(--forest); text-align: center;">
+      <div class="container on-dark">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm); color: var(--sage);">In Development</span>
+        <h2 style="color: var(--parchment); margin-bottom: var(--space-sm);">Coming to iOS.</h2>
+        <p style="color: var(--parchment); opacity: 0.7; max-width: 480px; margin: 0 auto;">An interactive graphic novel for readers who want the story to have consequences.</p>
+        <hr class="gold-rule gold-rule--narrow" style="margin: var(--space-md) auto;">
+        <div class="vn-platform-tags">
+          <span class="vn-platform-tag">iPhone</span>
+          <span class="vn-platform-tag">iOS</span>
+          <span class="vn-platform-tag">Ages 12+</span>
+          <span class="vn-platform-tag">Single Purchase</span>
+          <span class="vn-platform-tag">No Account Required</span>
+        </div>
+        <p style="margin-top: var(--space-md);">
+          <a href="mailto:support@lesliestreetstudio.com" style="color: var(--parchment); opacity: 0.38; font-size: var(--size-secondary);">support@lesliestreetstudio.com</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- TICKER 2: World / faction / place names -->
+    <div class="vn-ticker-wrap" aria-hidden="true">
+      <div class="vn-ticker vn-ticker--reverse">
+        <span class="vn-ticker-item">Harrowmere</span>
+        <span class="vn-ticker-item">The Concordance</span>
+        <span class="vn-ticker-item">The Ledger</span>
+        <span class="vn-ticker-item">The Unwinding</span>
+        <span class="vn-ticker-item">Oculum Sethar</span>
+        <span class="vn-ticker-item">Vael Moren</span>
+        <span class="vn-ticker-item">Greyvein Deeps</span>
+        <span class="vn-ticker-item">Keep Vordun</span>
+        <span class="vn-ticker-item">Clockwork Soul</span>
+        <span class="vn-ticker-item">Dorran Vael</span>
+        <span class="vn-ticker-item">Harrowmere</span>
+        <span class="vn-ticker-item">The Concordance</span>
+        <span class="vn-ticker-item">The Ledger</span>
+        <span class="vn-ticker-item">The Unwinding</span>
+        <span class="vn-ticker-item">Oculum Sethar</span>
+        <span class="vn-ticker-item">Vael Moren</span>
+        <span class="vn-ticker-item">Greyvein Deeps</span>
+        <span class="vn-ticker-item">Keep Vordun</span>
+        <span class="vn-ticker-item">Clockwork Soul</span>
+        <span class="vn-ticker-item">Dorran Vael</span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__wordmark">
+          <img src="../assets/images/svg/WordmarkHorizontalParchmentonCharcoal.svg" alt="Leslie Street Studio">
+        </div>
+        <hr class="gold-rule" style="width: 40px; opacity: 0.4;">
+        <div class="site-footer__links">
+          <a href="../index.html">Home</a>
+          <a href="../apps.html">Apps</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+          <a href="mailto:support@lesliestreetstudio.com">Support</a>
+        </div>
+        <p class="site-footer__copy">&copy; 2026 Leslie Street Studio LLC</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.nav-hamburger');
+    const mobileNav = document.querySelector('.site-nav--mobile');
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    // Scroll-triggered chapter animations
+    const chapters = document.querySelectorAll('.vn-chapter');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 120);
+        }
+      });
+    }, { threshold: 0.15 });
+    chapters.forEach(c => obs.observe(c));
+  </script>
+
+</body>
+</html>
