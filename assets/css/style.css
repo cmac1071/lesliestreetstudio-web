@@ -729,6 +729,10 @@ p {
     height: 80px;
   }
 
+  .site-header__rule {
+    display: none;
+  }
+
   /* Show hamburger, hide desktop nav */
   .nav-hamburger {
     display: flex;
