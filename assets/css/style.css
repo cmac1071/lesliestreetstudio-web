@@ -729,9 +729,6 @@ p {
     height: 80px;
   }
 
-  .site-header__rule {
-    display: none;
-  }
 
   /* Show hamburger, hide desktop nav */
   .nav-hamburger {
@@ -752,6 +749,11 @@ p {
 
   .site-nav--mobile {
     display: flex;
+    visibility: hidden;
+  }
+
+  .site-nav--mobile.open {
+    visibility: visible;
   }
 
   /* Cards stack */
