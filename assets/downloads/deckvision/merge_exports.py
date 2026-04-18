@@ -5,7 +5,7 @@ Merge exported card detection datasets into an existing Create ML training set.
 Run from the directory containing both the source export and target dataset folders.
 The script prompts for folder names interactively.
 
-Source: a folder containing one or more .zip exports from CardVision,
+Source: a folder containing one or more .zip exports from DeckVision,
         or a single already-unzipped export folder (with images/ and annotations.json).
 
 Target: your existing Create ML training dataset folder containing annotations.json
@@ -156,7 +156,7 @@ def extract_and_process_zip(zip_path, target_dir, start_number):
             print(f"  Error: invalid zip file, skipping")
             return [], start_number
 
-        # The zip may contain a top-level folder (e.g., CardVisionExport_20260417/)
+        # The zip may contain a top-level folder (e.g., DeckVisionExport_20260417/)
         # or extract directly. Find where annotations.json lives.
         ann_file = None
         for root, dirs, files in os.walk(tmp):

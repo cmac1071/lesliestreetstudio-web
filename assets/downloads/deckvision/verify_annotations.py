@@ -5,7 +5,7 @@ Draw bounding boxes from annotations.json onto exported images for visual verifi
 Usage:
     python3 verify_annotations.py <export_folder>
 
-Where <export_folder> is an unzipped CardVision export containing:
+Where <export_folder> is an unzipped DeckVision export containing:
     annotations.json
     images/  (folder of JPEG files)
 
@@ -115,7 +115,7 @@ def draw_annotations(image_path, annotations, output_path):
 def main():
     if len(sys.argv) != 2:
         print("Usage: python3 verify_annotations.py <export_folder>")
-        print("  export_folder: unzipped CardVision export with annotations.json and images/")
+        print("  export_folder: unzipped DeckVision export with annotations.json and images/")
         return 1
 
     export_dir = Path(sys.argv[1])

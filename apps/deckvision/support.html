@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support — CardVision — Leslie Street Studio</title>
-  <meta name="description" content="Support, getting started guide, FAQ, and troubleshooting for CardVision.">
+  <title>Support — DeckVision — Leslie Street Studio</title>
+  <meta name="description" content="Support, getting started guide, FAQ, and troubleshooting for DeckVision.">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <style>
     .support-body {
@@ -231,7 +231,7 @@
 
     <section class="page-hero on-dark">
       <div class="container">
-        <span class="page-hero__eyebrow">CardVision</span>
+        <span class="page-hero__eyebrow">DeckVision</span>
         <h1 class="page-hero__title">Support</h1>
         <p class="page-hero__subtitle">A data collection tool for building playing card detection datasets. Capture images with your iPhone camera, annotate bounding boxes on-device, and export in Create ML format.</p>
       </div>
@@ -283,7 +283,7 @@
 
               <div class="step-item">
                 <span class="step-item__num">8</span>
-                <p class="step-item__text"><strong>Export when ready.</strong> Tap "Export Data" from the main menu. CardVision generates a zip archive and presents the iOS share sheet. Send it via AirDrop, save to Files, or email it — then load it into your Create ML project.</p>
+                <p class="step-item__text"><strong>Export when ready.</strong> Tap "Export Data" from the main menu. DeckVision generates a zip archive and presents the iOS share sheet. Send it via AirDrop, save to Files, or email it — then load it into your Create ML project.</p>
               </div>
 
             </div>
@@ -333,7 +333,7 @@
 
             </div>
             <div style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
-              <img src="../../assets/images/cardvision-bg-example.jpg" alt="Example: playing cards on a carbon fiber weave background" style="width: 100%; max-width: 480px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.12);">
+              <img src="../../assets/images/deckvision-bg-example.jpg" alt="Example: playing cards on a carbon fiber weave background" style="width: 100%; max-width: 480px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.12);">
               <p style="font-size: var(--size-secondary); color: var(--stone); margin-top: var(--space-xs);">Carbon fiber weave — a high-contrast, highly repetitive pattern that would trip up a model trained only on clean surfaces.</p>
             </div>
             <div class="tips-list">
@@ -360,12 +360,12 @@
 
               <div class="faq-item">
                 <p class="faq-item__q">How do I merge multiple exports into one training set?</p>
-                <p class="faq-item__a">Download <a href="../../assets/downloads/cardvision/merge_exports.py" download>merge_exports.py</a> and run <code>python3 merge_exports.py</code> from the directory containing your exports. The script prompts for source and target paths, handles sequential renaming of image files, backs up the existing <code>annotations.json</code> before modifying it, and prints a label distribution summary when done. Requires Python 3 — no additional packages needed.</p>
+                <p class="faq-item__a">Download <a href="../../assets/downloads/deckvision/merge_exports.py" download>merge_exports.py</a> and run <code>python3 merge_exports.py</code> from the directory containing your exports. The script prompts for source and target paths, handles sequential renaming of image files, backs up the existing <code>annotations.json</code> before modifying it, and prints a label distribution summary when done. Requires Python 3 — no additional packages needed.</p>
               </div>
 
               <div class="faq-item">
                 <p class="faq-item__q">How do I visually verify my export before using it?</p>
-                <p class="faq-item__a">Download <a href="../../assets/downloads/cardvision/verify_annotations.py" download>verify_annotations.py</a> and run <code>python3 verify_annotations.py &lt;export_folder&gt;</code>. The script draws each bounding box with its label on the source image and writes the results to a <code>verify_output/</code> folder. Useful for catching badly-placed boxes before they get into your training set.</p>
+                <p class="faq-item__a">Download <a href="../../assets/downloads/deckvision/verify_annotations.py" download>verify_annotations.py</a> and run <code>python3 verify_annotations.py &lt;export_folder&gt;</code>. The script draws each bounding box with its label on the source image and writes the results to a <code>verify_output/</code> folder. Useful for catching badly-placed boxes before they get into your training set.</p>
               </div>
 
               <div class="faq-item">
@@ -375,7 +375,7 @@
 
               <div class="faq-item">
                 <p class="faq-item__q">What iOS version is required?</p>
-                <p class="faq-item__a">CardVision requires iOS 17.0 or later on iPhone. It is not available on iPad.</p>
+                <p class="faq-item__a">DeckVision requires iOS 17.0 or later on iPhone. It is not available on iPad.</p>
               </div>
 
               <div class="faq-item">
