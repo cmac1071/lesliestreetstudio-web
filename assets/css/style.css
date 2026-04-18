@@ -313,7 +313,6 @@ p {
 
 .site-nav--mobile.open {
   max-height: 300px;
-  border-top: 1px solid rgba(221,213,196,0.15);
   pointer-events: auto;
 }
 
@@ -723,6 +722,7 @@ p {
   .site-header {
     padding: var(--space-sm) 0 0;
     position: relative; /* don't sticky on mobile — saves screen real estate */
+    box-shadow: none;
   }
 
   .site-header__wordmark img {
