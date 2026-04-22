@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DeckVision — Leslie Street Studio</title>
-  <meta name="description" content="DeckVision — capture and annotate playing card images to build Core ML training datasets. Coming soon for iPhone.">
+  <meta name="description" content="DeckVision — capture and annotate playing card images to build Core ML training datasets. Free on the App Store for iPhone.">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
     .cv-hero {
@@ -49,41 +49,22 @@
       margin-bottom: var(--space-md);
     }
 
-    .coming-soon-badge {
-      display: inline-block;
-      border: 1.5px solid rgba(221, 213, 196, 0.35);
-      border-radius: 10px;
-      padding: 10px 22px;
-      color: var(--parchment);
-      opacity: 0.55;
-      font-family: var(--font-body);
-      font-size: var(--size-secondary);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
     .cv-hero__visual {
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .cv-hero__card-motif {
+    .cv-hero__screenshots {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--space-sm);
-      opacity: 0.18;
     }
 
-    .card-motif__suit {
-      font-size: 64px;
-      text-align: center;
-      line-height: 1;
-      color: var(--parchment);
-    }
-
-    .card-motif__suit--red {
-      color: #e57373;
+    .cv-hero__screenshots img {
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      width: 100%;
     }
 
     .steps-grid {
@@ -143,8 +124,8 @@
       .cv-hero__inner {
         grid-template-columns: 1fr;
       }
-      .cv-hero__visual {
-        display: none;
+      .cv-hero__screenshots {
+        grid-template-columns: repeat(2, 1fr);
       }
       .steps-grid {
         grid-template-columns: 1fr;
@@ -193,15 +174,13 @@
             <p class="cv-hero__tagline">Capture. Annotate. Export.</p>
             <h1 class="cv-hero__title">DeckVision</h1>
             <p style="color: var(--parchment); opacity: 0.8; margin-bottom: var(--space-md); max-width: 420px; font-size: var(--size-body);">Point your camera at playing cards. Review and correct bounding boxes on-device. Export a Create ML&#8209;ready dataset in one tap.</p>
-            <span class="coming-soon-badge">Coming Soon</span>
+            <a href="https://apps.apple.com/us/app/deckvision/id6762495451" target="_blank" rel="noopener">
+              <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" style="height: 40px; width: auto;">
+            </a>
           </div>
-          <div class="cv-hero__visual fade-up fade-up--delay-2">
-            <div class="cv-hero__card-motif">
-              <div class="card-motif__suit">♠</div>
-              <div class="card-motif__suit card-motif__suit--red">♥</div>
-              <div class="card-motif__suit card-motif__suit--red">♦</div>
-              <div class="card-motif__suit">♣</div>
-            </div>
+          <div class="cv-hero__screenshots fade-up fade-up--delay-2">
+            <img src="../assets/images/DeckVisionScreenshot1.jpg" alt="DeckVision — card detection">
+            <img src="../assets/images/DeckVisionScreenshot2.jpg" alt="DeckVision — annotation view">
           </div>
         </div>
       </div>
@@ -291,14 +270,27 @@
       </div>
     </section>
 
-    <!-- Coming Soon CTA -->
+    <!-- Screenshots -->
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <span class="label" style="display:block; margin-bottom: var(--space-md);">Screenshots</span>
+        <div class="screenshot-gallery screenshot-gallery--portrait" style="max-width: 640px; margin: 0 auto;">
+          <img src="../assets/images/DeckVisionScreenshot1.jpg" alt="DeckVision — card detection">
+          <img src="../assets/images/DeckVisionScreenshot2.jpg" alt="DeckVision — annotation view">
+          <img src="../assets/images/DeckVisionScreenshot3.jpg" alt="DeckVision — bounding box editor">
+          <img src="../assets/images/DeckVisionScreenshot4.jpg" alt="DeckVision — export">
+        </div>
+      </div>
+    </section>
+
+    <!-- Download CTA -->
     <section class="section" style="background-color: var(--charcoal); text-align: center;">
       <div class="container on-dark">
-        <h2 style="color: var(--parchment); margin-bottom: var(--space-sm);">Coming soon to iPhone.</h2>
-        <p style="color: var(--parchment); opacity: 0.75; max-width: 480px; margin: 0 auto var(--space-md);">DeckVision is in development. Check back soon, or send a note if you want to be notified when it launches.</p>
-        <p>
-          <a href="mailto:support@lesliestreetstudio.com" style="color: var(--sage); font-size: var(--size-body);">support@lesliestreetstudio.com</a>
-        </p>
+        <h2 style="color: var(--parchment); margin-bottom: var(--space-sm);">Available now on iPhone.</h2>
+        <p style="color: var(--parchment); opacity: 0.75; max-width: 480px; margin: 0 auto var(--space-md);">DeckVision is free on the App Store. Build your training dataset on any iPhone.</p>
+        <a href="https://apps.apple.com/us/app/deckvision/id6762495451" target="_blank" rel="noopener">
+          <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" style="height: 44px; width: auto;">
+        </a>
         <p style="margin-top: var(--space-md); font-size: var(--size-secondary);">
           <a href="deckvision/support.html" style="color: var(--parchment); opacity: 0.4;">Support</a>
           <span style="color: var(--parchment); opacity: 0.2; margin: 0 var(--space-sm);">·</span>
