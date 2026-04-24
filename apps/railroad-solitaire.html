@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Railroad! Solitaire — Leslie Street Studio</title>
-  <meta name="description" content="Railroad! Solitaire — the world's most mathematically rigorous solitaire. A 0.706% win rate, verified across 350 billion simulations. Free on the App Store.">
+  <meta name="description" content="Railroad! Solitaire v2 — the world's most mathematically rigorous solitaire. A 0.706% win rate, verified across 350 billion simulations. Now with power-ups, a caboose bonus round, achievements, and a reward wheel. Free on the App Store.">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
     .rr-hero {
@@ -120,7 +120,7 @@
     }
 
     .rule-card__desc {
-      font-size: var(--size-secondary);
+      font-size: var(--size-body);
       color: var(--parchment);
       opacity: 0.8;
       line-height: 1.65;
@@ -130,6 +130,61 @@
       background-color: var(--charcoal);
     }
 
+    .screenshot-gallery--v2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .screenshot-gallery--v2 .screenshot-wide {
+      grid-column: 1 / -1;
+    }
+
+    .screenshot-gallery--v2 img {
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(27,67,50,0.1);
+      width: 100%;
+    }
+
+    .v2-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+
+    .v2-feature {
+      padding: var(--space-md);
+      background-color: var(--parchment);
+      border: 1px solid rgba(27,67,50,0.12);
+      border-radius: 8px;
+    }
+
+    .v2-feature__label {
+      font-size: var(--size-label);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: var(--space-xs);
+    }
+
+    .v2-feature__title {
+      font-family: var(--font-display);
+      font-size: var(--size-subhead);
+      font-weight: 400;
+      color: var(--forest);
+      margin-bottom: var(--space-xs);
+    }
+
+    .v2-feature__desc {
+      font-size: var(--size-body);
+      color: var(--charcoal);
+      line-height: 1.65;
+    }
+
     @media (max-width: 768px) {
       .rr-hero__inner {
         grid-template-columns: 1fr;
@@ -137,8 +192,17 @@
       .rules-grid {
         grid-template-columns: 1fr;
       }
+      .v2-features {
+        grid-template-columns: 1fr;
+      }
       .stat-row {
         gap: var(--space-sm);
+      }
+      .screenshot-gallery--v2 {
+        grid-template-columns: 1fr;
+      }
+      .screenshot-gallery--v2 .screenshot-wide {
+        grid-column: 1;
       }
     }
   </style>
@@ -179,7 +243,7 @@
         <div class="rr-hero__inner">
           <div class="fade-up fade-up--delay-1">
             <div class="rr-hero__icon">
-              <img src="../assets/images/Railroad_icon.png" alt="Railroad! Solitaire">
+              <img src="../assets/images/RailroadV2_Icon.jpg" alt="Railroad! Solitaire">
             </div>
             <p class="rr-hero__subtitle">The 0.706% Challenge</p>
             <h1 class="rr-hero__title">Railroad! Solitaire</h1>
@@ -202,7 +266,7 @@
             </a>
           </div>
           <div class="rr-hero__screenshot fade-up fade-up--delay-2">
-            <img src="../assets/images/Railroadscreenshot.png" alt="Railroad! Solitaire gameplay">
+            <img src="../assets/images/RailroadV2-Main.jpg" alt="Railroad! Solitaire v2 gameplay">
           </div>
         </div>
       </div>
@@ -232,11 +296,43 @@
       </div>
     </section>
 
-    <!-- Features -->
+    <!-- v2 Features -->
     <section class="section" style="background-color: var(--mint);">
       <div class="container">
-        <span class="label" style="display:block; margin-bottom: var(--space-sm);">Features</span>
-        <h2>What's in the app</h2>
+        <span class="label" style="display:block; margin-bottom: var(--space-sm);">Version 2.0</span>
+        <h2>More to play for</h2>
+        <p style="margin-top: var(--space-sm); max-width: 620px;">The core Railroad game is unchanged. v2 layers on progression, power-ups, and rewards that give every hand meaning beyond the final score.</p>
+
+        <div class="v2-features">
+          <div class="v2-feature">
+            <p class="v2-feature__label">Bonus round</p>
+            <h3 class="v2-feature__title">Caboose Bonus</h3>
+            <p class="v2-feature__desc">Trigger a cascade of three or more and you unlock the Caboose Bonus. Cards from your discards are revealed and you place them into five poker hands: Flush, Straight, Straight Flush, Full House, and Five of a Kind. Complete a hand to spin the reward wheel.</p>
+          </div>
+          <div class="v2-feature">
+            <p class="v2-feature__label">Rewards</p>
+            <h3 class="v2-feature__title">Power Meter and Reward Wheel</h3>
+            <p class="v2-feature__desc">Every discarded card feeds the power meter. Fill it and you spin an infinite reward wheel that grants cosmetics and power-ups. No losing segments. The meter also fills when you complete a caboose poker hand.</p>
+          </div>
+          <div class="v2-feature">
+            <p class="v2-feature__label">Power-ups</p>
+            <h3 class="v2-feature__title">Five ways to bend the odds</h3>
+            <p class="v2-feature__desc">Joker inserts a wild card into the deck mid-game. Derail removes two cards and sweeps the board for cascades. Meter Boost doubles your meter fill rate. Extra Pick gives you more cards in the bonus round. Switchyard rearranges your endgame.</p>
+          </div>
+          <div class="v2-feature">
+            <p class="v2-feature__label">Progression</p>
+            <h3 class="v2-feature__title">Achievements and cosmetics</h3>
+            <p class="v2-feature__desc">Fifteen achievements track everything from your first cascade to the impossibly rare Impossible Flush. Unlock card backs and table surfaces through the reward wheel. Meet Mac the conductor, your in-game guide and occasional gift-bearer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional details -->
+    <section class="section" style="background-color: var(--parchment);">
+      <div class="container">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm);">Also included</span>
+        <h2>What else is in the app</h2>
         <ul class="feature-list" style="margin-top: var(--space-md); max-width: 580px;">
           <li class="feature-list__item">
             <span class="feature-list__bullet"></span>
@@ -248,11 +344,11 @@
           </li>
           <li class="feature-list__item">
             <span class="feature-list__bullet"></span>
-            <span class="feature-list__text"><strong>Desktop versions</strong> — macOS and Windows builds available for players who prefer a larger screen. <a href="https://github.com/cmac1071/RailroadSolitaire/releases/download/v3.1.1/Railroad_v3_1_1_macOS.zip" style="color: var(--forest); text-decoration: underline;">Download for macOS</a> or <a href="https://github.com/cmac1071/RailroadSolitaire/releases/download/v3.1.1/Railroad_v3_1_1_Windows.zip" style="color: var(--forest); text-decoration: underline;">Windows</a>.</span>
+            <span class="feature-list__text"><strong>Interactive tutorials</strong> — Mac the conductor walks you through every mechanic with step-by-step overlays. Nothing is left unexplained.</span>
           </li>
           <li class="feature-list__item">
             <span class="feature-list__bullet"></span>
-            <span class="feature-list__text"><strong>v2.0 in development</strong> — Bonus games, achievements, and expanded player choice. Coming soon.</span>
+            <span class="feature-list__text"><strong>Desktop versions</strong> — macOS and Windows builds of the original Railroad! are available for players who prefer a larger screen. <a href="https://github.com/cmac1071/RailroadSolitaire/releases/download/v3.1.1/Railroad_v3_1_1_macOS.zip" style="color: var(--forest); text-decoration: underline;">Download for macOS</a> or <a href="https://github.com/cmac1071/RailroadSolitaire/releases/download/v3.1.1/Railroad_v3_1_1_Windows.zip" style="color: var(--forest); text-decoration: underline;">Windows</a>.</span>
           </li>
         </ul>
       </div>
@@ -262,9 +358,11 @@
     <section class="section screenshots-section on-dark">
       <div class="container">
         <span class="label" style="display:block; margin-bottom: var(--space-md); color: var(--sage);">Screenshots</span>
-        <div class="screenshot-gallery screenshot-gallery--landscape-2">
-          <img src="../assets/images/Railroadscreenshotwin.png" alt="Railroad! Solitaire — win screen">
-          <img src="../assets/images/Railroadscreenshotstats.png" alt="Railroad! Solitaire — statistics">
+        <div class="screenshot-gallery--v2">
+          <img class="screenshot-wide" src="../assets/images/RailroadV2-BrandImage.jpg" alt="Railroad! Solitaire — v2 brand image">
+          <img src="../assets/images/RailroadV2-CabooseBonus.jpg" alt="Railroad! Solitaire — Caboose Bonus round">
+          <img src="../assets/images/RailroadV2-WheelBonus.jpg" alt="Railroad! Solitaire — Reward Wheel">
+          <img class="screenshot-wide" src="../assets/images/RailroadV2-Win.jpg" alt="Railroad! Solitaire — win celebration with Mac the conductor">
         </div>
       </div>
     </section>
@@ -273,7 +371,7 @@
     <section class="section" style="background-color: var(--forest); text-align: center;">
       <div class="container on-dark">
         <h2 style="color: var(--parchment); margin-bottom: var(--space-sm);">Ready to take on 0.706%?</h2>
-        <p style="color: var(--parchment); opacity: 0.75; max-width: 480px; margin: 0 auto var(--space-md);">Free on the App Store. Just the challenge.</p>
+        <p style="color: var(--parchment); opacity: 0.75; max-width: 480px; margin: 0 auto var(--space-md);">Free on the App Store. Power-ups earned through play. No paywalls.</p>
         <a href="https://apps.apple.com/app/id6758528011" target="_blank" rel="noopener">
           <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" class="appstore-badge" style="margin: 0 auto;">
         </a>
