@@ -321,21 +321,42 @@
       margin-bottom: var(--space-sm);
     }
     .vn-story-text p:last-child { margin-bottom: 0; }
-    .vn-gears-illustration {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: var(--space-md);
-      background-color: var(--forest);
+
+    /* ─── TEASER IMAGES ─── */
+    .vn-teaser-img {
       border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.32);
       align-self: center;
-      width: fit-content;
-      margin: 0 auto;
     }
-    .vn-gears-illustration svg {
+    .vn-teaser-img img {
       width: 100%;
-      max-width: 260px;
-      opacity: 0.85;
+      height: auto;
+      display: block;
+    }
+
+    /* ─── REVEAL (U4 + choice text) ─── */
+    .vn-reveal {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+      margin-top: var(--space-md);
+    }
+    .vn-reveal__text p {
+      font-size: var(--size-body);
+      color: var(--parchment);
+      line-height: 1.75;
+      margin-bottom: var(--space-sm);
+    }
+    .vn-reveal__text p:last-child { margin-bottom: 0; }
+    .vn-reveal__choice {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, var(--size-subhead));
+      font-weight: 700;
+      color: var(--parchment);
+      letter-spacing: 0.04em;
+      margin-bottom: var(--space-sm);
     }
 
     /* ─── PUZZLE TYPES ─── */
@@ -557,38 +578,13 @@
       padding: 8px 18px;
     }
 
-    /* ─── LOCKBOX ILLUSTRATION ANIMATIONS ─── */
-    @keyframes vn-lid-strain {
-      0%,  100% { transform: translateY(0); }
-      10%        { transform: translateY(-5px); }
-      18%        { transform: translateY(-10px); }
-      26%        { transform: translateY(-4px); }
-      34%        { transform: translateY(-9px); }
-      42%        { transform: translateY(0); }
-      65%        { transform: translateY(0); }
-      74%        { transform: translateY(-7px); }
-      82%        { transform: translateY(-3px); }
-      90%        { transform: translateY(0); }
-    }
-    @keyframes vn-ring-strain {
-      0%,  100% { transform: rotate(0deg); }
-      10%        { transform: rotate(18deg); }
-      20%        { transform: rotate(6deg); }
-      30%        { transform: rotate(22deg); }
-      42%        { transform: rotate(0deg); }
-      65%        { transform: rotate(0deg); }
-      75%        { transform: rotate(-14deg); }
-      84%        { transform: rotate(4deg); }
-      90%        { transform: rotate(0deg); }
-    }
-
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       .vn-story-grid {
         grid-template-columns: 1fr;
       }
-      .vn-gears-illustration svg {
-        max-width: 180px;
+      .vn-reveal {
+        grid-template-columns: 1fr;
       }
       .vn-puzzle-grid {
         grid-template-columns: 1fr 1fr;
@@ -673,7 +669,7 @@
 
         <p class="vn-hero__eyebrow">An Interactive Graphic Novel</p>
         <h1 class="vn-hero__title">Vandoras</h1>
-        <p class="vn-hero__sub">For twenty years, Van made things work.<br>Then a family lockbox recognized him.<br>Now everything else wants to.</p>
+        <p class="vn-hero__sub">For twenty years, Van made things work.<br>Then a peculiar lockbox recognized him.<br>Now everything else wants to.</p>
         <span class="vn-hero__badge">Coming Soon to iOS</span>
       </div>
     </section>
@@ -710,85 +706,28 @@
         <span class="label" style="display:block; margin-bottom: var(--space-sm);">The Story</span>
         <div class="vn-story-grid">
           <div class="vn-story-text">
-            <p>Van has made his living as a freelance tinkerer for twenty years. He's the person people call when a mechanism shouldn't work and needs to anyway. His reputation: unnaturally reliable. He always attributed it to skill.</p>
-            <p>When his father passed him an old family heirloom — a tarnished metal cube covered in geometric patterns — it sat on a shelf for years. Then one evening, the lockbox's tumblers responded differently under Van's hands. Springs compressed in ways that violated their apparent tension. The mechanism didn't surrender. It <em>recognized</em> him.</p>
-            <p>The box was empty. Because Van was the contents. Seven generations of latent power, compressed into a single instantaneous knowing — and now three factions who have been watching the Vandoras bloodline for exactly this event have come calling.</p>
-            <p>Van needs answers. The watchers want him classified. His power grows by engaging with the world's disorder. And standing still means letting unknown powers define his fate.</p>
+            <p>A craftsman in a pre-industrial city opens a fouled lock and something changes. Not the lock. Him.</p>
+            <p>Text-primary interactive graphic novel for iOS. Choice-driven narrative with puzzle interludes. Three tracks, three endings, one character whose gift will either serve the world or unmake part of it.</p>
+            <p>Cosmic order is not self-sustaining. It is maintained. Three factions want Van for different reasons — and only one of them is honest about what the work will cost him.</p>
+            <p>Sparse illustration, original score, synthesized voice narration. The game is the story, not the puzzles. Van's register is plain and precise, and so is the game's.</p>
           </div>
+          <div class="vn-teaser-img">
+            <img src="../assets/images/Vandoras_S1.jpg" alt="The Box on the Shelf — Vandoras">
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Lockbox illustration -->
-          <div class="vn-gears-illustration" aria-hidden="true">
-            <svg viewBox="0 0 200 215" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-              <!-- Box body (static) -->
-              <rect x="15" y="76" width="170" height="132" rx="3" stroke="#C9A84C" stroke-width="2.5"/>
-              <!-- Body inner bevel -->
-              <rect x="24" y="85" width="152" height="114" rx="2" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
-
-              <!-- Hinge plates (static, straddling lid/body join) -->
-              <rect x="48" y="68" width="18" height="10" rx="1.5" stroke="#C9A84C" stroke-width="1.5"/>
-              <rect x="134" y="68" width="18" height="10" rx="1.5" stroke="#C9A84C" stroke-width="1.5"/>
-
-              <!-- Lid group — strains upward, cannot open -->
-              <g style="animation: vn-lid-strain 7s ease-in-out infinite; transform-origin: 100px 54px;">
-                <rect x="15" y="38" width="170" height="32" rx="3" stroke="#C9A84C" stroke-width="2.5"/>
-                <!-- Lid inner bevel -->
-                <rect x="24" y="45" width="152" height="18" rx="2" stroke="#C9A84C" stroke-width="1" opacity="0.28"/>
-                <!-- Lid engraving lines -->
-                <line x1="38" y1="50" x2="162" y2="50" stroke="#C9A84C" stroke-width="1" opacity="0.2"/>
-                <line x1="38" y1="57" x2="162" y2="57" stroke="#C9A84C" stroke-width="1" opacity="0.2"/>
-                <!-- Latch bar (gold) — moves with lid -->
-                <rect x="76" y="63" width="48" height="9" rx="2" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
-                <line x1="100" y1="63" x2="100" y2="72" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
-              </g>
-
-              <!-- Corner bolts -->
-              <circle cx="33"  cy="91"  r="6" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
-              <circle cx="33"  cy="91"  r="2.5" fill="#C9A84C" opacity="0.55"/>
-              <circle cx="167" cy="91"  r="6" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
-              <circle cx="167" cy="91"  r="2.5" fill="#C9A84C" opacity="0.55"/>
-              <circle cx="33"  cy="197" r="6" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
-              <circle cx="33"  cy="197" r="2.5" fill="#C9A84C" opacity="0.55"/>
-              <circle cx="167" cy="197" r="6" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
-              <circle cx="167" cy="197" r="2.5" fill="#C9A84C" opacity="0.55"/>
-
-              <!-- Central lock — outer static ring -->
-              <circle cx="100" cy="150" r="38" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
-              <!-- 12 tick marks on outer ring (line from r=39 to r=34, rotated) -->
-              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(0,100,150)"/>
-              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(30,100,150)"/>
-              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(60,100,150)"/>
-              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(90,100,150)"/>
-              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(120,100,150)"/>
-              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(150,100,150)"/>
-              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(180,100,150)"/>
-              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(210,100,150)"/>
-              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(240,100,150)"/>
-              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(270,100,150)"/>
-              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(300,100,150)"/>
-              <line x1="100" y1="111" x2="100" y2="116" stroke="#C9A84C" stroke-width="1.5" opacity="0.45" transform="rotate(330,100,150)"/>
-
-              <!-- Rotating middle ring — strains/twitches, cannot turn -->
-              <g style="animation: vn-ring-strain 5.5s ease-in-out infinite 0.4s; transform-origin: 100px 150px;">
-                <circle cx="100" cy="150" r="27" stroke="#C9A84C" stroke-width="2"/>
-                <!-- 6 notch markers at ring edge -->
-                <rect x="97.5" y="122" width="5" height="5" rx="0.5" fill="#C9A84C" transform="rotate(0,100,150)"/>
-                <rect x="97.5" y="122" width="5" height="5" rx="0.5" fill="#C9A84C" transform="rotate(60,100,150)"/>
-                <rect x="97.5" y="122" width="5" height="5" rx="0.5" fill="#C9A84C" transform="rotate(120,100,150)"/>
-                <rect x="97.5" y="122" width="5" height="5" rx="0.5" fill="#C9A84C" transform="rotate(180,100,150)"/>
-                <rect x="97.5" y="122" width="5" height="5" rx="0.5" fill="#C9A84C" transform="rotate(240,100,150)"/>
-                <rect x="97.5" y="122" width="5" height="5" rx="0.5" fill="#C9A84C" transform="rotate(300,100,150)"/>
-              </g>
-
-              <!-- Inner fixed ring -->
-              <circle cx="100" cy="150" r="16" stroke="#C9A84C" stroke-width="1.5"/>
-
-              <!-- Keyhole -->
-              <circle cx="100" cy="146" r="5" stroke="#C9A84C" stroke-width="1.5" opacity="0.85"/>
-              <path d="M97 150 L97 158 Q97 161 100 161 Q103 161 103 158 L103 150 Z"
-                    stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round" fill="none" opacity="0.85"/>
-
-            </svg>
+    <!-- THE CHOICE -->
+    <section class="section" style="background-color: var(--charcoal);">
+      <div class="container on-dark">
+        <div class="vn-reveal">
+          <div class="vn-teaser-img">
+            <img src="../assets/images/Vandoras_U4.jpg" alt="The Column Shifts — Vandoras">
+          </div>
+          <div class="vn-reveal__text">
+            <p class="vn-reveal__choice">Keeper. Artisan. Unwinder.</p>
+            <p>One playthrough won't show you all of it.</p>
           </div>
         </div>
       </div>
