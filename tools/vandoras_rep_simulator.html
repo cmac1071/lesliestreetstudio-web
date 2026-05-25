@@ -147,6 +147,7 @@
   .step-badge.commit { background: var(--amber); color: var(--midnight); }
   .step-badge.puzzle { background: var(--cold-blue); color: var(--midnight); }
   .step-badge.axis { background: var(--violet); color: var(--fn-white); }
+  .step-badge.modifier { background: rgba(74,53,96,0.5); color: var(--fn-white); border: 1px solid var(--violet); }
   .step-chapter {
     font-size: 11px; font-family: monospace; color: var(--silver); opacity: 0.6;
   }
@@ -286,7 +287,7 @@
 <div class="header">
   <h1>VANDORAS</h1>
   <div class="sub">Rep Simulator &mdash; QA Tool (Bible-Sourced)</div>
-  <div class="warn">TICK VALUES ARE STATED ASSUMPTIONS &mdash; COMPARE AGAINST INK IMPLEMENTATION</div>
+  <div class="warn">TICK VALUES ARE BIBLE CANON (REP TICK CANON). INK IMPLEMENTATION MUST MATCH</div>
 </div>
 
 <div class="rep-panel" id="rep-panel">
@@ -304,9 +305,9 @@
     <div class="rep-bar-fill" id="rep-bar"></div>
   </div>
   <div class="rep-bar-labels">
-    <span>Concordance (neg)</span>
+    <span>Concordance (&minus;7)</span>
     <span>Ledger (0)</span>
-    <span>Unwinding (pos)</span>
+    <span>Unwinding (+9)</span>
   </div>
   <div class="history-toggle" id="history-toggle" onclick="toggleHistory()">show history &#9656;</div>
   <div class="history-log" id="history-log"></div>
@@ -349,16 +350,17 @@
 </div>
 
 <div class="assumptions">
-  <div class="assumptions-title">ASSUMED TICK VALUES (for reconciliation against Ink)</div>
+  <div class="assumptions-title">BIBLE TICK VALUES (Rep Tick Canon)</div>
   <table class="assumptions-table">
     <tr><th>CHOICE</th><th>CONCORDANCE</th><th>LEDGER</th><th>UNWINDING</th><th>SOURCE</th></tr>
-    <tr><td>RC1 (Ch 2)</td><td>-1</td><td>0</td><td>+1</td><td class="src">assumed</td></tr>
+    <tr><td>RC1 (Ch 2)</td><td>-1</td><td>0</td><td>+1</td><td class="src">bible (Rep Tick Canon)</td></tr>
     <tr><td>Ch 3 Track Setup</td><td>-2</td><td>0</td><td>+2</td><td class="src">bible (explicit)</td></tr>
-    <tr><td>RC2 (Ch 4)</td><td>-1</td><td>0</td><td>+1</td><td class="src">assumed</td></tr>
-    <tr><td>RC3 (Ch 5)</td><td>-1</td><td>0</td><td>+1</td><td class="src">assumed</td></tr>
-    <tr><td>RC4 (Ch 6)</td><td>n/a</td><td>+1</td><td>+1</td><td class="src">assumed (no Concordance option)</td></tr>
-    <tr><td>P7 Config (Ch 7)</td><td>-1</td><td>0</td><td>+1</td><td class="src">assumed ("small tick")</td></tr>
-    <tr><td>RC5 (Ch 7)</td><td>-1</td><td>0</td><td>+1</td><td class="src">assumed</td></tr>
+    <tr><td>E3 (Ch 4 solo arrival)</td><td>n/a</td><td>n/a</td><td>+1</td><td class="src">bible (Rep Tick Canon)</td></tr>
+    <tr><td>RC2 (Ch 4)</td><td>-1</td><td>0</td><td>+1</td><td class="src">bible (Rep Tick Canon)</td></tr>
+    <tr><td>RC3 (Ch 5)</td><td>-1</td><td>0</td><td>+1</td><td class="src">bible (Rep Tick Canon)</td></tr>
+    <tr><td>RC4 (Ch 6)</td><td>n/a</td><td>+1</td><td>+1</td><td class="src">bible (Rep Tick Canon)</td></tr>
+    <tr><td>P7 Config (Ch 7)</td><td>-1</td><td>0</td><td>+1</td><td class="src">bible (Rep Tick Canon)</td></tr>
+    <tr><td>RC5 (Ch 7)</td><td>-1</td><td>0</td><td>+1</td><td class="src">bible (Rep Tick Canon)</td></tr>
   </table>
 </div>
 
@@ -382,9 +384,9 @@ const sharedSteps = [
     id: "rc1", badge: "RC1", badgeType: "reputation", chapter: "Ch 2", title: "The Ripple",
     desc: "Van's response to Orvane's death. How does Van interpret his role in the outcome?",
     options: [
-      { text: "Accept responsibility", faction: "concordance", tick: -1, effect: "rep -= 1", src: "assumed" },
-      { text: "Reject premise", faction: "ledger", tick: 0, effect: "rep unchanged", src: "assumed" },
-      { text: "Question the system", faction: "unwinding", tick: 1, effect: "rep += 1", src: "assumed" },
+      { text: "Accept responsibility", faction: "concordance", tick: -1, effect: "rep -= 1", src: "bible" },
+      { text: "Reject premise", faction: "ledger", tick: 0, effect: "rep unchanged", src: "bible" },
+      { text: "Question the system", faction: "unwinding", tick: 1, effect: "rep += 1", src: "bible" },
     ]
   },
   {
@@ -397,51 +399,60 @@ const sharedSteps = [
     ]
   },
   {
+    id: "e3_solo", badge: "E3", badgeType: "modifier", chapter: "Ch 4", title: "Solo Arrival",
+    desc: "Solo arrival modifier. Tick fires only when chosen_track == 'unwinding'.",
+    conditionalTrack: "unwinding",
+    options: [
+      { text: "File the observation and go inside", faction: "neutral", tick: 0, effect: "rep unchanged", src: "bible" },
+      { text: "Look directly at the observer", faction: "unwinding", tick: 1, effect: "rep += 1 (unwinding only)", src: "bible" },
+    ]
+  },
+  {
     id: "act2-div", type: "divider", label: "ACT 2", sub: "Pre-commit. Choices tune rep but do not gate endings."
   },
   {
     id: "rc2", badge: "RC2", badgeType: "reputation", chapter: "Ch 4", title: "Greyvein Deeps",
     desc: "How Van presents findings about the failing mine to Deya Korsh.",
     options: [
-      { text: "Withhold depth anomaly, recommend sealing", faction: "concordance", tick: -1, effect: "rep -= 1", src: "assumed" },
-      { text: "Full report, propose shoring", faction: "ledger", tick: 0, effect: "rep unchanged", src: "assumed" },
-      { text: "Tell truth: mine should be abandoned", faction: "unwinding", tick: 1, effect: "rep += 1", src: "assumed" },
+      { text: "Withhold depth anomaly, recommend sealing", faction: "concordance", tick: -1, effect: "rep -= 1", src: "bible" },
+      { text: "Full report, propose shoring", faction: "ledger", tick: 0, effect: "rep unchanged", src: "bible" },
+      { text: "Tell truth: mine should be abandoned", faction: "unwinding", tick: 1, effect: "rep += 1", src: "bible" },
     ]
   },
   {
     id: "rc3", badge: "RC3", badgeType: "reputation", chapter: "Ch 5", title: "Anmere",
     desc: "Response to Sethen's revelation about seven-generation quarantine of Vandoras line.",
     options: [
-      { text: "Accept why they did it", faction: "concordance", tick: -1, effect: "rep -= 1", src: "assumed" },
-      { text: "Understand but don't accept authority", faction: "ledger", tick: 0, effect: "rep unchanged", src: "assumed" },
-      { text: "You murdered my ancestors", faction: "unwinding", tick: 1, effect: "rep += 1", src: "assumed" },
+      { text: "Accept why they did it", faction: "concordance", tick: -1, effect: "rep -= 1", src: "bible" },
+      { text: "Understand but don't accept authority", faction: "ledger", tick: 0, effect: "rep unchanged", src: "bible" },
+      { text: "You murdered my ancestors", faction: "unwinding", tick: 1, effect: "rep += 1", src: "bible" },
     ]
   },
   {
     id: "rc4", badge: "RC4", badgeType: "reputation", chapter: "Ch 6", title: "Keep Vordun",
     desc: "After siege repairs. Castian offers sabotage; Kel leaves a diagram about derivative works.",
     options: [
-      { text: "Accept Ledger sabotage offer", faction: "ledger", tick: 1, effect: "rep += 1 (Ledger tilt)", src: "assumed" },
-      { text: "Refuse both", faction: "neutral", tick: 0, effect: "rep unchanged", src: "assumed" },
-      { text: "Pursue Kel's question", faction: "unwinding", tick: 1, effect: "rep += 1", src: "assumed" },
+      { text: "Accept Ledger sabotage offer", faction: "ledger", tick: 1, effect: "rep += 1 (Ledger tilt)", src: "bible" },
+      { text: "Refuse both", faction: "neutral", tick: 0, effect: "rep unchanged", src: "bible" },
+      { text: "Pursue Kel's question", faction: "unwinding", tick: 1, effect: "rep += 1", src: "bible" },
     ]
   },
   {
     id: "p7", badge: "P7 Config", badgeType: "puzzle", chapter: "Ch 7", title: "The Pinfold",
-    desc: "Summit glyph-frame: 9 glyphs, 3 valid configs. Bible says \"small\" reputation tick.",
+    desc: "Summit glyph-frame: 9 glyphs, 3 valid configs. Small reputation tick on chosen configuration.",
     options: [
-      { text: "Concordance-privileging config", faction: "concordance", tick: -1, effect: "rep -= 1", src: "assumed (\"small\")" },
-      { text: "Ledger-privileging config", faction: "ledger", tick: 0, effect: "rep unchanged", src: "assumed" },
-      { text: "Unwinding-privileging config", faction: "unwinding", tick: 1, effect: "rep += 1", src: "assumed (\"small\")" },
+      { text: "Concordance-privileging config", faction: "concordance", tick: -1, effect: "rep -= 1", src: "bible" },
+      { text: "Ledger-privileging config", faction: "ledger", tick: 0, effect: "rep unchanged", src: "bible" },
+      { text: "Unwinding-privileging config", faction: "unwinding", tick: 1, effect: "rep += 1", src: "bible" },
     ]
   },
   {
     id: "rc5", badge: "RC5", badgeType: "reputation", chapter: "Ch 7", title: "The Pinfold",
     desc: "Sethen privately asks if Van has spoken with Kel.",
     options: [
-      { text: "Full disclosure", faction: "concordance", tick: -1, effect: "rep -= 1", src: "assumed" },
-      { text: "Partial, framed as due diligence", faction: "ledger", tick: 0, effect: "rep unchanged", src: "assumed" },
-      { text: "Refuse to discuss", faction: "unwinding", tick: 1, effect: "rep += 1", src: "assumed" },
+      { text: "Full disclosure", faction: "concordance", tick: -1, effect: "rep -= 1", src: "bible" },
+      { text: "Partial, framed as due diligence", faction: "ledger", tick: 0, effect: "rep unchanged", src: "bible" },
+      { text: "Refuse to discuss", faction: "unwinding", tick: 1, effect: "rep += 1", src: "bible" },
     ]
   },
   {
@@ -543,7 +554,12 @@ const endings = {
 let allSteps = [];
 
 function buildAllSteps() {
-  allSteps = [...sharedSteps];
+  // Filter steps with a conditionalTrack requirement not yet met.
+  // e3_solo only appears when chosenTrack == "unwinding".
+  const shared = sharedSteps.filter(s =>
+    !s.conditionalTrack || s.conditionalTrack === chosenTrack
+  );
+  allSteps = [...shared];
   if (chosenTrack && act3Steps[chosenTrack]) {
     allSteps = allSteps.concat(act3Steps[chosenTrack]);
   }
