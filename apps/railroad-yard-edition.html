@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Railroad! Yard Edition — Official Rulebook — Leslie Street Studio</title>
-  <meta name="description" content="Official rules for Railroad! Yard Edition — a solitaire card game of strategy and sequencing played with a standard 52-card deck. Published by Leslie Street Studio LLC, 2026.">
+  <title>Railroad! Yard Solitaire — Official Rulebook — Leslie Street Studio</title>
+  <meta name="description" content="Official rules for Railroad! Yard Solitaire — a solitaire card game of strategy and sequencing played with a standard 52-card deck. Published by Leslie Street Studio LLC, 2026.">
   <link rel="canonical" href="https://lesliestreetstudio.com/apps/railroad-yard-edition.html">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
@@ -107,9 +107,9 @@
       color: var(--charcoal);
     }
 
-    /* ── Card figures ───────────────────────────── */
+    /* ── Card figures — charcoal bg ─────────────── */
     .card-figure {
-      background-color: var(--mint);
+      background-color: var(--charcoal);
       border-radius: 8px;
       padding: var(--space-sm) var(--space-md);
       margin: var(--space-md) 0;
@@ -121,13 +121,14 @@
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--stone);
+      color: var(--sage);
       margin-bottom: var(--space-xs);
     }
     .card-figure__caption {
       margin-top: var(--space-xs);
       font-size: var(--size-secondary);
-      color: var(--stone);
+      color: var(--parchment);
+      opacity: 0.6;
       font-style: italic;
     }
 
@@ -135,19 +136,20 @@
     .card-row {
       display: flex;
       align-items: flex-end;
-      gap: 5px;
+      gap: 6px;
       flex-wrap: nowrap;
       padding: var(--space-xs) 0;
       overflow-x: auto;
     }
     .card-row--empty {
       align-items: center;
-      min-height: 70px;
+      min-height: 105px;
     }
     .empty-line {
       font-family: var(--font-body);
       font-size: var(--size-secondary);
-      color: var(--stone);
+      color: var(--parchment);
+      opacity: 0.6;
       font-style: italic;
     }
     .card-slot {
@@ -158,18 +160,15 @@
       align-items: center;
     }
     .card-slot--dimmed svg {
-      opacity: 0.2;
-    }
-    .card-slot--discarded svg {
-      opacity: 0.15;
+      opacity: 0.18;
     }
     .card-pos-label {
       font-family: var(--font-body);
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
-      color: var(--forest);
-      letter-spacing: 0.05em;
-      margin-bottom: 3px;
+      color: var(--sage);
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
       text-align: center;
       white-space: nowrap;
     }
@@ -182,14 +181,15 @@
       flex-wrap: wrap;
     }
     .match-demo__arrow {
-      font-size: 24px;
-      color: var(--stone);
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
     }
     .match-demo__label {
       font-family: var(--font-body);
       font-size: var(--size-secondary);
-      color: var(--stone);
+      color: var(--parchment);
+      opacity: 0.75;
       margin-bottom: 4px;
     }
 
@@ -197,44 +197,51 @@
     .cascade-steps {
       display: flex;
       flex-direction: column;
-      gap: var(--space-sm);
+      gap: var(--space-xs);
     }
     .cascade-step {
       display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 4px;
+      padding: var(--space-xs) 0;
     }
     .cascade-step-num {
       font-family: var(--font-body);
       font-size: var(--size-secondary);
       font-weight: 600;
-      color: var(--forest);
-      min-width: 60px;
-      flex-shrink: 0;
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .cascade-sublabel {
+      font-family: var(--font-body);
+      font-size: var(--size-secondary);
+      color: var(--parchment);
+      opacity: 0.7;
+      margin-bottom: 2px;
     }
     .cascade-match-tag {
+      display: inline-block;
       font-family: var(--font-body);
       font-size: var(--size-label);
       font-weight: 500;
       letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 3px 8px;
+      padding: 3px 9px;
       border-radius: 3px;
-      white-space: nowrap;
+      margin-top: 4px;
     }
     .cascade-match-tag--suit {
-      background-color: rgba(45,106,79,0.12);
-      color: var(--mid-green);
+      background-color: rgba(149,213,178,0.15);
+      color: var(--sage);
     }
     .cascade-match-tag--rank {
       background-color: rgba(201,168,76,0.15);
-      color: #7a6122;
+      color: var(--gold);
     }
     .cascade-divider {
       height: 1px;
-      background-color: var(--parchment);
-      margin: 4px 0;
+      background-color: rgba(255,255,255,0.08);
+      margin: 2px 0;
     }
 
     /* ── Quick Reference table ──────────────────── */
@@ -253,7 +260,7 @@
       color: var(--stone);
       padding: 8px 12px;
       text-align: left;
-      border-bottom: 2px solid var(--parchment);
+      border-bottom: 2px solid #e2ddd2;
       background-color: var(--mint);
     }
     .qr-table td {
@@ -300,14 +307,13 @@
     }
 
     /* Responsive */
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .match-demo {
         flex-direction: column;
         align-items: flex-start;
       }
-      .cascade-step {
-        flex-direction: column;
-        align-items: flex-start;
+      .match-demo__arrow svg {
+        transform: rotate(90deg);
       }
     }
   </style>
@@ -346,7 +352,7 @@
     <section class="rye-hero">
       <div class="container">
         <span class="rye-hero__eyebrow">Official Rulebook</span>
-        <h1 class="rye-hero__title">Railroad! Yard Edition</h1>
+        <h1 class="rye-hero__title">Railroad! Yard Solitaire</h1>
         <p class="rye-hero__subtitle">A Solitaire Card Game of Strategy and Sequencing</p>
         <hr class="gold-rule gold-rule--narrow">
         <div class="rye-hero__meta">
@@ -366,7 +372,7 @@
           <!-- Welcome -->
           <h2>Welcome to the Yard</h2>
           <p>You are a yardmaster in a busy classification yard. Cars are lined up on four sidings, waiting to be pulled onto the main line. The order in which you pull them is up to you. Match cars by color or denomination as they couple together, and you'll clear the yard. Choose poorly, and cars will pile up.</p>
-          <p>Railroad! Yard Edition is a single-player card game played with a standard 52-card deck. It rewards careful thinking, pattern recognition, and a willingness to plan several moves ahead.</p>
+          <p>Railroad! Yard Solitaire is a single-player card game played with a standard 52-card deck. It rewards careful thinking, pattern recognition, and a willingness to plan several moves ahead.</p>
 
           <hr class="gold-rule" style="margin: var(--space-md) 0; opacity: 0.3;">
 
@@ -392,120 +398,103 @@
 
           <div class="card-figure">
             <div class="card-figure__title">Figure 1 — Board Setup</div>
-            <svg width="560" height="430" viewBox="0 0 560 430" xmlns="http://www.w3.org/2000/svg">
-<rect width="560" height="430" rx="8" fill="#D8F3DC"/>
-<text x="12" y="20" font-family="DM Sans,sans-serif" font-size="11" font-weight="500" letter-spacing="0.08em" fill="#3A3835">MAIN LINE</text>
-<text x="106" y="20" font-family="DM Sans,sans-serif" font-size="10" fill="#6B7280">(initially empty — fills left to right as you play)</text>
-<rect x="12" y="28" width="38" height="53" rx="3" fill="none" stroke="#1B4332" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
-<rect x="54" y="28" width="38" height="53" rx="3" fill="none" stroke="#1B4332" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
-<rect x="96" y="28" width="38" height="53" rx="3" fill="none" stroke="#1B4332" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
-<rect x="138" y="28" width="38" height="53" rx="3" fill="none" stroke="#1B4332" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
-<rect x="180" y="28" width="38" height="53" rx="3" fill="none" stroke="#1B4332" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
-<rect x="222" y="28" width="38" height="53" rx="3" fill="none" stroke="#1B4332" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
-<rect x="264" y="28" width="38" height="53" rx="3" fill="none" stroke="#1B4332" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
-<rect x="306" y="28" width="38" height="53" rx="3" fill="none" stroke="#1B4332" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
-<rect x="348" y="28" width="38" height="53" rx="3" fill="none" stroke="#1B4332" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
-<rect x="390" y="28" width="38" height="53" rx="3" fill="none" stroke="#1B4332" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
-<rect x="432" y="28" width="38" height="53" rx="3" fill="none" stroke="#1B4332" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
-<rect x="474" y="28" width="38" height="53" rx="3" fill="none" stroke="#1B4332" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
-<rect x="516" y="28" width="38" height="53" rx="3" fill="none" stroke="#1B4332" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
-<line x1="12" y1="98" x2="548" y2="98" stroke="#C9A84C" stroke-width="0.6" opacity="0.5"/>
-<text x="12" y="116" font-family="DM Sans,sans-serif" font-size="11" font-weight="500" letter-spacing="0.08em" fill="#3A3835">YARD</text>
-<text x="54" y="116" font-family="DM Sans,sans-serif" font-size="10" fill="#6B7280">(four sidings, each holding 13 cards — all face-down except the rightmost)</text>
-<text x="12" y="156" font-family="DM Sans,sans-serif" font-size="11" font-weight="500" fill="#3A3835">Siding 1</text>
-<rect x="82" y="126" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="92" y="126" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="102" y="126" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="112" y="126" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="122" y="126" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="132" y="126" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="142" y="126" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="152" y="126" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="162" y="126" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="164" y="128" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="172" y="126" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="174" y="128" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="182" y="126" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="184" y="128" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="192" y="126" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="194" y="128" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="238" y="126" width="38" height="53" rx="3" fill="white" stroke="#ccc" stroke-width="1.5"/>
-<text x="241" y="136" font-family="DM Sans,sans-serif" font-size="8" font-weight="700" fill="#CC2200">7</text>
-<text x="241" y="145" font-family="DM Sans,sans-serif" font-size="8" fill="#CC2200">♥</text>
-<text x="257" y="156" font-family="DM Sans,sans-serif" font-size="17" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text>
-<g transform="rotate(180,257,152)"><text x="241" y="136" font-family="DM Sans,sans-serif" font-size="8" font-weight="700" fill="#CC2200">7</text><text x="241" y="145" font-family="DM Sans,sans-serif" font-size="8" fill="#CC2200">♥</text></g>
-<text x="284" y="156" font-family="DM Sans,sans-serif" font-size="10" fill="#1B4332" font-style="italic">← head (face up)</text>
-<text x="12" y="226" font-family="DM Sans,sans-serif" font-size="11" font-weight="500" fill="#3A3835">Siding 2</text>
-<rect x="82" y="196" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="92" y="196" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="102" y="196" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="112" y="196" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="122" y="196" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="132" y="196" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="142" y="196" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="152" y="196" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="162" y="196" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="164" y="198" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="172" y="196" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="174" y="198" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="182" y="196" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="184" y="198" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="192" y="196" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="194" y="198" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="238" y="196" width="38" height="53" rx="3" fill="white" stroke="#ccc" stroke-width="1.5"/>
-<text x="241" y="206" font-family="DM Sans,sans-serif" font-size="8" font-weight="700" fill="#1a1a1a">3</text>
-<text x="241" y="215" font-family="DM Sans,sans-serif" font-size="8" fill="#1a1a1a">♣</text>
-<text x="257" y="226" font-family="DM Sans,sans-serif" font-size="17" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text>
-<g transform="rotate(180,257,222)"><text x="241" y="206" font-family="DM Sans,sans-serif" font-size="8" font-weight="700" fill="#1a1a1a">3</text><text x="241" y="215" font-family="DM Sans,sans-serif" font-size="8" fill="#1a1a1a">♣</text></g>
-<text x="284" y="226" font-family="DM Sans,sans-serif" font-size="10" fill="#1B4332" font-style="italic">← head (face up)</text>
-<text x="12" y="296" font-family="DM Sans,sans-serif" font-size="11" font-weight="500" fill="#3A3835">Siding 3</text>
-<rect x="82" y="266" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="92" y="266" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="102" y="266" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="112" y="266" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="122" y="266" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="132" y="266" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="142" y="266" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="152" y="266" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="162" y="266" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="164" y="268" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="172" y="266" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="174" y="268" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="182" y="266" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="184" y="268" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="192" y="266" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="194" y="268" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="238" y="266" width="38" height="53" rx="3" fill="white" stroke="#ccc" stroke-width="1.5"/>
-<text x="241" y="276" font-family="DM Sans,sans-serif" font-size="8" font-weight="700" fill="#1a1a1a">9</text>
-<text x="241" y="285" font-family="DM Sans,sans-serif" font-size="8" fill="#1a1a1a">♠</text>
-<text x="257" y="296" font-family="DM Sans,sans-serif" font-size="17" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text>
-<g transform="rotate(180,257,292)"><text x="241" y="276" font-family="DM Sans,sans-serif" font-size="8" font-weight="700" fill="#1a1a1a">9</text><text x="241" y="285" font-family="DM Sans,sans-serif" font-size="8" fill="#1a1a1a">♠</text></g>
-<text x="284" y="296" font-family="DM Sans,sans-serif" font-size="10" fill="#1B4332" font-style="italic">← head (face up)</text>
-<text x="12" y="366" font-family="DM Sans,sans-serif" font-size="11" font-weight="500" fill="#3A3835">Siding 4</text>
-<rect x="82" y="336" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="92" y="336" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="102" y="336" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="112" y="336" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="122" y="336" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="132" y="336" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="142" y="336" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="152" y="336" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="162" y="336" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="164" y="338" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="172" y="336" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="174" y="338" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="182" y="336" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="184" y="338" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="192" y="336" width="38" height="53" rx="3" fill="#1B4332" stroke="#0f2e1f" stroke-width="1"/>
-<rect x="194" y="338" width="34" height="49" rx="2" fill="none" stroke="#95D5B2" stroke-width="0.6" opacity="0.35"/>
-<rect x="238" y="336" width="38" height="53" rx="3" fill="white" stroke="#ccc" stroke-width="1.5"/>
-<text x="241" y="346" font-family="DM Sans,sans-serif" font-size="8" font-weight="700" fill="#CC2200">J</text>
-<text x="241" y="355" font-family="DM Sans,sans-serif" font-size="8" fill="#CC2200">♥</text>
-<text x="257" y="366" font-family="DM Sans,sans-serif" font-size="17" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text>
-<g transform="rotate(180,257,362)"><text x="241" y="346" font-family="DM Sans,sans-serif" font-size="8" font-weight="700" fill="#CC2200">J</text><text x="241" y="355" font-family="DM Sans,sans-serif" font-size="8" fill="#CC2200">♥</text></g>
-<text x="284" y="366" font-family="DM Sans,sans-serif" font-size="10" fill="#1B4332" font-style="italic">← head (face up)</text>
+            <svg width="660" height="480" viewBox="0 0 660 480" xmlns="http://www.w3.org/2000/svg">
+<text x="12" y="20" font-family="DM Sans,sans-serif" font-size="11" font-weight="500" letter-spacing="0.08em" fill="#DDD5C4">MAIN LINE</text>
+<text x="114" y="20" font-family="DM Sans,sans-serif" font-size="10" fill="#95D5B2" opacity="0.8">(initially empty — fills left to right as you play)</text>
+<rect x="12" y="28" width="44" height="62" rx="3" fill="none" stroke="#DDD5C4" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+<rect x="60" y="28" width="44" height="62" rx="3" fill="none" stroke="#DDD5C4" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+<rect x="108" y="28" width="44" height="62" rx="3" fill="none" stroke="#DDD5C4" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+<rect x="156" y="28" width="44" height="62" rx="3" fill="none" stroke="#DDD5C4" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+<rect x="204" y="28" width="44" height="62" rx="3" fill="none" stroke="#DDD5C4" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+<rect x="252" y="28" width="44" height="62" rx="3" fill="none" stroke="#DDD5C4" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+<rect x="300" y="28" width="44" height="62" rx="3" fill="none" stroke="#DDD5C4" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+<rect x="348" y="28" width="44" height="62" rx="3" fill="none" stroke="#DDD5C4" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+<rect x="396" y="28" width="44" height="62" rx="3" fill="none" stroke="#DDD5C4" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+<rect x="444" y="28" width="44" height="62" rx="3" fill="none" stroke="#DDD5C4" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+<rect x="492" y="28" width="44" height="62" rx="3" fill="none" stroke="#DDD5C4" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+<rect x="540" y="28" width="44" height="62" rx="3" fill="none" stroke="#DDD5C4" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+<rect x="588" y="28" width="44" height="62" rx="3" fill="none" stroke="#DDD5C4" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+<line x1="12" y1="106" x2="648" y2="106" stroke="#C9A84C" stroke-width="0.6" opacity="0.5"/>
+<text x="12" y="124" font-family="DM Sans,sans-serif" font-size="11" font-weight="500" letter-spacing="0.08em" fill="#DDD5C4">YARD</text>
+<text x="54" y="124" font-family="DM Sans,sans-serif" font-size="10" fill="#95D5B2" opacity="0.8">(four sidings — 13 cards each, all face-down except the rightmost)</text>
+<text x="12" y="169" font-family="DM Sans,sans-serif" font-size="11" font-weight="500" fill="#DDD5C4">Siding 1</text>
+<rect x="90" y="134" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="100" y="134" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="110" y="134" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="120" y="134" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="130" y="134" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="140" y="134" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="150" y="134" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="160" y="134" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="170" y="134" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="180" y="134" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="190" y="134" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="200" y="134" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="210" y="134" width="44" height="62" rx="3" fill="white" stroke="#bbb" stroke-width="1.5"/>
+<text x="213" y="145" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">7</text>
+<text x="213" y="155" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text>
+<text x="232" y="167" font-family="DM Sans,sans-serif" font-size="20" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text>
+<g transform="rotate(180,232,165)"><text x="213" y="145" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">7</text><text x="213" y="155" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g>
+<text x="262" y="169" font-family="DM Sans,sans-serif" font-size="10" fill="#95D5B2" font-style="italic">← head (face up)</text>
+<text x="12" y="249" font-family="DM Sans,sans-serif" font-size="11" font-weight="500" fill="#DDD5C4">Siding 2</text>
+<rect x="90" y="214" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="100" y="214" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="110" y="214" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="120" y="214" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="130" y="214" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="140" y="214" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="150" y="214" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="160" y="214" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="170" y="214" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="180" y="214" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="190" y="214" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="200" y="214" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="210" y="214" width="44" height="62" rx="3" fill="white" stroke="#bbb" stroke-width="1.5"/>
+<text x="213" y="225" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">3</text>
+<text x="213" y="235" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text>
+<text x="232" y="247" font-family="DM Sans,sans-serif" font-size="20" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text>
+<g transform="rotate(180,232,245)"><text x="213" y="225" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">3</text><text x="213" y="235" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text></g>
+<text x="262" y="249" font-family="DM Sans,sans-serif" font-size="10" fill="#95D5B2" font-style="italic">← head (face up)</text>
+<text x="12" y="329" font-family="DM Sans,sans-serif" font-size="11" font-weight="500" fill="#DDD5C4">Siding 3</text>
+<rect x="90" y="294" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="100" y="294" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="110" y="294" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="120" y="294" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="130" y="294" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="140" y="294" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="150" y="294" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="160" y="294" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="170" y="294" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="180" y="294" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="190" y="294" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="200" y="294" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="210" y="294" width="44" height="62" rx="3" fill="white" stroke="#bbb" stroke-width="1.5"/>
+<text x="213" y="305" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">9</text>
+<text x="213" y="315" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text>
+<text x="232" y="327" font-family="DM Sans,sans-serif" font-size="20" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text>
+<g transform="rotate(180,232,325)"><text x="213" y="305" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">9</text><text x="213" y="315" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text></g>
+<text x="262" y="329" font-family="DM Sans,sans-serif" font-size="10" fill="#95D5B2" font-style="italic">← head (face up)</text>
+<text x="12" y="409" font-family="DM Sans,sans-serif" font-size="11" font-weight="500" fill="#DDD5C4">Siding 4</text>
+<rect x="90" y="374" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="100" y="374" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="110" y="374" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="120" y="374" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="130" y="374" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="140" y="374" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="150" y="374" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="160" y="374" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="170" y="374" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="180" y="374" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="190" y="374" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="200" y="374" width="44" height="62" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+<rect x="210" y="374" width="44" height="62" rx="3" fill="white" stroke="#bbb" stroke-width="1.5"/>
+<text x="213" y="385" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">J</text>
+<text x="213" y="395" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text>
+<text x="232" y="407" font-family="DM Sans,sans-serif" font-size="20" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text>
+<g transform="rotate(180,232,405)"><text x="213" y="385" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">J</text><text x="213" y="395" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g>
+<text x="262" y="409" font-family="DM Sans,sans-serif" font-size="10" fill="#95D5B2" font-style="italic">← head (face up)</text>
 </svg>
-            <p class="card-figure__caption">The main line starts empty. Each siding holds 13 cards with the rightmost (the head) dealt face-up. The buried cards are revealed one at a time as the cards in front of them are pulled.</p>
+            <p class="card-figure__caption">The main line starts empty. Each siding holds 13 cards with the rightmost (the head) dealt face-up. Buried cards are revealed one at a time as the cards in front of them are pulled.</p>
           </div>
 
           <p>The right end of each siding is the head. This is the only card you may pull from that siding on any given turn. When you pull a head, the card immediately to its left is flipped face-up and becomes the new head. You see each card for the first time at the moment it becomes a head.</p>
@@ -514,7 +503,7 @@
 
           <!-- Setup -->
           <h2>Setup</h2>
-          <p>Thoroughly shuffle the deck and deal the cards round-robin: one card to Siding 1, one to Siding 2, one to Siding 3, one to Siding 4, then back to Siding 1, and continue until the deck is exhausted. Each siding will receive thirteen cards. Slightly overlap all dealt cards within each siding, left to right.</p>
+          <p>Thoroughly shuffle the deck and deal the cards round-robin: one card to Siding 1, one to Siding 2, one to Siding 3, one to Siding 4, then back to Siding 1, and continue until the deck is exhausted. Each siding receives thirteen cards. Slightly overlap all dealt cards within each siding, left to right.</p>
           <p>Deal all cards face-down except the very last card dealt to each siding (the thirteenth), which is turned face-up to become that siding's head. When dealing is complete, your yard should look like Figure 1 above.</p>
 
           <hr class="gold-rule" style="margin: var(--space-md) 0; opacity: 0.3;">
@@ -526,10 +515,10 @@
             <p>Choose any head card and pull it onto the right end of the main line.</p>
           </div>
           <p>After you place a card on the main line, you must check for matches. If matches occur, cards are removed from the main line and placed into the discard pile, and you must check again. When all matches have resolved, your turn ends and you take another turn.</p>
-          <p>The game ends when all four sidings are empty — meaning all 52 cards have been pulled and placed onto the main line.</p>
+          <p>The game ends when all four sidings are empty — meaning all 52 cards have been pulled onto the main line.</p>
 
           <h3>Pulling a Head Card</h3>
-          <p>Take the face-up card from any siding of your choice and place it at the right end of the main line. Then flip up the next card to its left in that siding — this is the new head. You may pull from any non-empty siding. You are not required to pull from the same siding twice in a row, and you are not required to alternate. The choice is entirely yours each turn.</p>
+          <p>Take the face-up card from any siding of your choice and place it at the right end of the main line. Then flip up the next card to its left in that siding — this is the new head. You may pull from any non-empty siding, in any order you choose.</p>
 
           <hr class="gold-rule" style="margin: var(--space-md) 0; opacity: 0.3;">
 
@@ -546,12 +535,18 @@
             <div class="match-demo">
               <div>
                 <div class="match-demo__label">Before — 7♥ and J♥ share the heart suit:</div>
-                <div class="card-row"><div class="card-slot"><div class="card-pos-label">N−3</div><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">7</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">7</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div><div class="card-slot"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">3</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">3</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text></g></svg></div><div class="card-slot"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N</div><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">J</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">J</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div></div>
+                <div class="card-row"><div class="card-slot"><div class="card-pos-label">N−3</div><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">7</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">7</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">3</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">3</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text></g></svg></div><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N</div><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">J</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">J</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div></div>
               </div>
-              <div class="match-demo__arrow">→</div>
+              <div class="match-demo__arrow">
+  <svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+    <line x1="6" y1="28" x2="42" y2="28" stroke="#DDD5C4" stroke-width="4" stroke-linecap="round"/>
+    <polyline points="32,16 46,28 32,40" fill="none" stroke="#DDD5C4" stroke-width="4"
+              stroke-linejoin="round" stroke-linecap="round"/>
+  </svg>
+</div>
               <div>
                 <div class="match-demo__label">After — 3♣ and 9♠ discarded:</div>
-                <div class="card-row"><div class="card-slot"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">7</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">7</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div><div class="card-slot"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">J</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">J</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div></div>
+                <div class="card-row"><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">7</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">7</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">J</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">J</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div></div>
               </div>
             </div>
             <p class="card-figure__caption">A suit match removes the two middle cards. The matching pair (7♥ and J♥) stays on the main line and may participate in a future match.</p>
@@ -565,15 +560,21 @@
             <div class="match-demo">
               <div>
                 <div class="match-demo__label">Before — K♠ and K♦ share the King rank:</div>
-                <div class="card-row"><div class="card-slot"><div class="card-pos-label">N−3</div><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">K</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">K</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">3</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">3</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text></g></svg></div><div class="card-slot"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N</div><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">K</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♦</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♦</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">K</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♦</text></g></svg></div></div>
+                <div class="card-row"><div class="card-slot"><div class="card-pos-label">N−3</div><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">K</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">K</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">3</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">3</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text></g></svg></div><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N</div><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">K</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♦</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♦</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">K</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♦</text></g></svg></div></div>
               </div>
-              <div class="match-demo__arrow">→</div>
+              <div class="match-demo__arrow">
+  <svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+    <line x1="6" y1="28" x2="42" y2="28" stroke="#DDD5C4" stroke-width="4" stroke-linecap="round"/>
+    <polyline points="32,16 46,28 32,40" fill="none" stroke="#DDD5C4" stroke-width="4"
+              stroke-linejoin="round" stroke-linecap="round"/>
+  </svg>
+</div>
               <div>
                 <div class="match-demo__label">After — all four discarded:</div>
                 <div class="card-row card-row--empty"><span class="empty-line">(all four discarded)</span></div>
               </div>
             </div>
-            <p class="card-figure__caption">A rank match removes all four cards, clearing more ground than a suit match. When a rank match is available, it is almost always worth taking.</p>
+            <p class="card-figure__caption">A rank match removes all four cards. When a rank match is available, it is almost always worth taking.</p>
           </div>
 
           <h3>No Match</h3>
@@ -585,62 +586,28 @@
           <h2>Cascading</h2>
           <p>After a match, the main line shrinks. The discarded cards are removed, and the remaining cards stay in their relative positions. This is called <em>compression</em>.</p>
           <p>After every discard, the N and N−3 positions are now occupied by different cards. You must check for a match again. If those new cards also match, more are discarded and the check repeats. This chain of matches is called a <strong>cascade</strong>, and it can continue for several iterations.</p>
-          <p>You keep checking and discarding until either:</p>
-          <ul>
-            <li>The main line has fewer than four cards remaining (no further match is possible), or</li>
-            <li>The new N and new N−3 do not match.</li>
-          </ul>
-          <p>Only when the cascade has fully resolved does your turn end.</p>
+          <p>You keep checking and discarding until either the main line has fewer than four cards, or the new N and N−3 do not match. Only then does your turn end.</p>
 
           <h3>Cascade Example</h3>
-          <p>The main line has seven cards. On your next turn you pull a 4♥. Watch what happens:</p>
+          <p>The following shows how a single pull — placing 4♥ onto the main line — triggers three consecutive matches and clears the entire main line.</p>
 
           <div class="card-figure">
             <div class="card-figure__title">Cascade — Step by Step</div>
             <div class="cascade-steps">
-
-              <div class="cascade-step">
-                <div class="cascade-step-num">Pull 4♥</div>
-                <div>
-                  <div class="match-demo__label">4♥ placed. N = 4♥, N−3 = 8♥. Same suit (hearts).</div>
-                  <div class="card-row"><div class="card-slot"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text></g></svg></div><div class="card-slot"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">3</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">3</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div><div class="card-slot"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">Q</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">Q</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N−3</div><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">8</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">8</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div><div class="card-slot card-slot--dimmed"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">K</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">K</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot card-slot--dimmed"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">J</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">J</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N</div><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">4</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">4</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div></div>
-                  <span class="cascade-match-tag cascade-match-tag--suit">Suit match — K♠ &amp; J♣ discarded</span>
-                </div>
-              </div>
-
+              <div class="cascade-step"><div class="cascade-step-num">Initial state</div><div class="cascade-sublabel">Seven cards on the main line. N = J♣, N−3 = Q♥ — no match. Pull 4♥ from a siding.</div><div class="card-row"><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text></g></svg></div><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">3</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">3</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N−3</div><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">Q</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">Q</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">8</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">8</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">K</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">K</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N</div><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">J</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">J</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text></g></svg></div></div></div>
               <div class="cascade-divider"></div>
-
-              <div class="cascade-step">
-                <div class="cascade-step-num">Cascade 1</div>
-                <div>
-                  <div class="match-demo__label">Line compresses. New N = 4♥, new N−3 = 3♥. Same suit (hearts).</div>
-                  <div class="card-row"><div class="card-slot"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text></g></svg></div><div class="card-slot"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N−3</div><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">3</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">3</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div><div class="card-slot card-slot--dimmed"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">Q</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">Q</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div><div class="card-slot card-slot--dimmed"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">8</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">8</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N</div><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">4</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">4</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div></div>
-                  <span class="cascade-match-tag cascade-match-tag--suit">Suit match — Q♥ &amp; 8♥ discarded</span>
-                </div>
-              </div>
-
+              <div class="cascade-step"><div class="cascade-step-num">Place 4♥</div><div class="cascade-sublabel">N = 4♥, N−3 = 8♥ — same suit (hearts).</div><div class="card-row"><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text></g></svg></div><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">3</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">3</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">Q</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">Q</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N−3</div><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">8</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">8</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div><div class="card-slot card-slot--dimmed"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">K</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">K</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot card-slot--dimmed"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">J</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">J</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N</div><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div></div><div class="cascade-match-tag cascade-match-tag--suit">Suit match — K♠ &amp; J♣ discarded</div></div>
               <div class="cascade-divider"></div>
-
-              <div class="cascade-step">
-                <div class="cascade-step-num">Cascade 2</div>
-                <div>
-                  <div class="match-demo__label">Line compresses again. New N = 4♥, new N−3 = 4♣. Same rank (Fours).</div>
-                  <div class="card-row"><div class="card-slot card-slot--dimmed"><div class="card-pos-label">N−3</div><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♣</text></g></svg></div><div class="card-slot card-slot--dimmed"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot card-slot--dimmed"><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">3</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">3</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div><div class="card-slot card-slot--dimmed"><div class="card-pos-label">N</div><svg width="50" height="70" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">4</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text><text x="25" y="43" font-family="DM Sans,sans-serif" font-size="22" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="11" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="#CC2200">4</text><text x="4" y="21" font-family="DM Sans,sans-serif" font-size="9" fill="#CC2200">♥</text></g></svg></div></div>
-                  <span class="cascade-match-tag cascade-match-tag--rank">Rank match — all four discarded</span>
-                </div>
-              </div>
-
+              <div class="cascade-step"><div class="cascade-step-num">Cascade 1</div><div class="cascade-sublabel">N = 4♥, N−3 = 3♥ — same suit (hearts).</div><div class="card-row"><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text></g></svg></div><div class="card-slot"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N−3</div><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">3</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">3</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div><div class="card-slot card-slot--dimmed"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">Q</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">Q</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div><div class="card-slot card-slot--dimmed"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">8</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">8</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div><div class="card-slot"><div class="card-pos-label">N</div><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div></div><div class="cascade-match-tag cascade-match-tag--suit">Suit match — Q♥ &amp; 8♥ discarded</div></div>
               <div class="cascade-divider"></div>
-
+              <div class="cascade-step"><div class="cascade-step-num">Cascade 2</div><div class="cascade-sublabel">N = 4♥, N−3 = 4♣ — same rank (fours).</div><div class="card-row"><div class="card-slot card-slot--dimmed"><div class="card-pos-label">N−3</div><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♣</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♣</text></g></svg></div><div class="card-slot card-slot--dimmed"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#1a1a1a">♠</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#1a1a1a">9</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#1a1a1a">♠</text></g></svg></div><div class="card-slot card-slot--dimmed"><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">3</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">3</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div><div class="card-slot card-slot--dimmed"><div class="card-pos-label">N</div><svg width="75" height="105" viewBox="0 0 50 70" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="70" rx="4" fill="white" stroke="#bbb" stroke-width="1.5"/><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text><text x="25" y="37" font-family="DM Sans,sans-serif" font-size="27" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text><g transform="rotate(180,25,35)"><text x="4" y="13" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#CC2200">4</text><text x="4" y="24" font-family="DM Sans,sans-serif" font-size="11" fill="#CC2200">♥</text></g></svg></div></div><div class="cascade-match-tag cascade-match-tag--rank">Rank match — all four discarded</div></div>
+              <div class="cascade-divider"></div>
               <div class="cascade-step">
-                <div class="cascade-step-num">Result</div>
-                <div class="card-row card-row--empty">
-                  <span class="empty-line">Main line empty — three cascades from a single pull.</span>
-                </div>
-              </div>
-
+  <div class="cascade-step-num">Result</div>
+  <div class="card-row card-row--empty"><span class="empty-line">Main line empty — three cascades from a single pull.</span></div>
+</div>
             </div>
-            <p class="card-figure__caption">Cascades are the key to winning. A single well-timed pull can clear the entire main line.</p>
+            <p class="card-figure__caption">Faded cards are about to be discarded. After each discard the check re-runs on the new N and N−3 until no match remains.</p>
           </div>
 
           <hr class="gold-rule" style="margin: var(--space-md) 0; opacity: 0.3;">
@@ -663,7 +630,7 @@
             <li><strong>Loss:</strong> Cards remain on the main line. Your score equals the number of cards remaining.</li>
           </ul>
           <p>Scores are always even numbers (zero, two, four, six, and so on), because cards are discarded in pairs of two or pairs of four. A score of zero is a win; any other score is a loss.</p>
-          <p>A typical game ends in a loss. Wins are uncommon and worth celebrating. Skilled players win roughly one in ten games. Beginners will win less often than that — don't be discouraged. The structural randomness of the shuffle means some deals cannot be won regardless of how you play.</p>
+          <p>A typical game ends in a loss. Wins are uncommon and worth celebrating. Skilled players win roughly one in ten games. Beginners will win less often — don't be discouraged. The structural randomness of the shuffle means some deals cannot be won regardless of how you play.</p>
 
           <hr class="gold-rule" style="margin: var(--space-md) 0; opacity: 0.3;">
 
@@ -723,7 +690,7 @@
 
           <div class="variant-card">
             <div class="variant-card__name">Two-Deck Yard</div>
-            <p>Shuffle two decks together and deal into eight sidings of thirteen cards each. The frontier doubles, the strategic space deepens, and games take roughly twice as long. Recommended for two-player cooperative play, with players taking turns choosing pulls. Note: with two decks it is possible for N and N−3 to match in both rank and suit. Rank match takes precedence and all four cards are discarded.</p>
+            <p>Shuffle two decks together and deal into eight sidings of thirteen cards each. The strategic space doubles and games take roughly twice as long. Recommended for two-player cooperative play, with players taking turns choosing pulls. Note: with two decks it is possible for N and N−3 to match in both rank and suit — rank match takes precedence.</p>
           </div>
 
           <div class="variant-card">
@@ -745,9 +712,9 @@
   <!-- Copyright strip -->
   <div class="copyright-strip">
     <div class="container">
-      <p>Railroad! Yard Edition &copy; 2026 Leslie Street Studio LLC. All rights reserved.</p>
+      <p>Railroad! Yard Solitaire &copy; 2026 Leslie Street Studio LLC. All rights reserved.</p>
       <p style="margin-top: 6px;">Designed for solo or cooperative play. Recommended for ages&nbsp;10&nbsp;and&nbsp;up.</p>
-      <p style="margin-top: 6px;"><a href="railroad-solitaire.html" style="color: var(--sage); opacity: 0.7; font-size: var(--size-secondary);">← Railroad! Solitaire</a></p>
+      <p style="margin-top: 10px;"><a href="railroad-solitaire.html" style="color: var(--sage); opacity: 0.7; font-size: var(--size-secondary);">← Railroad! Solitaire</a></p>
     </div>
   </div>
 
