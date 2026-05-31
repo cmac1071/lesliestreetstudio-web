@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apps — Leslie Street Studio</title>
-  <meta name="description" content="Software from Leslie Street Studio — Railroad! Solitaire, CribVision, and DeckVision.">
+  <meta name="description" content="Software from Leslie Street Studio — Railroad! Solitaire, Railroad! Yard Solitaire, CribVision, and DeckVision.">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     .app-card__badge {
@@ -22,6 +22,17 @@
       margin-left: 8px;
       position: relative;
       top: -2px;
+    }
+    .app-card__badge--coming-soon {
+      background-color: var(--gold);
+      color: var(--charcoal);
+    }
+    .app-card__rules-link {
+      font-family: var(--font-body);
+      font-size: var(--size-secondary);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--forest);
     }
   </style>
 </head>
@@ -65,7 +76,6 @@
 
     <section class="section" style="background-color: var(--parchment);">
       <div class="container">
-        <span class="label" style="display: block; margin-bottom: var(--space-md);">In the Store</span>
         <div class="app-cards">
 
           <a href="apps/railroad-solitaire.html" class="app-card fade-up fade-up--delay-1">
@@ -82,7 +92,30 @@
             </div>
           </a>
 
-          <a href="apps/cribvision.html" class="app-card fade-up fade-up--delay-2">
+          <a href="apps/railroad-yard-edition.html" class="app-card fade-up fade-up--delay-2">
+            <div class="app-card__header">
+              <div class="app-card__icon">
+                <svg viewBox="0 0 80 80" width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="80" height="80" fill="#3A3835"/>
+                  <rect x="10" y="18" width="28" height="40" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+                  <rect x="18" y="18" width="28" height="40" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+                  <rect x="26" y="18" width="28" height="40" rx="3" fill="#D8F3DC" stroke="#1B4332" stroke-width="1.2"/>
+                  <rect x="34" y="18" width="28" height="40" rx="3" fill="white" stroke="#ccc" stroke-width="1.2"/>
+                  <text x="37" y="27" font-family="DM Sans,sans-serif" font-size="7" font-weight="700" fill="#CC2200">7</text>
+                  <text x="37" y="35" font-family="DM Sans,sans-serif" font-size="7" fill="#CC2200">♥</text>
+                  <text x="48" y="41" font-family="DM Sans,sans-serif" font-size="14" text-anchor="middle" dominant-baseline="middle" fill="#CC2200">♥</text>
+                </svg>
+              </div>
+              <h3 class="app-card__name">Railroad! Yard Solitaire <span class="app-card__badge app-card__badge--coming-soon">Coming Soon</span></h3>
+            </div>
+            <hr class="gold-rule gold-rule--narrow">
+            <p class="app-card__tagline">A strategic variant built on the Railroad! rules engine. Four sidings, thirteen cards each — you control which card enters the main line on every turn. The same cascade logic, with far more decisions. Rules are published and the game is playable today with any standard deck.</p>
+            <div class="app-card__cta">
+              <span class="app-card__rules-link">Read the official rules →</span>
+            </div>
+          </a>
+
+          <a href="apps/cribvision.html" class="app-card fade-up fade-up--delay-3">
             <div class="app-card__header">
               <div class="app-card__icon">
                 <img src="assets/images/CribVision_Icon5.png" alt="CribVision icon">
@@ -96,7 +129,7 @@
             </div>
           </a>
 
-          <a href="apps/deckvision.html" class="app-card fade-up fade-up--delay-3">
+          <a href="apps/deckvision.html" class="app-card fade-up fade-up--delay-4">
             <div class="app-card__header">
               <div class="app-card__icon">
                 <img src="assets/images/DeckVision_Icon.png" alt="DeckVision icon">
@@ -110,46 +143,31 @@
             </div>
           </a>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- On the Bench -->
-    <section class="section" style="background-color: var(--parchment);">
-      <div class="container">
-        <div class="section-divider" style="margin-top: 0;">
-          <div class="section-divider__line"></div>
-          <div class="section-divider__mark"></div>
-          <div class="section-divider__line"></div>
-        </div>
-        <span class="label" style="display: block; margin-bottom: var(--space-md);">In the Studio</span>
-        <div class="app-cards">
-
-          <a href="apps/barvision.html" class="app-card fade-up fade-up--delay-1">
+          <a href="apps/barvision.html" class="app-card fade-up fade-up--delay-4">
             <div class="app-card__header">
               <div class="app-card__icon">
                 <img src="assets/images/BarVision_Icon.png" alt="BarVision icon">
               </div>
-              <h3 class="app-card__name">BarVision</h3>
+              <h3 class="app-card__name">BarVision <span class="app-card__badge app-card__badge--coming-soon">Coming Soon</span></h3>
             </div>
             <hr class="gold-rule gold-rule--narrow">
             <p class="app-card__tagline">Scan your shelf, know your bar. AI bottle recognition that maps what you have to the cocktails you can make — with smart suggestions for what to buy next.</p>
             <div class="app-card__cta">
-              <span style="font-family: var(--font-body); font-size: var(--size-secondary); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--stone);">iOS &middot; Concept</span>
+              <span style="font-family: var(--font-body); font-size: var(--size-secondary); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--stone);">iOS</span>
             </div>
           </a>
 
-          <a href="apps/vandoras.html" class="app-card fade-up fade-up--delay-2">
+          <a href="apps/vandoras.html" class="app-card fade-up fade-up--delay-4">
             <div class="app-card__header">
               <div class="app-card__icon">
                 <img src="assets/images/Vandoras_icon.jpg" alt="Vandoras icon">
               </div>
-              <h3 class="app-card__name">Vandoras</h3>
+              <h3 class="app-card__name">Vandoras <span class="app-card__badge app-card__badge--coming-soon">Coming Soon</span></h3>
             </div>
             <hr class="gold-rule gold-rule--narrow">
             <p class="app-card__tagline">An interactive graphic novel with puzzle-gated story progression. A tinkerer. A lockbox that recognizes him. Three factions. Three endings.</p>
             <div class="app-card__cta">
-              <span style="font-family: var(--font-body); font-size: var(--size-secondary); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--stone);">iOS &middot; In Development</span>
+              <span style="font-family: var(--font-body); font-size: var(--size-secondary); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--stone);">iOS</span>
             </div>
           </a>
 
