@@ -306,6 +306,153 @@
       to   { transform: translateX(-50%); }
     }
 
+    /* ─── TEASERS ─── */
+    .vn-teasers-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+    .vn-teaser-card {
+      width: 240px;
+      max-width: 100%;
+    }
+    /* Custom controls instead of native <video controls>. Two Safari-specific
+       problems, confirmed by testing: (1) the native fullscreen icon hands
+       the video to Safari's own AVKit-style player (webkitEnterFullscreen),
+       which ignores page CSS and crop-fills portrait footage to 16:9 on a
+       widescreen display. (2) the standard Fullscreen API used as a
+       workaround (fullscreening a wrapper div instead of the video) has no
+       generic-element support at all on iPhone Safari, only iPad/desktop —
+       confirmed via MDN + Apple's own developer forums, still unresolved as
+       of 2025. Rather than branch behavior per device, expand opens an
+       in-page lightbox: a fixed-position overlay sized in plain CSS, no
+       Fullscreen API involved anywhere, so it renders identically (and
+       correctly pillarboxed) on every browser and device. */
+    .vn-teaser-card__video {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      background-color: var(--charcoal);
+    }
+    .vn-teaser-card__video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+    .vn-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background-color: rgba(58, 56, 53, 0.97);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-md);
+    }
+    .vn-lightbox[hidden] { display: none; }
+    .vn-lightbox__video {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      aspect-ratio: 9 / 16;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      background-color: var(--charcoal);
+    }
+    .vn-lightbox__close {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(221, 213, 196, 0.12);
+      border: 1px solid rgba(221, 213, 196, 0.3);
+      color: var(--parchment);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+    }
+    .vn-teaser-play {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: rgba(27, 67, 50, 0.75);
+      border: 1px solid rgba(221, 213, 196, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      transition: opacity var(--transition);
+    }
+    .vn-teaser-play svg { fill: var(--parchment); margin-left: 3px; }
+    .vn-teaser-card__video.is-playing .vn-teaser-play {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .vn-teaser-expand {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background-color: rgba(58, 56, 53, 0.65);
+      border: 1px solid rgba(221, 213, 196, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .vn-teaser-expand svg { stroke: var(--parchment); }
+    .vn-teaser-card__video:hover .vn-teaser-expand,
+    .vn-teaser-card__video.is-playing .vn-teaser-expand {
+      opacity: 1;
+    }
+    .vn-teaser-card__tag {
+      display: inline-block;
+      margin-top: var(--space-sm);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      border: 1px solid rgba(149, 213, 178, 0.22);
+      padding: 4px 10px;
+    }
+    .vn-teaser-card__caption {
+      font-family: var(--font-display);
+      font-size: var(--size-body);
+      color: var(--parchment);
+      margin-top: var(--space-xs);
+      line-height: 1.4;
+    }
+    .vn-teaser-card__date {
+      font-family: var(--font-body);
+      font-size: var(--size-secondary);
+      color: var(--parchment);
+      opacity: 0.55;
+      margin-top: 2px;
+    }
+
     /* ─── THE STORY ─── */
     .vn-story-grid {
       display: grid;
@@ -699,6 +846,47 @@
       </div>
     </div>
 
+    <!-- TEASERS -->
+    <section class="section" style="background-color: var(--charcoal);">
+      <div class="container on-dark">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm); color: var(--sage);">First Look</span>
+        <h2 style="color: var(--parchment); margin-bottom: 0;">Teasers.</h2>
+        <div class="vn-teasers-grid">
+
+          <div class="vn-teaser-card">
+            <div class="vn-teaser-card__video">
+              <video playsinline preload="none" poster="../assets/images/Vandoras_Teaser1_Poster.jpg">
+                <source src="../assets/videos/Vandoras_Reel1_TheWorld.mp4" type="video/mp4">
+              </video>
+              <button class="vn-teaser-play" type="button" aria-label="Play video">
+                <svg width="20" height="20" viewBox="0 0 20 20"><path d="M5 3L17 10L5 17V3Z"/></svg>
+              </button>
+              <button class="vn-teaser-expand" type="button" aria-label="View fullscreen">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 5V1H5M11 1H15V5M15 11V15H11M5 15H1V11"/>
+                </svg>
+              </button>
+            </div>
+            <span class="vn-teaser-card__tag">Teaser 1</span>
+            <p class="vn-teaser-card__caption">Vandoras Teaser 1 - The World</p>
+            <p class="vn-teaser-card__date">July 11, 2026</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Shared lightbox for teaser videos: plain CSS overlay, no Fullscreen
+         API, so it renders identically on every browser/device including
+         iPhone Safari (which has no Fullscreen API support for non-video
+         elements). See TEASERS CSS comment above for why. -->
+    <div class="vn-lightbox" id="vn-lightbox" hidden>
+      <button class="vn-lightbox__close" type="button" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 4L16 16M16 4L4 16"/></svg>
+      </button>
+      <video class="vn-lightbox__video" playsinline controls></video>
+    </div>
+
     <!-- THE STORY -->
     <section class="section" style="background-color: var(--parchment);">
       <div class="container">
@@ -950,6 +1138,57 @@
       });
     }, { threshold: 0.15 });
     chapters.forEach(c => obs.observe(c));
+
+    // Teaser videos: custom play/expand controls (no native <video controls>).
+    // Expand opens a shared in-page lightbox rather than calling any
+    // Fullscreen API — iPhone Safari has no Fullscreen API support for
+    // non-video elements, and Safari's video-specific native fullscreen
+    // ignores page CSS and crop-fills portrait footage. A plain CSS overlay
+    // sidesteps both and renders identically everywhere.
+    const lightbox = document.getElementById('vn-lightbox');
+    const lightboxVideo = lightbox.querySelector('.vn-lightbox__video');
+    const lightboxClose = lightbox.querySelector('.vn-lightbox__close');
+
+    function openLightbox(src, poster) {
+      lightboxVideo.src = src;
+      lightboxVideo.poster = poster;
+      lightbox.hidden = false;
+      lightboxVideo.play();
+    }
+    function closeLightbox() {
+      lightboxVideo.pause();
+      lightboxVideo.removeAttribute('src');
+      lightboxVideo.load();
+      lightbox.hidden = true;
+    }
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+    });
+
+    document.querySelectorAll('.vn-teaser-card__video').forEach(card => {
+      const video = card.querySelector('video');
+      const source = video.querySelector('source');
+      const playBtn = card.querySelector('.vn-teaser-play');
+      const expandBtn = card.querySelector('.vn-teaser-expand');
+
+      const togglePlay = () => { video.paused ? video.play() : video.pause(); };
+
+      playBtn.addEventListener('click', togglePlay);
+      video.addEventListener('click', togglePlay);
+      video.addEventListener('play', () => card.classList.add('is-playing'));
+      video.addEventListener('pause', () => card.classList.remove('is-playing'));
+      video.addEventListener('ended', () => card.classList.remove('is-playing'));
+
+      expandBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        video.pause();
+        openLightbox(source.src, video.poster);
+      });
+    });
   </script>
 
 </body>
