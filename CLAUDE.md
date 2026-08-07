@@ -143,10 +143,13 @@ Do not recreate, reinterpret, or modify the wordmark in any way.
 - Release date locked: August 24, 2026 (App Store)
 - TestFlight beta open ahead of launch — testers request an invite by emailing support@lesliestreetstudio.com (no public link posted, by design)
 - Teaser videos: "Teasers" section on apps/vandoras.html, placed between the feature-keyword ticker and "The Story" section. Self-hosted portrait (9:16) mp4s in assets/videos/, one `.vn-teaser-card` per video inside `.vn-teasers-grid`. Poster frames are extracted stills saved as assets/images/Vandoras_TeaserN_Poster.jpg. Compress per the "Video assets" section above before adding to the repo.
-  - Cadence: first published 2026-07-11, new one roughly weekly for 3 more weeks (through early August 2026)
+  - Cadence: not evenly weekly — spaced out unevenly to cover the full July 11 – Aug 24 span.
+    Teaser 4 (final one, coming week of 2026-08-14) is the last before the Aug 24 release.
   - Fullscreen/expand uses a single shared `#vn-lightbox` overlay (defined once, right after the Teasers section) — this is the reference implementation of the lightbox pattern described in "Video assets" above. Each teaser card's expand button just calls `openLightbox(source.src, video.poster)`; adding a new teaser doesn't require touching the lightbox itself.
   - Teaser 1: Vandoras_Reel1_TheWorld.mp4, poster Vandoras_Teaser1_Poster.jpg, caption "Vandoras Teaser 1 - The World", dated July 11, 2026
-  - To add the next one: duplicate a `.vn-teaser-card` block, swap the video src/poster/caption/date, keep newest-first order
+  - Teaser 2: Vandoras_Reel2_TheChoice.mp4, poster Vandoras_Teaser2_Poster.jpg, caption "Vandoras Teaser 2 - The Choice", dated July 18, 2026. Compressed at CRF 20 (dark/gradient-heavy night footage banded at the default CRF 23).
+  - Teaser 3: Vandoras_Reel3_TheAtmosphere.mp4, poster Vandoras_Teaser3_Poster.jpg, caption "Vandoras Teaser 3 - The Atmosphere", dated August 1, 2026. Also compressed at CRF 20 for the same banding reason.
+  - To add the next one: duplicate a `.vn-teaser-card` block, swap the video src/poster/caption/date, keep newest-first order. Check dark/gradient footage for banding at CRF 23 before accepting the default — step down to CRF 20–21 if it appears (see "Video assets" above).
 
 ---
 
