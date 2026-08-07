@@ -234,12 +234,12 @@ you can read that path unless it's been shared for the current task.
 ## Version control
 - Remote: `git@github.com:cmac1071/lesliestreetstudio-web.git`, branch `main`. GitHub Pages
   deploys straight from `main` on push — no CI, no build step, no staging branch.
-- `.gitignore` currently excludes `CLAUDE.md` itself, `.gitignore`, and `.DS_STORE`. That means
-  this file is NOT guaranteed to survive a fresh `git clone` — it only persists because it
-  exists on Chris's local disk. If you're picking up this project in a new clone or a new
-  machine and this file is missing, that's why. Flag this to Chris — a project-instructions
-  file that isn't version-controlled is a real risk for a multi-tool, multi-session workflow;
-  he may want it force-added and tracked (`git add -f CLAUDE.md`) rather than staying local-only.
+- `CLAUDE.md` is tracked in git as of the "Track CLAUDE.md in version control" commit
+  (2026-08-07). `.gitignore` now only excludes `.DS_STORE`. Commit changes to this file in
+  the same commit as the page changes that prompted them.
+- **Never run `git push`.** Local commits are fine and expected, but pushing to the remote
+  (which triggers a live GitHub Pages deploy) is reserved for Chris alone. Make commits, then
+  stop — tell him what's ready to push and let him push it himself.
 - Don't skip git hooks, force-push, or rewrite history unless Chris explicitly asks.
 
 ## Housekeeping Rules
