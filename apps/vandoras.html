@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vandoras — Coming August 24, 2026 — Leslie Street Studio</title>
-  <meta name="description" content="Vandoras — An Interactive Puzzle Novel with puzzle-gated story progression. Three factions. Three endings. One tinkerer who just opened the wrong box. Available on iOS August 24, 2026 from Leslie Street Studio.">
+  <title>Vandoras — An Interactive Puzzle Novel — Leslie Street Studio</title>
+  <meta name="description" content="Vandoras — An Interactive Puzzle Novel with puzzle-gated story progression. Three factions. Three endings. One tinkerer who just opened the wrong box. Available now on the App Store from Leslie Street Studio.">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
 
@@ -252,18 +252,19 @@
       margin: 0 auto var(--space-md);
       animation: fadeUp 0.8s ease forwards 0.7s;
     }
-    .vn-hero__badge {
+    .vn-hero__cta {
       display: inline-block;
-      font-family: var(--font-body);
-      font-size: var(--size-label);
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--parchment);
-      border: 1px solid rgba(221, 213, 196, 0.28);
-      padding: 10px 28px;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 1s;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+    .vn-hero__cta:hover {
+      transform: translateY(-1px);
+    }
+    .vn-hero__cta img {
+      height: 44px;
+      width: auto;
+      display: block;
     }
 
     /* ─── TICKER ─── */
@@ -816,7 +817,9 @@
         <p class="vn-hero__eyebrow">An Interactive Puzzle Novel</p>
         <h1 class="vn-hero__title">Vandoras</h1>
         <p class="vn-hero__sub">For twenty years, Van made things work.<br>Then a peculiar lockbox recognized him.<br>Now everything else wants to.</p>
-        <span class="vn-hero__badge">Coming to iOS — August 24, 2026</span>
+        <a class="vn-hero__cta" href="https://apps.apple.com/us/app/vandoras/id6773106564" target="_blank" rel="noopener">
+          <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+        </a>
       </div>
     </section>
 
@@ -1087,11 +1090,11 @@
       </div>
     </section>
 
-    <!-- COMING SOON CTA -->
+    <!-- DOWNLOAD CTA -->
     <section class="section" style="background-color: var(--forest); text-align: center;">
       <div class="container on-dark">
-        <span class="label" style="display:block; margin-bottom: var(--space-sm); color: var(--sage);">Releasing August 24, 2026</span>
-        <h2 style="color: var(--parchment); margin-bottom: var(--space-sm);">Coming to iOS.</h2>
+        <span class="label" style="display:block; margin-bottom: var(--space-sm); color: var(--sage);">Out now on the App Store</span>
+        <h2 style="color: var(--parchment); margin-bottom: var(--space-sm);">Available on iOS.</h2>
         <p style="color: var(--parchment); opacity: 0.7; max-width: 480px; margin: 0 auto;">An interactive puzzle novel for readers who want the story to have consequences.</p>
         <hr class="gold-rule gold-rule--narrow" style="margin: var(--space-md) auto;">
         <div class="vn-platform-tags">
@@ -1101,9 +1104,15 @@
           <span class="vn-platform-tag">Single Purchase</span>
           <span class="vn-platform-tag">No Account Required</span>
         </div>
-        <p style="color: var(--parchment); opacity: 0.75; max-width: 480px; margin: var(--space-md) auto 0;">TestFlight beta is open ahead of launch. Email <a href="mailto:support@lesliestreetstudio.com?subject=Vandoras%20Beta" style="color: var(--parchment); text-decoration: underline;">support@lesliestreetstudio.com</a> to request an invite.</p>
-        <p style="margin-top: var(--space-sm);">
-          <a href="mailto:support@lesliestreetstudio.com" style="color: var(--parchment); opacity: 0.38; font-size: var(--size-secondary);">support@lesliestreetstudio.com</a>
+        <div style="margin-top: var(--space-md);">
+          <a href="https://apps.apple.com/us/app/vandoras/id6773106564" target="_blank" rel="noopener">
+            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" class="appstore-badge">
+          </a>
+        </div>
+        <p style="margin-top: var(--space-md); font-size: var(--size-secondary);">
+          <a href="vandoras/support.html" style="color: var(--parchment); opacity: 0.4;">Support</a>
+          <span style="color: var(--parchment); opacity: 0.2; margin: 0 var(--space-sm);">·</span>
+          <a href="vandoras/privacy-policy.html" style="color: var(--parchment); opacity: 0.4;">Privacy Policy</a>
         </p>
       </div>
     </section>
