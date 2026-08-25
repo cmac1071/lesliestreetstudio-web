@@ -42,6 +42,50 @@
       background-color: var(--gold);
       color: var(--charcoal);
     }
+
+    /* "New" starburst sticker. Solid Forest with Parchment type — no gold: the brand
+       rules bar gold as a fill, and the card already spends its one gold moment on the
+       gold-rule separator below the header. */
+    .app-card { position: relative; }
+    .app-card__new {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      transform: rotate(-14deg);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .app-card__new::before,
+    .app-card__new::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(50.0% 0.0%, 59.8% 13.3%, 75.0% 6.7%, 76.9% 23.1%, 93.3% 25.0%, 86.7% 40.2%, 100.0% 50.0%, 86.7% 59.8%, 93.3% 75.0%, 76.9% 76.9%, 75.0% 93.3%, 59.8% 86.7%, 50.0% 100.0%, 40.2% 86.7%, 25.0% 93.3%, 23.1% 76.9%, 6.7% 75.0%, 13.3% 59.8%, 0.0% 50.0%, 13.3% 40.2%, 6.7% 25.0%, 23.1% 23.1%, 25.0% 6.7%, 40.2% 13.3%);
+    }
+    .app-card__new::before {
+      background-color: var(--forest);
+    }
+    .app-card__new::after {
+      inset: 4px;
+      background-color: var(--mid-green);
+    }
+    .app-card__new span {
+      position: relative;
+      z-index: 1;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      line-height: 1;
+    }
+    /* Keep a long app name clear of the sticker (only on cards that have one) */
+    .app-card__new + .app-card__header { padding-right: 58px; }
   </style>
 </head>
 <body>
@@ -113,6 +157,7 @@
 
           <!-- Vandoras -->
           <a href="apps/vandoras.html" class="app-card fade-up fade-up--delay-2">
+            <div class="app-card__new" aria-hidden="true"><span>New</span></div>
             <div class="app-card__header">
               <div class="app-card__icon">
                 <img src="assets/images/Vandoras_icon.jpg" alt="Vandoras icon">

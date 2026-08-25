@@ -126,14 +126,26 @@ Do not recreate, reinterpret, or modify the wordmark in any way.
 - Support: apps/vandoras/support.html
 - Privacy Policy: apps/vandoras/privacy-policy.html
 - Icon: assets/images/Vandoras_icon.jpg
+- Screenshots: Vandoras_Screen_Title.jpg, Vandoras_Screen_Choice1.jpg,
+  Vandoras_Screen_Choice3.jpg, Vandoras_Screen_Illustration.jpg, Vandoras_Screen_Puzzle.jpg
+  — shown in that order in the "Screenshots" section (`.vn-shots`), which sits between the
+  Three Endings and Philosophy sections. Converted from the delivered 1320x2868 PNGs at
+  JPEG q82; the PNGs were deleted, per the same "compress the web copy" rule as video.
+- Story/mood art (not device screenshots): Vandoras_S1.jpg, Vandoras_U4.jpg
 - Shipped August 24, 2026. The pre-launch TestFlight beta is closed — no invite copy remains on the site.
 - Teaser videos: "Teasers" section on apps/vandoras.html, placed between the feature-keyword ticker and "The Story" section. Self-hosted portrait (9:16) mp4s in assets/videos/, one `.vn-teaser-card` per video inside `.vn-teasers-grid`. Poster frames are extracted stills saved as assets/images/Vandoras_TeaserN_Poster.jpg. Compress per the "Video assets" section above before adding to the repo.
-  - Cadence: the three teasers ran unevenly across the July 11 – Aug 24 pre-launch span.
-    The run ended at three; no further teasers are planned now that the app has shipped.
+  - Cadence: the four teasers ran unevenly across the July 11 – Aug 24 pre-launch span.
+    The run ended at four; no further teasers are planned now that the app has shipped.
+  - All four were re-cut for release: the old "Available 8/24/26" end card was replaced with
+    the official Apple App Store badge. The web copies carry the `_Release` suffix, which
+    also cache-busts the pre-launch filenames they replaced.
+  - `.vn-teasers-grid` uses a `--space-sm` gap, not `--space-md`: four 240px cards plus three
+    32px gaps exceed the 1100px container and wrap the fourth card onto its own row.
   - Fullscreen/expand uses a single shared `#vn-lightbox` overlay (defined once, right after the Teasers section) — this is the reference implementation of the lightbox pattern described in "Video assets" above. Each teaser card's expand button just calls `openLightbox(source.src, video.poster)`; adding a new teaser doesn't require touching the lightbox itself.
-  - Teaser 1: Vandoras_Reel1_TheWorld.mp4, poster Vandoras_Teaser1_Poster.jpg, caption "Vandoras Teaser 1 - The World", dated July 11, 2026
-  - Teaser 2: Vandoras_Reel2_TheChoice.mp4, poster Vandoras_Teaser2_Poster.jpg, caption "Vandoras Teaser 2 - The Choice", dated July 18, 2026. Compressed at CRF 20 (dark/gradient-heavy night footage banded at the default CRF 23).
-  - Teaser 3: Vandoras_Reel3_TheAtmosphere.mp4, poster Vandoras_Teaser3_Poster.jpg, caption "Vandoras Teaser 3 - The Atmosphere", dated August 1, 2026. Also compressed at CRF 20 for the same banding reason.
+  - Teaser 1: Vandoras_Reel1_TheWorld_Release.mp4, poster Vandoras_Teaser1_Poster.jpg, caption "Vandoras Teaser 1 - The World", dated July 11, 2026
+  - Teaser 2: Vandoras_Reel2_TheChoice_Release.mp4, poster Vandoras_Teaser2_Poster.jpg, caption "Vandoras Teaser 2 - The Choice", dated July 18, 2026. Compressed at CRF 20 (dark/gradient-heavy night footage banded at the default CRF 23).
+  - Teaser 3: Vandoras_Reel3_TheAtmosphere_Release.mp4, poster Vandoras_Teaser3_Poster.jpg, caption "Vandoras Teaser 3 - The Atmosphere", dated August 1, 2026. Also compressed at CRF 20 for the same banding reason.
+  - Teaser 4: Vandoras_Reel4_TheCraft_Release.mp4, poster Vandoras_Teaser4_Poster.jpg, caption "Vandoras Teaser 4 - The Craft", dated August 22, 2026. CRF 23 — the footage is very dark (mean luma 10–24/255) but showed no banding on check, so it did not need the step-down.
   - If another one is ever added: duplicate a `.vn-teaser-card` block, swap the video src/poster/caption/date, keep newest-first order. Check dark/gradient footage for banding at CRF 23 before accepting the default — step down to CRF 20–21 if it appears (see "Video assets" above).
 
 ## Apps in Development
@@ -175,6 +187,18 @@ The tagline is: **Intentional software.**
 - Animations: fade-up class + delay variants (fade-up--delay-1 through delay-4)
 - Gold rule separator: `<hr class="gold-rule">` or `<hr class="gold-rule gold-rule--narrow">`
 - Section divider ornament: `.section-divider` with inner line/mark/line pattern
+- App Store badges: wrap the `<img>` in `<a class="appstore-link">`. The global
+  `img { display: block }` rule (style.css:78) makes a bare badge image ignore the parent's
+  `text-align: center` and hug the left edge — `.appstore-link` is `display: inline-block`,
+  which shrink-wraps the image so it centres. Applied to the bottom download CTA on
+  vandoras, deckvision, cribvision, and railroad-solitaire. Hero badges on the *Vision pages
+  sit in deliberately left-aligned columns and are left alone.
+- "New" starburst sticker: `.app-card__new` on index.html and apps.html, defined in each
+  page's own `<style>` block alongside `.app-card__badge`. A 12-point `clip-path` star,
+  Forest with a Mid Green inner face and Parchment type — deliberately no gold, since gold
+  may never be a fill and the card already spends its one gold moment on the `gold-rule`.
+  Header padding is scoped via `.app-card__new + .app-card__header` so only a card that
+  actually carries a sticker reserves the space.
 - Font sizing: use `var(--size-body)` (16px) for any paragraph/description text a reader
   actually engages with (card descriptions, feature blurbs, section intros). Reserve
   `var(--size-secondary)` (14px) strictly for captions, tags, footnote-level blurbs, and

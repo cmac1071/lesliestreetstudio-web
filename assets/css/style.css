@@ -438,6 +438,13 @@ p {
   transform: translateY(-1px);
 }
 
+/* The global `img { display: block }` rule above makes a bare badge <img> ignore the
+   parent's text-align, so it hugs the left edge. Wrapping anchor becomes inline-block
+   to shrink-wrap the image and centre with the surrounding text. */
+.appstore-link {
+  display: inline-block;
+}
+
 /* ============================================================
    APP CARDS (home page)
    ============================================================ */

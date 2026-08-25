@@ -312,7 +312,9 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: var(--space-md);
+      /* four cards across at 240px need the tighter gap to clear the 1100px
+         container; a --space-md gap wraps the fourth onto its own row */
+      gap: var(--space-sm);
       margin-top: var(--space-md);
     }
     .vn-teaser-card {
@@ -481,6 +483,38 @@
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    /* ─── SCREENSHOTS ─── */
+    .vn-shots {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+      /* `safe` keeps the first shot reachable instead of clipping it off the
+         left edge once the row is wider than the container */
+      justify-content: center;
+      justify-content: safe center;
+      /* narrow viewports scroll the row rather than shrinking the shots to nothing */
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: var(--space-sm);
+      -webkit-overflow-scrolling: touch;
+    }
+    .vn-shot {
+      flex: 0 0 auto;
+      width: 190px;
+      scroll-snap-align: center;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.34);
+    }
+    .vn-shot img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    @media (max-width: 900px) {
+      .vn-shots { justify-content: flex-start; }
     }
 
     /* ─── REVEAL (U4 + choice text) ─── */
@@ -858,8 +892,27 @@
 
           <div class="vn-teaser-card">
             <div class="vn-teaser-card__video">
+              <video playsinline preload="none" poster="../assets/images/Vandoras_Teaser4_Poster.jpg">
+                <source src="../assets/videos/Vandoras_Reel4_TheCraft_Release.mp4" type="video/mp4">
+              </video>
+              <button class="vn-teaser-play" type="button" aria-label="Play video">
+                <svg width="20" height="20" viewBox="0 0 20 20"><path d="M5 3L17 10L5 17V3Z"/></svg>
+              </button>
+              <button class="vn-teaser-expand" type="button" aria-label="View fullscreen">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 5V1H5M11 1H15V5M15 11V15H11M5 15H1V11"/>
+                </svg>
+              </button>
+            </div>
+            <span class="vn-teaser-card__tag">Teaser 4</span>
+            <p class="vn-teaser-card__caption">Vandoras Teaser 4 - The Craft</p>
+            <p class="vn-teaser-card__date">August 22, 2026</p>
+          </div>
+
+          <div class="vn-teaser-card">
+            <div class="vn-teaser-card__video">
               <video playsinline preload="none" poster="../assets/images/Vandoras_Teaser3_Poster.jpg">
-                <source src="../assets/videos/Vandoras_Reel3_TheAtmosphere.mp4" type="video/mp4">
+                <source src="../assets/videos/Vandoras_Reel3_TheAtmosphere_Release.mp4" type="video/mp4">
               </video>
               <button class="vn-teaser-play" type="button" aria-label="Play video">
                 <svg width="20" height="20" viewBox="0 0 20 20"><path d="M5 3L17 10L5 17V3Z"/></svg>
@@ -878,7 +931,7 @@
           <div class="vn-teaser-card">
             <div class="vn-teaser-card__video">
               <video playsinline preload="none" poster="../assets/images/Vandoras_Teaser2_Poster.jpg">
-                <source src="../assets/videos/Vandoras_Reel2_TheChoice.mp4" type="video/mp4">
+                <source src="../assets/videos/Vandoras_Reel2_TheChoice_Release.mp4" type="video/mp4">
               </video>
               <button class="vn-teaser-play" type="button" aria-label="Play video">
                 <svg width="20" height="20" viewBox="0 0 20 20"><path d="M5 3L17 10L5 17V3Z"/></svg>
@@ -897,7 +950,7 @@
           <div class="vn-teaser-card">
             <div class="vn-teaser-card__video">
               <video playsinline preload="none" poster="../assets/images/Vandoras_Teaser1_Poster.jpg">
-                <source src="../assets/videos/Vandoras_Reel1_TheWorld.mp4" type="video/mp4">
+                <source src="../assets/videos/Vandoras_Reel1_TheWorld_Release.mp4" type="video/mp4">
               </video>
               <button class="vn-teaser-play" type="button" aria-label="Play video">
                 <svg width="20" height="20" viewBox="0 0 20 20"><path d="M5 3L17 10L5 17V3Z"/></svg>
@@ -1066,6 +1119,31 @@
       </div>
     </section>
 
+    <!-- SCREENSHOTS -->
+    <section class="section" style="background-color: var(--charcoal);">
+      <div class="container on-dark">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm); color: var(--sage);">Screenshots</span>
+        <h2 style="color: var(--parchment); margin-bottom: 0;">On the device.</h2>
+        <div class="vn-shots">
+          <div class="vn-shot">
+            <img src="../assets/images/Vandoras_Screen_Title.jpg" alt="The title screen — Vandoras" loading="lazy" width="1320" height="2868">
+          </div>
+          <div class="vn-shot">
+            <img src="../assets/images/Vandoras_Screen_Choice1.jpg" alt="A choice point — the story branches on what Van says" loading="lazy" width="1320" height="2868">
+          </div>
+          <div class="vn-shot">
+            <img src="../assets/images/Vandoras_Screen_Choice3.jpg" alt="A later choice, weighted by everything already chosen" loading="lazy" width="1320" height="2868">
+          </div>
+          <div class="vn-shot">
+            <img src="../assets/images/Vandoras_Screen_Illustration.jpg" alt="Sparse illustration between passages of prose" loading="lazy" width="1320" height="2868">
+          </div>
+          <div class="vn-shot">
+            <img src="../assets/images/Vandoras_Screen_Puzzle.jpg" alt="A glyphwork puzzle — one of three puzzle vocabularies" loading="lazy" width="1320" height="2868">
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- PHILOSOPHY QUOTE -->
     <section class="section" style="background-color: var(--parchment);">
       <div class="container">
@@ -1105,7 +1183,7 @@
           <span class="vn-platform-tag">No Account Required</span>
         </div>
         <div style="margin-top: var(--space-md);">
-          <a href="https://apps.apple.com/us/app/vandoras/id6773106564" target="_blank" rel="noopener">
+          <a class="appstore-link" href="https://apps.apple.com/us/app/vandoras/id6773106564" target="_blank" rel="noopener">
             <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" class="appstore-badge">
           </a>
         </div>
