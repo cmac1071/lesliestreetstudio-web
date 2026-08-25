@@ -23,9 +23,16 @@
       position: relative;
       top: -2px;
     }
+    /* Outlined, not filled: gold may never be a fill or background, and the card
+       already spends its one gold moment on the gold-rule. This also matches the
+       outlined "Coming Soon" hero badges on saypoint.html and barvision.html.
+       Padding drops by 1px so the added border keeps the box the same size as the
+       solid variant above. */
     .app-card__badge--coming-soon {
-      background-color: var(--gold);
-      color: var(--charcoal);
+      background-color: transparent;
+      color: var(--forest);
+      border: 1px solid rgba(27, 67, 50, 0.5);
+      padding: 1px 7px;
     }
 
     /* "New" starburst sticker. Solid Forest with Parchment type — no gold: the brand

@@ -193,6 +193,15 @@ The tagline is: **Intentional software.**
   which shrink-wraps the image so it centres. Applied to the bottom download CTA on
   vandoras, deckvision, cribvision, and railroad-solitaire. Hero badges on the *Vision pages
   sit in deliberately left-aligned columns and are left alone.
+- "Coming Soon" badges are OUTLINED, never filled. `.app-card__badge--coming-soon`
+  (index.html and apps.html style blocks) is a transparent box with a Forest border and
+  Forest type; the hero badges on saypoint.html (`.sp-hero__badge`) and barvision.html
+  (`.bv-hero__badge`) are the same idea in Parchment on dark. This variant used to be a
+  gold pill, which broke the "never use gold as a fill or background" rule and put a second
+  gold moment on a card that already has a gold-rule. Don't reintroduce a filled badge.
+  Note gold hairlines and the 5-6px dot ornaments (gold-rule, section-divider__mark,
+  feature-list__bullet, the Vandoras glyph ornaments, the BarVision scan line) are strokes
+  and accents, not fills — those are correct and should stay.
 - "New" starburst sticker: `.app-card__new` on index.html and apps.html, defined in each
   page's own `<style>` block alongside `.app-card__badge`. A 12-point `clip-path` star,
   Forest with a Mid Green inner face and Parchment type — deliberately no gold, since gold
