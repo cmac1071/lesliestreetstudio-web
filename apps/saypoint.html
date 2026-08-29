@@ -155,6 +155,149 @@
       to   { transform: translateX(-50%); }
     }
 
+    /* ─── REEL ─── */
+    .sp-reel-row {
+      display: flex;
+      justify-content: center;
+      margin-top: var(--space-md);
+    }
+    .sp-reel-card {
+      width: 300px;
+      max-width: 100%;
+      text-align: center;
+    }
+    /* Custom controls instead of native <video controls>, and expand opens an
+       in-page lightbox rather than any Fullscreen API. Same two Safari
+       problems documented on apps/vandoras.html: native video fullscreen
+       hands off to an AVKit-style player that crop-fills portrait footage to
+       16:9, and iPhone Safari has no Fullscreen API support for non-video
+       elements at all. A fixed-position CSS overlay sidesteps both. This is
+       the same pattern as #vn-lightbox — see that page for the full note. */
+    .sp-reel-card__video {
+      position: relative;
+      /* the reel is 720x1564, taller than 9:16 — matching the real ratio
+         keeps object-fit from cropping the top and bottom of the frame */
+      aspect-ratio: 720 / 1564;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      background-color: var(--charcoal);
+    }
+    .sp-reel-card__video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+    .sp-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background-color: rgba(58, 56, 53, 0.97);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-md);
+    }
+    .sp-lightbox[hidden] { display: none; }
+    .sp-lightbox__video {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      aspect-ratio: 720 / 1564;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      background-color: var(--charcoal);
+    }
+    .sp-lightbox__close {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(221, 213, 196, 0.12);
+      border: 1px solid rgba(221, 213, 196, 0.3);
+      color: var(--parchment);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+    }
+    .sp-reel-play {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: rgba(27, 67, 50, 0.75);
+      border: 1px solid rgba(221, 213, 196, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      transition: opacity var(--transition);
+    }
+    .sp-reel-play svg { fill: var(--parchment); margin-left: 3px; }
+    .sp-reel-card__video.is-playing .sp-reel-play {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .sp-reel-expand {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background-color: rgba(58, 56, 53, 0.65);
+      border: 1px solid rgba(221, 213, 196, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .sp-reel-expand svg { stroke: var(--parchment); }
+    .sp-reel-card__video:hover .sp-reel-expand,
+    .sp-reel-card__video.is-playing .sp-reel-expand {
+      opacity: 1;
+    }
+    .sp-reel-card__tag {
+      display: inline-block;
+      margin-top: var(--space-sm);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      border: 1px solid rgba(149, 213, 178, 0.22);
+      padding: 4px 10px;
+    }
+    .sp-reel-card__caption {
+      font-family: var(--font-display);
+      font-size: var(--size-body);
+      color: var(--parchment);
+      margin-top: var(--space-xs);
+      line-height: 1.4;
+    }
+    .sp-reel-card__date {
+      font-family: var(--font-body);
+      font-size: var(--size-secondary);
+      color: var(--parchment);
+      opacity: 0.55;
+      margin-top: 2px;
+    }
+
     /* ─── FEATURES ─── */
     .sp-features-grid {
       display: grid;
@@ -472,6 +615,47 @@
       </div>
     </div>
 
+    <!-- REEL -->
+    <section class="section" style="background-color: var(--charcoal);">
+      <div class="container on-dark" style="text-align: center;">
+        <span class="label" style="display:block; margin-bottom: var(--space-sm); color: var(--sage);">First Look</span>
+        <h2 style="color: var(--parchment); margin-bottom: 0;">Thirty seconds at the table.</h2>
+        <div class="sp-reel-row">
+
+          <div class="sp-reel-card">
+            <div class="sp-reel-card__video">
+              <video playsinline preload="none" poster="../assets/images/SayPoint_Reel1_Poster.jpg">
+                <source src="../assets/videos/SayPoint_Reel1.mp4" type="video/mp4">
+              </video>
+              <button class="sp-reel-play" type="button" aria-label="Play video">
+                <svg width="20" height="20" viewBox="0 0 20 20"><path d="M5 3L17 10L5 17V3Z"/></svg>
+              </button>
+              <button class="sp-reel-expand" type="button" aria-label="View fullscreen">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 5V1H5M11 1H15V5M15 11V15H11M5 15H1V11"/>
+                </svg>
+              </button>
+            </div>
+            <span class="sp-reel-card__tag">Reel 1</span>
+            <p class="sp-reel-card__caption">SayPoint Reel 1 - Family Game Night</p>
+            <p class="sp-reel-card__date">August 28, 2026</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Shared lightbox for reel videos: plain CSS overlay, no Fullscreen
+         API, so it renders identically on every browser/device including
+         iPhone Safari (which has no Fullscreen API support for non-video
+         elements). See REEL CSS comment above for why. -->
+    <div class="sp-lightbox" id="sp-lightbox" hidden>
+      <button class="sp-lightbox__close" type="button" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 4L16 16M16 4L4 16"/></svg>
+      </button>
+      <video class="sp-lightbox__video" playsinline controls></video>
+    </div>
+
     <!-- FEATURES -->
     <section class="section" style="background-color: var(--parchment);">
       <div class="container">
@@ -690,6 +874,57 @@
       });
     }, { threshold: 0.15 });
     steps.forEach(s => obs.observe(s));
+
+    // Reel video: custom play/expand controls (no native <video controls>).
+    // Expand opens a shared in-page lightbox rather than calling any
+    // Fullscreen API — iPhone Safari has no Fullscreen API support for
+    // non-video elements, and Safari's video-specific native fullscreen
+    // ignores page CSS and crop-fills portrait footage. A plain CSS overlay
+    // sidesteps both and renders identically everywhere.
+    const lightbox = document.getElementById('sp-lightbox');
+    const lightboxVideo = lightbox.querySelector('.sp-lightbox__video');
+    const lightboxClose = lightbox.querySelector('.sp-lightbox__close');
+
+    function openLightbox(src, poster) {
+      lightboxVideo.src = src;
+      lightboxVideo.poster = poster;
+      lightbox.hidden = false;
+      lightboxVideo.play();
+    }
+    function closeLightbox() {
+      lightboxVideo.pause();
+      lightboxVideo.removeAttribute('src');
+      lightboxVideo.load();
+      lightbox.hidden = true;
+    }
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+    });
+
+    document.querySelectorAll('.sp-reel-card__video').forEach(card => {
+      const video = card.querySelector('video');
+      const source = video.querySelector('source');
+      const playBtn = card.querySelector('.sp-reel-play');
+      const expandBtn = card.querySelector('.sp-reel-expand');
+
+      const togglePlay = () => { video.paused ? video.play() : video.pause(); };
+
+      playBtn.addEventListener('click', togglePlay);
+      video.addEventListener('click', togglePlay);
+      video.addEventListener('play', () => card.classList.add('is-playing'));
+      video.addEventListener('pause', () => card.classList.remove('is-playing'));
+      video.addEventListener('ended', () => card.classList.remove('is-playing'));
+
+      expandBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        video.pause();
+        openLightbox(source.src, video.poster);
+      });
+    });
   </script>
 
 </body>

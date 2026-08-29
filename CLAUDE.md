@@ -162,6 +162,21 @@ Do not recreate, reinterpret, or modify the wordmark in any way.
 - Voice-controlled scorekeeper for any physical multiplayer game (cards, dice, darts, etc.). Native iOS 26+/iPadOS 26+, on-device speech recognition (SpeechAnalyzer/SpeechTranscriber, no cloud), push-to-talk or always-listening activation, unlimited concurrent/paused games with permanent history, undo/redo, Low Score Wins/countdown mode. One-time purchase, no ads, no accounts.
 - Status: Coming Soon, no release date locked yet — apps.html card and the app page badge both read "Coming Soon." Update to a real App Store link + screenshots once it ships.
 - Support and privacy policy pages use the text Chris supplied verbatim (SayPoint_support.md / SayPoint_privacypolicy.md) — do not rewrite the legal copy without his input.
+- Promo reel: "First Look" section on apps/saypoint.html ("Thirty seconds at the table."), placed between the
+  feature-keyword ticker and the Features section, on charcoal. Single `.sp-reel-card` inside `.sp-reel-row`.
+  - Reel 1: SayPoint_Reel1.mp4, poster assets/images/SayPoint_Reel1_Poster.jpg, caption
+    "SayPoint Reel 1 - Family Game Night", dated August 28, 2026. 30s screen-recorded app demo.
+    Compressed at CRF 20, not the default 23: the dark purple end-card gradient bands visibly at 23.
+    9.5 MB → 1.4 MB.
+  - The card and lightbox use `aspect-ratio: 720 / 1564` (the reel's true ratio), not the Vandoras
+    teasers' 9/16 — the source is 1080x2346, so a 9/16 box would crop the frame top and bottom.
+  - Fullscreen/expand reuses the `#vn-lightbox` pattern from apps/vandoras.html as `#sp-lightbox`
+    (shared overlay, `openLightbox(src, poster)`). Adding a second reel = duplicate the
+    `.sp-reel-card` block, newest first; the lightbox itself needs no change.
+  - **Open question for Chris:** the reel's end card reads "Now Available" and carries the Apple
+    App Store badge, but the site still says "Coming Soon" everywhere (hero badge, apps.html card,
+    the CTA section) and there is no App Store ID on file. Resolve before pushing — either the page
+    flips to shipped with a real store link, or the reel needs a different end card.
 
 ---
 
