@@ -270,6 +270,15 @@ third-party UI. Portrait (9:16) mp4s live in `assets/videos/`.
 - Asset paths are relative: root pages use `assets/`, subpages use `../assets/`
 - App Store badges: always use Apple's official badge CDN URL, never a local copy
 - External links (App Store, etc): always `target="_blank" rel="noopener"`
+- **The home page "Featured Apps" row is exactly TWO cards. Never add a third.**
+  `.app-cards` is a 2-column grid, so a third card orphans itself on a second row.
+  When a newer app earns a spot, retire the older one from index.html — it keeps its
+  card on apps.html, which is the full catalogue and where an odd count is fine.
+  Currently: Vandoras + SayPoint (Railroad! Solitaire was retired from the row on
+  2026-08-28 when SayPoint shipped). Renumber the surviving cards' `fade-up--delay-*`
+  classes so the row still animates in from delay-1.
+- apps.html's meta description lists every app that has a card on the page — add to it
+  when a new app page ships, or the description silently goes stale.
 
 ## Hamburger nav
 JS is inline at the bottom of each page — a minimal toggle for `.nav-hamburger` and
