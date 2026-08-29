@@ -148,22 +148,23 @@ Do not recreate, reinterpret, or modify the wordmark in any way.
   - Teaser 4: Vandoras_Reel4_TheCraft_Release.mp4, poster Vandoras_Teaser4_Poster.jpg, caption "Vandoras Teaser 4 - The Craft", dated August 22, 2026. CRF 23 — the footage is very dark (mean luma 10–24/255) but showed no banding on check, so it did not need the step-down.
   - If another one is ever added: duplicate a `.vn-teaser-card` block, swap the video src/poster/caption/date, keep newest-first order. Check dark/gradient footage for banding at CRF 23 before accepting the default — step down to CRF 20–21 if it appears (see "Video assets" above).
 
-## Apps in Development
-
-### BarVision
-- Page: apps/barvision.html
-- Icon: assets/images/BarVision_Icon.png
-
-### SayPoint
+### SayPoint (live on App Store, released August 25, 2026)
+- App Store: https://apps.apple.com/us/app/saypoint/id6796113288
 - Page: apps/saypoint.html
 - Support: apps/saypoint/support.html
 - Privacy Policy: apps/saypoint/privacy-policy.html
 - Icon: assets/images/SayPoint_Icon.png
 - Voice-controlled scorekeeper for any physical multiplayer game (cards, dice, darts, etc.). Native iOS 26+/iPadOS 26+, on-device speech recognition (SpeechAnalyzer/SpeechTranscriber, no cloud), push-to-talk or always-listening activation, unlimited concurrent/paused games with permanent history, undo/redo, Low Score Wins/countdown mode. One-time purchase, no ads, no accounts.
-- Status: Coming Soon, no release date locked yet — apps.html card and the app page badge both read "Coming Soon." Update to a real App Store link + screenshots once it ships.
+- Screenshots: SayPoint_Screen_GinRummy.jpg, SayPoint_Screen_Yahtzee.jpg, SayPoint_Screen_Darts.jpg,
+  SayPoint_Screen_Cribbage.jpg, SayPoint_Screen_GameList.jpg — shown in that order in the
+  "Screenshots" section (`.sp-shots`), which sits between Features and How It Works. The order is a
+  deliberate arc: voice in action, then five players, then countdown mode, then a finished game, then
+  the permanent game list. Converted from the delivered 1320x2868 PNGs at JPEG q82; the PNGs were
+  deleted, per the same "compress the web copy" rule as video.
 - Support and privacy policy pages use the text Chris supplied verbatim (SayPoint_support.md / SayPoint_privacypolicy.md) — do not rewrite the legal copy without his input.
-- Promo reel: "First Look" section on apps/saypoint.html ("Thirty seconds at the table."), placed between the
-  feature-keyword ticker and the Features section, on charcoal. Single `.sp-reel-card` inside `.sp-reel-row`.
+- Promo reel: "See It in Play" section on apps/saypoint.html ("Thirty seconds at the table."), placed
+  between the feature-keyword ticker and the Features section, on charcoal. Single `.sp-reel-card`
+  inside `.sp-reel-row`.
   - Reel 1: SayPoint_Reel1.mp4, poster assets/images/SayPoint_Reel1_Poster.jpg, caption
     "SayPoint Reel 1 - Family Game Night", dated August 28, 2026. 30s screen-recorded app demo.
     Compressed at CRF 20, not the default 23: the dark purple end-card gradient bands visibly at 23.
@@ -173,10 +174,14 @@ Do not recreate, reinterpret, or modify the wordmark in any way.
   - Fullscreen/expand reuses the `#vn-lightbox` pattern from apps/vandoras.html as `#sp-lightbox`
     (shared overlay, `openLightbox(src, poster)`). Adding a second reel = duplicate the
     `.sp-reel-card` block, newest first; the lightbox itself needs no change.
-  - **Open question for Chris:** the reel's end card reads "Now Available" and carries the Apple
-    App Store badge, but the site still says "Coming Soon" everywhere (hero badge, apps.html card,
-    the CTA section) and there is no App Store ID on file. Resolve before pushing — either the page
-    flips to shipped with a real store link, or the reel needs a different end card.
+  - The reel's end card reads "Now Available" and carries the App Store badge, which is why the page
+    was flipped to shipped in the same commit — reel and page copy have to agree.
+
+## Apps in Development
+
+### BarVision
+- Page: apps/barvision.html
+- Icon: assets/images/BarVision_Icon.png
 
 ---
 
@@ -206,12 +211,17 @@ The tagline is: **Intentional software.**
   `img { display: block }` rule (style.css:78) makes a bare badge image ignore the parent's
   `text-align: center` and hug the left edge — `.appstore-link` is `display: inline-block`,
   which shrink-wraps the image so it centres. Applied to the bottom download CTA on
-  vandoras, deckvision, cribvision, and railroad-solitaire. Hero badges on the *Vision pages
-  sit in deliberately left-aligned columns and are left alone.
+  vandoras, deckvision, cribvision, railroad-solitaire, and saypoint. Hero badges on the
+  *Vision pages sit in deliberately left-aligned columns and are left alone. The saypoint
+  hero uses `.sp-hero__cta` instead — same inline-block shrink-wrap, but it carries the
+  hero's `fadeUp` entrance animation, so it mirrors Vandoras's `.vn-hero__cta`, not the
+  global `.appstore-link`.
 - "Coming Soon" badges are OUTLINED, never filled. `.app-card__badge--coming-soon`
   (index.html and apps.html style blocks) is a transparent box with a Forest border and
-  Forest type; the hero badges on saypoint.html (`.sp-hero__badge`) and barvision.html
-  (`.bv-hero__badge`) are the same idea in Parchment on dark. This variant used to be a
+  Forest type; the hero badge on barvision.html (`.bv-hero__badge`) is the same idea in
+  Parchment on dark. (saypoint.html had a matching `.sp-hero__badge` until it shipped on
+  2026-08-25; that class is gone — if another app needs one, copy the BarVision rule.)
+  This variant used to be a
   gold pill, which broke the "never use gold as a fill or background" rule and put a second
   gold moment on a card that already has a gold-rule. Don't reintroduce a filled badge.
   Note gold hairlines and the 5-6px dot ornaments (gold-rule, section-divider__mark,

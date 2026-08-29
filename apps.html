@@ -25,7 +25,7 @@
     }
     /* Outlined, not filled: gold may never be a fill or background, and the card
        already spends its one gold moment on the gold-rule. This also matches the
-       outlined "Coming Soon" hero badges on saypoint.html and barvision.html.
+       outlined "Coming Soon" hero badge on barvision.html.
        Padding drops by 1px so the added border keeps the box the same size as the
        solid variant above. */
     .app-card__badge--coming-soon {
@@ -224,16 +224,17 @@
           </a>
 
           <a href="apps/saypoint.html" class="app-card fade-up fade-up--delay-4">
+            <div class="app-card__new" aria-hidden="true"><span>New</span></div>
             <div class="app-card__header">
               <div class="app-card__icon">
                 <img src="assets/images/SayPoint_Icon.png" alt="SayPoint icon">
               </div>
-              <h3 class="app-card__name">SayPoint <span class="app-card__badge app-card__badge--coming-soon">Coming Soon</span></h3>
+              <h3 class="app-card__name">SayPoint</h3>
             </div>
             <hr class="gold-rule gold-rule--narrow">
             <p class="app-card__tagline">Keep score for any physical game by voice. Say "add fifty to Lisa" and SayPoint updates the board and reads it back — no tapping, no stopping the game.</p>
             <div class="app-card__cta">
-              <span style="font-family: var(--font-body); font-size: var(--size-secondary); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--stone);">iOS &middot; iPadOS</span>
+              <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" class="appstore-badge">
             </div>
           </a>
 
